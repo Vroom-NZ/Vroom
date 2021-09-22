@@ -6,10 +6,10 @@ const checkJwt = jwt({
     cache: true,
     rateLimit: true,
     jwksRequestsPerMinute: 5,
-    jwksUri: 'https://gardenz.au.auth0.com/.well-known/jwks.json'
+    jwksUri: 'https://dev-6s8lzyu9.us.auth0.com/.well-known/jwks.json'
   }),
-  audience: 'https://fullstackboilerplate/api',
-  issuer: 'https://gardenz.au.auth0.com/',
+  audience: 'https://vroom/api',
+  issuer: 'https://dev-6s8lzyu9.us.auth0.com/',
   algorithms: ['RS256']
 })
 
