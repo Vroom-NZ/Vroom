@@ -1,8 +1,38 @@
 const jwt = require('express-jwt')
-const jwks = require('jwks-rsa')
+const jwksRsa = require('jwks-rsa')
+const request = require('superagent')
+
+const domain = 'https://dev-6s8lzyu9.us.auth0.com'
+const clientId = '9GJ0SaUS2L8Nhu3dRHvUj7yHXjUQusmz'
+const secret = 'I-oQfgiOoInM3hNA42vIVgkSCbp614MORdhlso7QnovY43ToZkOvN5e7XduGIWiy'
+
+const getUserRoles = async (uid) => {
+  console.log('domain:', domain)
+  console.log('client id:', clientId)
+  console.log('secret:', secret)
+  const accessToken = await getAccessToken()
+  const { body } = await request(`${domain}/api/v2/users/${uid}/roles`)
+    .set({ authorization: `Bearer ${accessToken}` })
+
+  return body[0].name
+}
+
+const getAccessToken = async () => {
+  const data = {
+    grant_type: 'client_credentials',
+    client_id: clientId,
+    client_secret: secret,
+    audience: `${domain}/api/v2/`
+  }
+
+  const { body } = await request.post(`${domain}/oauth/token`)
+    .send(data)
+    .type('form')
+  return body.access_token
+}
 
 const checkJwt = jwt({
-  secret: jwks.expressJwtSecret({
+  secret: jwksRsa.expressJwtSecret({
     cache: true,
     rateLimit: true,
     jwksRequestsPerMinute: 5,
@@ -13,4 +43,4 @@ const checkJwt = jwt({
   algorithms: ['RS256']
 })
 
-module.exports = checkJwt
+module.exports = { checkJwt, getUserRoles }
