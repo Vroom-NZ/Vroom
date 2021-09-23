@@ -35,7 +35,7 @@ function Register ({ user }) {
     onSubmit: values => {
       console.log(values, user)
       const newUser = { values, user }
-      values.age < 18
+      values.age <= 18
         ? alert('Sorry you must be 18 years old to use Vroom')
         : addUser(newUser) && history.push('/')
     },
