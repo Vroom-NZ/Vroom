@@ -54,3 +54,24 @@ test('DELETE car by id', () => {
         })
     })
 })
+
+test('UPDATE car by id', () => {
+  const updatedCar = {
+    id: 123,
+    make: 'mazda',
+    model: 'bongo',
+    year: 2001,
+    colour: 'black',
+    license_plate: 'JVM123',
+    registration: true,
+    wof: true,
+    seats_available: 2,
+    pets_allowed: false
+  }
+  return db.updateCar(updatedCar, testDb)
+    .then((car) => {
+      expect(car.model).toBe('bongo')
+      expect(car.pets_allowed).toBeFalsy()
+      return null
+    })
+})

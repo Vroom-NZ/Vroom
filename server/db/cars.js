@@ -40,8 +40,27 @@ function deleteCar (userId, id, db = connection) {
     .del(id)
 }
 
-function updateCar () {
+function updateCar (car, db = connection) {
+  const { id, make, model, year, colour, licensePlate, registration, wof, seatsAvailable, petsAllowed } = car
+  const updatedCar = { make, model, year, colour, license_plate: licensePlate, registration, wof, seats_available: seatsAvailable, pets_allowed: petsAllowed }
+  return db('cars', updatedCar)
+    .where('id', id)
+    .update(updatedCar)
+    .then(() => {
+      return {
 
+        id: id,
+        make: updatedCar.make,
+        model: updatedCar.model,
+        year: updatedCar.year,
+        colour: updatedCar.colour,
+        license_plate: updatedCar.license_plate,
+        registration: updatedCar.registration,
+        wof: updatedCar.wof,
+        seats_available: updatedCar.seats_available,
+        pets_allowed: updatedCar.pets_allowed
+      }
+    })
 }
 
 module.exports = {
