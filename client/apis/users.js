@@ -9,7 +9,7 @@ export function getUsers () {
     })
 }
 
-export function addUser (user) {
-  return request.post(rootUrl + '/users')
+export async function addUser (user) {
+  return await request.post(rootUrl + '/users/')
     .send(user)
 }

@@ -1,89 +1,112 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
-import { useHistory } from 'react-router'
+import { useHistory } from 'react-router-dom'
+import { useFormik } from 'formik'
+import * as Yup from 'yup'
+import { TextField } from '@mui/material'
+
 import { addUser } from '../apis/users'
 
-function Registeration ({ user }) {
+const registerSchema = Yup.object().shape({
+  firstName: Yup.string()
+    .min(2, 'This must be at least 2 characters long')
+    .max(15, 'Sorry, this must be under 15 characters long')
+    .required('Required'),
+  lastName: Yup.string()
+    .required('Required')
+    .min(2, 'This must be at least 2 characters long')
+    .max(20, 'Sorry, this must be under 20 characters long'),
+  age: Yup.string()
+    .required('Required'),
+  phoneNumber: Yup.string()
+    .required('Required')
+})
+
+function Register ({ user }) {
   const history = useHistory()
 
-  const [form, setForm] = useState({
-    auth0Id: '',
-    name: '',
-    email: '',
-    description: ''
+  const formik = useFormik({
+    initialValues: {
+      firstName: '',
+      lastName: '',
+      phoneNumber: '',
+      age: ''
+    },
+    onSubmit: values => {
+      console.log(values, user)
+      const newUser = { values, user }
+      values.age <= 18
+        ? alert('Sorry you must be 18 years old to use Vroom')
+        : addUser(newUser) && history.push('/')
+    },
+    validationSchema: registerSchema
   })
 
-  useEffect(() => {
-    setForm({
-      auth0Id: user.auth0Id,
-      name: user.name,
-      email: user.email,
-      description: user.description
-    })
-  }, [user])
-
-  function handleChange (e) {
-    const { name, value } = e.target
-    setForm({
-      ...form,
-      [name]: value
-    })
-  }
-
-  async function handleClick (e) {
-    e.preventDefault()
-    // registerUser(form, authUser, history.push)
-    try {
-      await addUser(form)
-      history.push('/')
-    } catch (error) {
-      console.error(error)
-    }
+  function showAnyErrors (inputName) {
+    return formik.errors[inputName] && formik.touched[inputName]
+      ? formik.errors[inputName]
+      : false
   }
 
   return (
-    <section className='form'>
-      <h2>Regiser Profile</h2>
-      <form className='registeration'>
-        <label htmlFor='auth0Id'>auth0Id</label>
-        <input
-          name='auth0Id'
-          value={form.auth0Id}
-          onChange={handleChange}
-          disabled={true}
-        ></input>
-
-        <label htmlFor='name'>Name</label>
-        <input
-          name='name'
-          value={form.name}
-          onChange={handleChange}
-          disabled={true}
-        ></input>
-
-        <label htmlFor='email'>Email</label>
-        <input
-          name='email'
-          value={form.email}
-          onChange={handleChange}
-          disabled={true}
-        ></input>
-
-        <label htmlFor='description' >Description</label>
-        <textarea
-          name='description'
-          value={form.description}
-          onChange={handleChange}
-          cols={3}
-        ></textarea>
-        <button
-          type='button'
-          onClick={handleClick}
-        >
-          Register
-        </button>
-      </form>
-    </section>
+    <>
+      <section className='flex-container'>
+        <form className='column-6' onSubmit={formik.handleSubmit}>
+          <div className="field">
+            <TextField
+              sx={{ margin: '8px' }}
+              className = 'InputField'
+              id="firstName"
+              name="firstName"
+              placeholder="First name"
+              label={showAnyErrors('firstName') ? showAnyErrors('firstName') : 'First name'}
+              value={formik.values.firstName}
+              onChange={formik.handleChange}
+              error={formik.touched.firstName && Boolean(formik.errors.firstName)}
+            />
+            <br/>
+            <TextField
+              sx={{ margin: '8px' }}
+              className = 'InputField'
+              id="lastName"
+              name="lastName"
+              placeholder="Last name"
+              label={showAnyErrors('lastName') ? showAnyErrors('lastName') : 'Last name'}
+              value={formik.values.lastName}
+              onChange={formik.handleChange}
+              error={formik.touched.lastName && Boolean(formik.errors.lastName)}
+            />
+            <br/>
+            <TextField
+              sx={{ margin: '8px' }}
+              className = 'InputField'
+              id='age'
+              name='age'
+              type='age'
+              placeholder='Age'
+              onChange={formik.handleChange}
+              label={showAnyErrors('age') ? showAnyErrors('age') : 'Age'}
+              value={formik.values.age}
+              error={formik.touched.age && Boolean(formik.errors.age)}
+            />
+            <br/>
+            <TextField
+              sx={{ margin: '8px' }}
+              className = 'InputField'
+              id="phoneNumber"
+              name="phoneNumber"
+              placeholder="Phone number"
+              label={showAnyErrors('phoneNumber') ? showAnyErrors('phoneNumber') : 'Phone number'}
+              value={formik.values.phoneNumber}
+              onChange={formik.handleChange}
+              error={formik.touched.phoneNumber && Boolean(formik.errors.phoneNumber)}
+            />
+            <br/>
+            <button className='button-primary' type='submit' data-testid='submitButton'>Register</button>
+          </div>
+        </form>
+      </section>
+    </>
   )
 }
 
@@ -93,4 +116,4 @@ function mapStateToProps (state) {
   }
 }
 
-export default connect(mapStateToProps)(Registeration)
+export default connect(mapStateToProps)(Register)
