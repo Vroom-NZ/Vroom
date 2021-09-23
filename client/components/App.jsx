@@ -7,7 +7,7 @@ import PingRoutes from './PingRoutes'
 import Registeration from './Registeration'
 import Users from './Users'
 import { Route } from 'react-router'
-console.log('test')
+import SearchBar from './SearchBar'
 
 function App () {
   cacheUser(useAuth0)
@@ -18,6 +18,9 @@ function App () {
       {/* <Route exact path='/' component={Users} />
       <Route exact path='/' component={PingRoutes} /> */}
       <Route path='/register' component={Registeration} />
+      {/* <h1>Hello</h1> */}
+      <img src='../server/public/images/VectorHeader.png'></img>
+      <Route exact path='/' component={SearchBar} />
     </div>
   )
 }

@@ -31,8 +31,8 @@ table th {
 nav {
   display: flex;
   align-items: center;
-  background-color: black;
-  color: white;
+  background-color: rgb(255, 255, 255);
+  color: black;
 }
 
 .logo {
@@ -55,6 +55,7 @@ a {
 .nav-item {
   width: 50%;
   text-align: right;
+  padding-right: 10% 
 }
 
 .app {
@@ -90,4 +91,9 @@ a {
   display: flex;
   flex-direction: row;
   gap: 20px;
+}
+
+search {
+  font-family: 'Courier New', Courier, monospace;
+  color: blue
 }
