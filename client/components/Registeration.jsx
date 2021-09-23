@@ -1,9 +1,11 @@
 import React from 'react'
-import { useFormik } from 'formik'
 import { connect } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { addUser } from '../apis/users'
+import { useFormik } from 'formik'
 import * as Yup from 'yup'
+import { TextField } from '@mui/material'
+
+import { addUser } from '../apis/users'
 
 const registerSchema = Yup.object().shape({
   firstName: Yup.string()
@@ -13,8 +15,13 @@ const registerSchema = Yup.object().shape({
   lastName: Yup.string()
     .required('Required')
     .min(2, 'This must be at least 2 characters long')
-    .max(20, 'Sorry, this must be under 20 characters long')
+    .max(20, 'Sorry, this must be under 20 characters long'),
+  age: Yup.string()
+    .required('Required'),
+  phoneNumber: Yup.string()
+    .required('Required')
 })
+
 function Register ({ user }) {
   const history = useHistory()
 
@@ -22,20 +29,23 @@ function Register ({ user }) {
     initialValues: {
       firstName: '',
       lastName: '',
-      phoneNumber: ''
+      phoneNumber: '',
+      age: ''
     },
     onSubmit: values => {
+      console.log(values, user)
       const newUser = { values, user }
-      addUser(newUser)
-      history.push('/')
+      values.age < 18
+        ? alert('Sorry you must be 18 years old to use Vroom')
+        : addUser(newUser) && history.push('/')
     },
     validationSchema: registerSchema
   })
 
   function showAnyErrors (inputName) {
     return formik.errors[inputName] && formik.touched[inputName]
-      ? <p className='inputError'>{formik.errors[inputName]}</p>
-      : null
+      ? formik.errors[inputName]
+      : false
   }
 
   return (
@@ -43,46 +53,42 @@ function Register ({ user }) {
       <section className='flex-container'>
         <form className='column-6' onSubmit={formik.handleSubmit}>
           <div className="field">
-            <label htmlFor='firstName' className='form-label'>First Name</label>
-            {showAnyErrors('firstName')}
-            <input
-              className='form-input'
-              id='firstName'
-              name='firstName'
-              placeholder='First Name'
-              onChange={formik.handleChange}
+            <TextField
+              id="firstName"
+              name="firstName"
+              placeholder="First name"
+              label={showAnyErrors('firstName') ? showAnyErrors('firstName') : 'First name'}
               value={formik.values.firstName}
-            />
-            <label htmlFor='lastName' className='form-label'>Last Name</label>
-            {showAnyErrors('lastName')}
-            <input
-              className='form-input'
-              id='lastName'
-              name='lastName'
-              placeholder='Last Name'
               onChange={formik.handleChange}
-              value={formik.values.lastName}
+              error={formik.touched.firstName && Boolean(formik.errors.firstName)}
             />
-            <label
-              htmlFor='age'
-              className='label'>Age</label>
-            {showAnyErrors('age')}
-            <input
-              className='form-input'
+            <TextField
+              id="lastName"
+              name="lastName"
+              placeholder="Last name"
+              label={showAnyErrors('lastName') ? showAnyErrors('lastName') : 'Last name'}
+              value={formik.values.lastName}
+              onChange={formik.handleChange}
+              error={formik.touched.lastName && Boolean(formik.errors.lastName)}
+            />
+            <TextField
               id='age'
               name='age'
               type='age'
-              placeholder='Age'/>
-
-            <label htmlFor='phoneNumber' className='form-label'>Phone number</label>
-            {showAnyErrors('phoneNumber')}
-            <input
-              className='form-input'
-              id='phoneNumber'
-              name='phoneNumber'
-              placeholder='Phone number'
+              placeholder='Age'
               onChange={formik.handleChange}
+              label={showAnyErrors('age') ? showAnyErrors('age') : 'Age'}
+              value={formik.values.age}
+              error={formik.touched.age && Boolean(formik.errors.age)}
+            />
+            <TextField
+              id="phoneNumber"
+              name="phoneNumber"
+              placeholder="Phone number"
+              label={showAnyErrors('phoneNumber') ? showAnyErrors('phoneNumber') : 'Phone number'}
               value={formik.values.phoneNumber}
+              onChange={formik.handleChange}
+              error={formik.touched.phoneNumber && Boolean(formik.errors.phoneNumber)}
             />
           </div>
           <button className='button-primary' type='submit' data-testid='submitButton'>Register</button>
