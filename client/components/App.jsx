@@ -7,6 +7,7 @@ import PingRoutes from './PingRoutes'
 import Registeration from './Registeration'
 import Users from './Users'
 import { Route } from 'react-router'
+console.log('test')
 
 function App () {
   cacheUser(useAuth0)
