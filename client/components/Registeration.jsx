@@ -54,6 +54,8 @@ function Register ({ user }) {
         <form className='column-6' onSubmit={formik.handleSubmit}>
           <div className="field">
             <TextField
+              sx={{ margin: '8px' }}
+              className = 'InputField'
               id="firstName"
               name="firstName"
               placeholder="First name"
@@ -62,7 +64,10 @@ function Register ({ user }) {
               onChange={formik.handleChange}
               error={formik.touched.firstName && Boolean(formik.errors.firstName)}
             />
+            <br/>
             <TextField
+              sx={{ margin: '8px' }}
+              className = 'InputField'
               id="lastName"
               name="lastName"
               placeholder="Last name"
@@ -71,7 +76,10 @@ function Register ({ user }) {
               onChange={formik.handleChange}
               error={formik.touched.lastName && Boolean(formik.errors.lastName)}
             />
+            <br/>
             <TextField
+              sx={{ margin: '8px' }}
+              className = 'InputField'
               id='age'
               name='age'
               type='age'
@@ -81,7 +89,10 @@ function Register ({ user }) {
               value={formik.values.age}
               error={formik.touched.age && Boolean(formik.errors.age)}
             />
+            <br/>
             <TextField
+              sx={{ margin: '8px' }}
+              className = 'InputField'
               id="phoneNumber"
               name="phoneNumber"
               placeholder="Phone number"
@@ -90,8 +101,9 @@ function Register ({ user }) {
               onChange={formik.handleChange}
               error={formik.touched.phoneNumber && Boolean(formik.errors.phoneNumber)}
             />
+            <br/>
+            <button className='button-primary' type='submit' data-testid='submitButton'>Register</button>
           </div>
-          <button className='button-primary' type='submit' data-testid='submitButton'>Register</button>
         </form>
       </section>
     </>
