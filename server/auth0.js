@@ -4,12 +4,11 @@ const request = require('superagent')
 
 const domain = 'https://dev-6s8lzyu9.us.auth0.com'
 const clientId = '9GJ0SaUS2L8Nhu3dRHvUj7yHXjUQusmz'
-const secret = 'I-oQfgiOoInM3hNA42vIVgkSCbp614MORdhlso7QnovY43ToZkOvN5e7XduGIWiy'
+const secret = process.env.AUTH0_API_EXPLORER_SECRET
 
 const getUserRoles = async (uid) => {
   console.log('domain:', domain)
   console.log('client id:', clientId)
-  console.log('secret:', secret)
   const accessToken = await getAccessToken()
   const { body } = await request(`${domain}/api/v2/users/${uid}/roles`)
     .set({ authorization: `Bearer ${accessToken}` })
