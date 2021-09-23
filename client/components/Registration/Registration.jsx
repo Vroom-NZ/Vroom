@@ -5,7 +5,7 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { TextField } from '@mui/material'
 
-import { addUser } from '../apis/users'
+import { addUser } from '../../apis/users'
 
 const registerSchema = Yup.object().shape({
   firstName: Yup.string()
