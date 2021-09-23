@@ -10,7 +10,6 @@ export function getUsers () {
 }
 
 export async function addUser (user) {
-  console.log(user)
   return await request.post(rootUrl + '/users/')
     .send(user)
 }

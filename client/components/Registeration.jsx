@@ -26,7 +26,6 @@ function Register ({ user }) {
     },
     onSubmit: values => {
       const newUser = { values, user }
-      console.log(newUser)
       addUser(newUser)
       history.push('/')
     },

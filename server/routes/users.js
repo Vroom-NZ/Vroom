@@ -18,7 +18,6 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', async (req, res) => {
-  console.log(req.body)
   const { auth0Id, email } = req.body.user
   const { firstName, lastName, phoneNumber } = req.body.values
   const user = { auth0Id, email, firstName, lastName, phoneNumber }
