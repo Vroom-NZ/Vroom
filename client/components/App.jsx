@@ -3,11 +3,10 @@ import { connect } from 'react-redux'
 import { useAuth0 } from '@auth0/auth0-react'
 import { cacheUser } from '../auth0-utils'
 import Nav from './Nav'
-import PingRoutes from './PingRoutes'
 import Registeration from './Registeration'
-import Users from './Users'
 import { Route } from 'react-router'
 import SearchBar from './SearchBar'
+import LandingPage from './LandingPage'
 
 function App () {
   cacheUser(useAuth0)
@@ -18,12 +17,12 @@ function App () {
       {/* <Route exact path='/' component={Users} />
       <Route exact path='/' component={PingRoutes} /> */}
       <Route path='/register' component={Registeration} />
-      {/* <h1>Hello</h1> */}
-      <img src='../server/public/images/VectorHeader.png'></img>
+      <Route exact path='/' component={LandingPage}/>
       <Route exact path='/' component={SearchBar} />
     </div>
   )
 }
+
 const mapStateToProps = (globalState) => {
   return {
     fruits: globalState.fruits,

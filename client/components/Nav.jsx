@@ -27,7 +27,7 @@ function Nav (props) {
 
   return (
     <nav>
-      <h1 className='logo'>Vroom</h1>
+      <h1 className='logo'></h1>
       <section className='nav-item'>
         <IfAuthenticated>
           <p>Hello, {user.name}</p>

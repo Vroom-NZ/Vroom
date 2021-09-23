@@ -93,7 +93,12 @@ a {
   gap: 20px;
 }
 
-search {
-  font-family: 'Courier New', Courier, monospace;
-  color: blue
+.searchbar-container {
+  display: flex;
+  justify-content: center;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
 }

@@ -1,11 +1,10 @@
 import React from 'react'
-import { search } from 'superagent'
 
 function SearchBar () {
   return (
-    <search>
-      <p>Search</p>
-    </search>
+    <div className="searchbar-container">
+      <h1>Search</h1>
+    </div>
   )
 }
 
