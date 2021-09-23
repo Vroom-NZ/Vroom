@@ -16,6 +16,21 @@ exports.seed = function (knex) {
           has_vehicle: true,
           is_driver: false,
           car_id: 123
+        },
+        {
+          id: 2,
+          auth0_id: 'auth0|614c009c298e0400716ded6c',
+          first_name: 'alex',
+          last_name: 'arlignton',
+          email: 'alexsarlington@gmail.com',
+          description: '', // access type
+          phone_number: '021020304',
+          bio: '',
+          profile_pic: '',
+          rating: '',
+          has_vehicle: false,
+          is_driver: false,
+          car_id: ''
         }
       ])
     })

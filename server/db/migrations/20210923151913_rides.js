@@ -1,7 +1,7 @@
 exports.up = (knex) => {
   return knex.schema.createTable('rides', (table) => {
     table.increments('id').primary()
-    table.integer('user_id') // joins to table user.id
+    table.integer('user_id').references('users.id') // joins to table user.id
     table.string('start_location')
     table.string('destination')
     table.date('date')
