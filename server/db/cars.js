@@ -15,7 +15,6 @@ function addCar (userId, car, db = connection) {
   return db('cars')
     .insert(newCar)
     .then(([id]) => {
-      // console.log(car)
       return {
         user_id: userId,
         id: id,
@@ -32,9 +31,15 @@ function addCar (userId, car, db = connection) {
     })
 }
 
-function deleteCar () {
-
+function deleteCar (userId, id, db = connection) {
+  // const { id } = car
+  console.log(id)
+  return db('cars')
+    .where('user_Id', userId)
+    .where('id', id)
+    .del(id)
 }
+
 function updateCar () {
 
 }

@@ -36,9 +36,21 @@ test('ADD car by user id', () => {
   }
   return db.addCar(2, newCar, testDb)
     .then(car => {
-      console.log(car)
       expect(car.id).toBe(124)
       expect(car.make).toBe('mazda')
       return null
+    })
+})
+
+// Ask facilitator
+test('DELETE car by id', () => {
+  return db.deleteCar(1, 123, testDb)
+    .then(() => {
+      return db.getCar(1, testDb)
+        .then(car => {
+          console.log('test: ', car)
+          expect(car).toBeUndefined()
+          return null
+        })
     })
 })
