@@ -10,8 +10,9 @@
 git
 * git pull
 * npm i
-* push origin your-branch
+* push origin your-branch </br>
 github 
 * create pull request
 * merge into dev
 * notify Kieran or Alex
+* Kieran and Alex notify each other!
