@@ -4,16 +4,23 @@ function getUsers (db = connection) {
   return db('users')
     .select('id',
       'auth0_id as auth0Id',
-      'name',
+      'first_name as firstName',
       'email',
-      'description')
+      'description',
+      'phone_number as phoneNumber',
+      'bio',
+      'profile_pic as profilePic',
+      'rating',
+      'has_vehicle as hasVehicle',
+      'is_driver as isDriver',
+      'car_id as carId')
 }
 
-function addUser (input, db = connection) {
-  const { auth0Id, name, email, description } = input
-  const user = { auth0_id: auth0Id, name, email, description }
+function addUser (user, db = connection) {
+  const { auth0Id, email, firstName, lastName, phoneNumber } = user
+  const newUser = { auth0_id: auth0Id, first_name: firstName, last_name: lastName, email, phone_number: phoneNumber }
   return db('users')
-    .insert(user)
+    .insert(newUser)
 }
 
 module.exports = {

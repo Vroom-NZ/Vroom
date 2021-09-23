@@ -1,38 +1,45 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 html, 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'roboto', arial, helvetica, sans-serif;
 }
 
-.table {
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
+
+.InputField {
+  text-align: center;
+  margin: 8px;
+  font-family: 'roboto', arial, helvetica;
+  background-color: #D7E6B2;
+  color: #386641;
 }
 
-table td, table th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-table tr:nth-child(even){background-color: #f2f2f2;}
-
-table tr:hover {background-color: #ddd;}
-
-table th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #9c9c9c;
+button {
+  position: relative;
+  background-color: #F4A259;
+  border-radius: 3px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  text-align: center;
   color: white;
+}
+
+.flex-container {
+  width: 100vh;
+  height: 70vh;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  color:#386641 ;
 }
 
 nav {
   display: flex;
   align-items: center;
-  background-color: black;
-  color: white;
+  border-bottom: 1rem solid #A7C957;
+  color: #A7C957
 }
 
 .logo {
