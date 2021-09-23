@@ -14,8 +14,8 @@ function App () {
   return (
     <div className='app'>
       <Route exact path='/' component={Nav} />
-      <Route exact path='/' component={Users} />
-      <Route exact path='/' component={PingRoutes} />
+      {/* <Route exact path='/' component={Users} />
+      <Route exact path='/' component={PingRoutes} /> */}
       <Route path='/register' component={Registeration} />
     </div>
   )
