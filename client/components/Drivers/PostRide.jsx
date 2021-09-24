@@ -43,6 +43,7 @@ function Ride ({ user }) {
       cost: ''
     },
     onSubmit: values => {
+      ''
       console.log(user)
       const newRide = { values }
       addRides(newRide) && ridePosted() && history.push('/')
