@@ -59,7 +59,7 @@ function SearchBar () {
     <div className="searchbar-container">
       <div className='wrap'>
         <div className="search">
-          <input type="text" className="searchTerm" placeholder="Leavin from..."></input>
+          <input type="text" className="searchTerm" placeholder="Leaving from..."></input>
         </div>
       </div>
       <div className='wrap'>
@@ -67,13 +67,22 @@ function SearchBar () {
           <input type="text" className="searchTerm" placeholder="Destination..."></input>
         </div>
       </div>
-      <div className='wrap'>
+      {/* <div className='wrap'>
         <div className="search">
           <input type="text" className="searchTerm" placeholder="Date"></input>
+        </div>
+      </div> */}
+      <div className="wrap">
+        <div className="search">
+          <input type="date" className="searchTerm" id="" name=""
+            value="2021-09-24"
+            min="2021-09-24" max="2023-09-24"></input>
+        </div>
+      </div>
+      <div className="wrap">
+        <div className="passengerMenu">
           <TextField
-            id="seats"
-            className = 'InputField'
-            name="seats"
+            id="standard-basic" variant="standard"
             select
             label={showAnyErrors('seats') ? showAnyErrors('seats') : 'Seats'}
             value={formik.values.seats}
@@ -84,12 +93,13 @@ function SearchBar () {
               <MenuItem key={option.value} value={option.value}>
                 {option.label}
               </MenuItem>
-            ))} </TextField>
-          <button type="submit" className="searchButton">
-            <i className="fa fa-search"><img src='images/MagnifyingGlass.png'></img></i>
-          </button>
+            ))}
+          </TextField>
         </div>
       </div>
+      <button type="submit" className="searchButton">
+        <i className="fa fa-search"><img src='images/MagnifyingGlass.png'></img></i>
+      </button>
 
     </div>
   )

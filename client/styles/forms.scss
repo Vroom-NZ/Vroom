@@ -1,0 +1,39 @@
+.forms {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  // box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.row {
+  display: flex;
+
+}
+
+.column {
+  flex: 80%;
+}
+
+.dateinputfield {
+  display: flex;
+  justify-content: right;
+}
+
+.InputField {
+  text-align: center;
+  margin: 8px;
+  font-family: 'roboto', arial, helvetica;
+  background-color: #D7E6B2;
+  color: #386641;
+  width: 95%
+}
+
+.seatsField {
+  display: flex;
+  justify-content: right;
+  background-color: #D7E6B2;
+  width: 100%;
+  margin: 8px;
+}
