@@ -11,6 +11,7 @@ import FormControl from '@mui/material/FormControl'
 import MenuItem from '@mui/material/MenuItem'
 
 import { addRides } from '../../apis/drivers'
+import { getUsers } from '../../apis/users'
 
 const rideSchema = Yup.object().shape({
   startLocation: Yup.string()
@@ -43,8 +44,6 @@ function Ride ({ user }) {
       cost: ''
     },
     onSubmit: values => {
-      ''
-      console.log(user)
       const newRide = { values }
       addRides(newRide) && ridePosted() && history.push('/')
     },
