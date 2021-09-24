@@ -34,22 +34,7 @@ body {
   width: 50%
 }
 
-.signin-register-buttons {
-  text-align: center;
-  text-decoration: none;
-  background-color: #A7C957;
-  border-radius: 5px;
-  border: none;
-  padding: 10px;
-  color: white;
-  width: 150px;
-  margin: 12px 20px;
-  &:hover {
-    cursor: pointer;
-    animation: pulse; /* referring directly to the animation's @keyframe declaration */
-    animation-duration: 1s;
-      }
-}
+
 
 
 .logo-container {

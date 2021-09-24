@@ -31,7 +31,7 @@ function Nav (props) {
         {/* <section className='nav-item'> */}
         <IfAuthenticated>
           <div className='nav-hello'>
-            <p>Hello, {user.name}</p>
+            {/* <p>Hello, {user.name}</p> */}
           </div>
           <div className='nav-button-container'>
             <a href='/' onClick={handleLogoff} className='signin-register-buttons animate__infinite'>Log out</a>
@@ -39,7 +39,7 @@ function Nav (props) {
         </IfAuthenticated>
         <IfNotAuthenticated>
           <div className='nav-hello'>
-            <p>Hello, guest</p>
+            {/* <p>Hello, guest</p> */}
           </div>
           <div className='nav-button-container'>
             <a href='/' onClick={handleLogin} className='signin-register-buttons animate__infinite'>Sign in</a>
