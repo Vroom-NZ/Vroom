@@ -158,9 +158,9 @@ export default function Ride () {
               id='date'
               name='date'
               type='date'
-              placeholder='Date'
+              placeholder='date'
               onChange={formik.handleChange}
-              label={showAnyErrors('date') ? showAnyErrors('date') : 'Date'}
+              label={showAnyErrors('date') ? showAnyErrors('date') : ''}
               value={formik.values.date}
               error={formik.touched.date && Boolean(formik.errors.date)}
             />
@@ -198,7 +198,7 @@ export default function Ride () {
               </FormGroup>
             </FormControl>
             <br/>
-            <button className='button-primary' type='submit' data-testid='submitButton'>Post a ride!</button>
+            <button className='orange-register-button animate__infinite' type='submit' data-testid='submitButton'>Post a ride!</button>
           </div>
         </form>
       </section>
