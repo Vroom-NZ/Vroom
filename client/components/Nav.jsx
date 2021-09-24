@@ -34,6 +34,9 @@ function Nav (props) {
             {/* <p>Hello, {user.name}</p> */}
           </div>
           <div className='nav-button-container'>
+            <a href='/' className='signin-register-buttons animate__infinite'>Home</a>
+            <a href='/profile' className='signin-register-buttons animate__infinite'>Profile</a>
+            <a href='/postride' className='signin-register-buttons animate__infinite'>Post a Ride</a>
             <a href='/' onClick={handleLogoff} className='signin-register-buttons animate__infinite'>Log out</a>
           </div>
         </IfAuthenticated>
