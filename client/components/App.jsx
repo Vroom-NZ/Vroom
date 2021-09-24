@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { useAuth0 } from '@auth0/auth0-react'
 import { cacheUser } from '../auth0-utils'
 import { Route } from 'react-router'
+import 'animate.css'
 
 import SearchBar from './SearchBar'
 import LandingPage from './LandingPage'
