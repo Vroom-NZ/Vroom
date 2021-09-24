@@ -20,6 +20,7 @@ const registerSchema = Yup.object().shape({
     .required('Required'),
   phoneNumber: Yup.string()
     .required('Required')
+    .min(7, 'Sorry, this is not a valid number')
 })
 
 function Register ({ user }) {
@@ -101,7 +102,7 @@ function Register ({ user }) {
               error={formik.touched.phoneNumber && Boolean(formik.errors.phoneNumber)}
             />
             <br/>
-            <button className='button-primary' type='submit' data-testid='submitButton'>Register</button>
+            <div className='orange-register-button' type='submit' data-testid='submitButton'>Register</div>
           </div>
         </form>
       </section>

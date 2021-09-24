@@ -9,7 +9,7 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 import FormControl from '@mui/material/FormControl'
 import MenuItem from '@mui/material/MenuItem'
 
-import { addRide } from '../../apis/drivers'
+import { addRides } from '../../apis/drivers'
 
 const rideSchema = Yup.object().shape({
   leavingFrom: Yup.string()
@@ -25,10 +25,6 @@ const rideSchema = Yup.object().shape({
   date: Yup.string()
     .required('Required'),
   seats: Yup.string()
-    .required('Required'),
-  petsAllowed: Yup.boolean()
-    .required('Required'),
-  masksMandatory: Yup.boolean()
     .required('Required')
 })
 
@@ -50,10 +46,14 @@ export default function Ride () {
     onSubmit: values => {
       console.log(values)
       const newRide = { values }
-      addRide(newRide) && history.push('/profile/rides')
+      addRides(newRide) && ridePosted() && history.push('/')
     },
     validationSchema: rideSchema
   })
+
+  function ridePosted () {
+    alert('Your ride has been posted. Happy travels!')
+  }
 
   function showAnyErrors (inputName) {
     return formik.errors[inputName] && formik.touched[inputName]
@@ -165,17 +165,6 @@ export default function Ride () {
               error={formik.touched.date && Boolean(formik.errors.date)}
             />
             <br/>
-            <TextField
-              sx={{ margin: '8px' }}
-              className = 'InputField'
-              id="seats"
-              name="seats"
-              placeholder="Seats Available"
-              label={showAnyErrors('seats') ? showAnyErrors('seats') : 'Seats Available'}
-              value={formik.values.seats}
-              onChange={formik.handleChange}
-              error={formik.touched.seats && Boolean(formik.errors.seats)}
-            />
             <TextField
               id="seats"
               className = 'InputField'
