@@ -35,8 +35,26 @@ test('ADD new rides', () => {
   }
   return db.addRide(1, newRide, testDb)
     .then(ride => {
-      console.log(ride)
       expect(ride.startLocation).toBe('auckland')
+      return null
+    })
+})
+
+test('UPDATE existing ride', () => {
+  const updateRide = {
+    id: 1,
+    start_location: 'wellington',
+    destination: 'rotorua',
+    date: '2021-10-14',
+    leaving_time: '18:00:00',
+    estimated_arrival_time: '20:00:00',
+    seats_available: 4,
+    cost: 20
+  }
+  return db.updateRide(updateRide, testDb)
+    .then((ride) => {
+    //   console.log(ride)
+      expect(ride.start_location).toBe('wellington')
       return null
     })
 })
