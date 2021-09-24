@@ -48,7 +48,6 @@ test('DELETE car by id', () => {
     .then(() => {
       return db.getCar(1, testDb)
         .then(car => {
-          console.log('test: ', car)
           expect(car).toBeUndefined()
           return null
         })
