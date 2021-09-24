@@ -6,22 +6,17 @@ function getRides (startLocation, destination, date, db = connection) {
     .where('start_location', startLocation)
     .where('destination', destination)
     .where('date', date)
-    .select(
-      'rides.id',
-      'users.first_name as driverFirstName',
-      'users.last_name as driverLastName',
-      'users.rating as rating',
-      'users.profile_pic as profilePic',
-      'start_location as startLocation',
-      'leaving_time as leavingTime',
-      'estimated_arrival_time as eta',
-      'destination',
-      'date',
-      'seats_available as seatsAvailable',
-      'cost'
-    )
-    .then(([id]) => {
-      return id
+    .select()
+    .then((result) => {
+      return result[0]
+    })
+}
+
+function getRidesById (userId, db = connection) { // to get rides for specific user
+  return db('rides')
+    .where('user_id', userId)
+    .then((result) => {
+      return result
     })
 }
 
@@ -66,8 +61,17 @@ function updateRide (updatedRide, db = connection) {
     })
 }
 
+function deleteRide (id, userId, db = connection) {
+  return db('rides')
+    .where('user_id', userId)
+    .where('rides.id', id)
+    .del(id)
+}
+
 module.exports = {
   getRides,
+  getRidesById,
   addRide,
-  updateRide
+  updateRide,
+  deleteRide
 }

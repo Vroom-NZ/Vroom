@@ -16,7 +16,7 @@ test('GET rides by start location, destination and date', () => {
   return db.getRides('auckland', 'abel tasman', '2021-10-14', testDb)
     .then(ride => {
       expect(ride.id).toBe(1)
-      expect(ride.startLocation).toBe('auckland')
+      expect(ride.start_location).toBe('auckland')
 
       return null
     })
@@ -56,5 +56,17 @@ test('UPDATE existing ride', () => {
     .then((ride) => {
       expect(ride.start_location).toBe('wellington')
       return null
+    })
+})
+
+// ask facilitator for how to test
+test('DELETE ride by id', () => {
+  return db.deleteRide(1, 1, testDb)
+    .then(() => {
+      return db.getRidesById(1, testDb)
+        .then(ride => {
+          expect(ride).toHaveLength(0)
+          return null
+        })
     })
 })
