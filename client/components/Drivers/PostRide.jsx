@@ -11,7 +11,7 @@ import FormControl from '@mui/material/FormControl'
 import MenuItem from '@mui/material/MenuItem'
 
 import { addRides } from '../../apis/drivers'
-import { getUsers } from '../../apis/users'
+// import { getUsers } from '../../apis/users'
 
 const rideSchema = Yup.object().shape({
   startLocation: Yup.string()

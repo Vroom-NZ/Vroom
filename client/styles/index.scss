@@ -2,6 +2,7 @@
 @import './main.scss';
 @import './search.scss';
 @import './buttons.scss';
+@import './forms.scss';
 
 html {
   display: flex;
@@ -13,16 +14,8 @@ body {
   font-family: 'Montserrat', sans-serif;
   text-decoration: none;
 }
-.map-container {
-  height: 480px
-}
-.InputField {
-  text-align: center;
-  margin: 8px;
-  font-family: 'roboto', arial, helvetica;
-  background-color: #D7E6B2;
-  color: #386641;
-}
+
+
 
 button {
   position: relative;

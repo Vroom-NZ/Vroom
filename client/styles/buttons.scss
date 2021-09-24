@@ -11,7 +11,7 @@
   // margin: 12px 20px;
   &:hover {
     cursor: pointer;
-    animation: pulse; /* referring directly to the animation's @keyframe declaration */
+    animation: pulse; 
     animation-duration: 1s;
       }
 }
@@ -28,7 +28,22 @@
   margin: 12px 20px;
   &:hover {
     cursor: pointer;
-    animation: pulse; /* referring directly to the animation's @keyframe declaration */
+    animation: pulse; 
     animation-duration: 1s;
       }
 }
+
+.postRideButton {
+  display: flex;
+  justify-content: center;
+}
+
+ .footer-links {
+  text-decoration: none;
+  color: black;
+  &:hover {
+    cursor: pointer;
+    animation: pulse; 
+    animation-duration: 1s;
+      } 
+ }
