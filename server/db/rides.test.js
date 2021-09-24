@@ -15,7 +15,6 @@ beforeEach(() => {
 test('GET rides by start location, destination and date', () => {
   return db.getRides('auckland', 'abel tasman', '2021-10-14', testDb)
     .then(ride => {
-      console.log(ride)
       expect(ride.id).toBe(1)
       expect(ride.startLocation).toBe('auckland')
 
@@ -23,3 +22,21 @@ test('GET rides by start location, destination and date', () => {
     })
 }
 )
+
+test('ADD new rides', () => {
+  const newRide = {
+    startLocation: 'auckland',
+    destination: 'wellington',
+    date: '2021-10-14',
+    leavingTime: '18:00:00',
+    estimatedArrivalTime: '24:00:00',
+    seatsAvailable: 2,
+    cost: 40
+  }
+  return db.addRide(1, newRide, testDb)
+    .then(ride => {
+      console.log(ride)
+      expect(ride.startLocation).toBe('auckland')
+      return null
+    })
+})
