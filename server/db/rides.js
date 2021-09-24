@@ -46,24 +46,22 @@ function addRide (userId, ride, db = connection) {
     })
 }
 
-function updateRide (userId, ride, db = connection) {
-  const { id, startLocation, destination, date, leavingTime, estimatedArrivalTime, seatsAvailable, cost } = ride
-  const updateRide = { id: id, user_id: userId, start_location: startLocation, destination, date, leaving_time: leavingTime, estimated_arrival_time: estimatedArrivalTime, seats_available: seatsAvailable, cost }
+function updateRide (updatedRide, db = connection) {
+  const { id, user_id: userId, start_location: startLocation, destination, date, leaving_time: leavingTime, estimated_arrival_time: estimatedArrivalTime, seats_available: seatsAvailable, cost } = updatedRide
   return db('rides')
     .where('id', id)
-    .update(updateRide)
+    .update(updatedRide)
     .then(() => {
-      console.log(updateRide.start_location)
       return {
         id,
         user_id: userId,
-        start_location: updateRide.startLocation,
-        destination: updateRide.destination,
-        date: updateRide.date,
-        leaving_time: updateRide.leaving_time,
-        estimated_arrival_time: updateRide.estimated_arrival_time,
-        seats_available: updateRide.seats_available,
-        cost: updateRide.cost
+        start_location: startLocation,
+        destination: destination,
+        date: date,
+        leaving_time: leavingTime,
+        estimated_arrival_time: estimatedArrivalTime,
+        seats_available: seatsAvailable,
+        cost: cost
       }
     })
 }

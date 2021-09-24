@@ -41,8 +41,9 @@ test('ADD new rides', () => {
 })
 
 test('UPDATE existing ride', () => {
-  const updateRide = {
+  const updatedRide = {
     id: 1,
+    user_id: 1,
     start_location: 'wellington',
     destination: 'rotorua',
     date: '2021-10-14',
@@ -51,9 +52,8 @@ test('UPDATE existing ride', () => {
     seats_available: 4,
     cost: 20
   }
-  return db.updateRide(updateRide, testDb)
+  return db.updateRide(updatedRide, testDb)
     .then((ride) => {
-    //   console.log(ride)
       expect(ride.start_location).toBe('wellington')
       return null
     })
