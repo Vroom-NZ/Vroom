@@ -37,7 +37,7 @@ function Nav (props) {
           <div className='nav-button-container'>
             <Link to='/' className='signin-register-buttons animate__infinite'>Home</Link>
             <Link to='/profile' className='signin-register-buttons animate__infinite'>Profile</Link>
-            <Link to='/drivers' className='signin-register-buttons animate__infinite'>Post a Ride </Link>
+            <Link to='/drivers' className='signin-register-buttons animate__infinite'>Post a ride </Link>
             <a href='/' onClick={handleLogoff} className='signin-register-buttons animate__infinite'>Log out</a>
           </div>
         </IfAuthenticated>
