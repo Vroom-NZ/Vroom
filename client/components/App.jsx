@@ -10,6 +10,7 @@ import Footer from './Footer'
 import Registration from './Registration/Registration'
 import Nav from './Nav'
 import PostRide from './Drivers/PostRide'
+import Profile from './Profile/Profile'
 
 function App () {
   cacheUser(useAuth0)
@@ -21,6 +22,7 @@ function App () {
       <Route exact path='/' component={PingRoutes} /> */}
       <Route path='/register' component={Registration} />
       <Route path='/drivers' component={PostRide} />
+      <Route path='/profile' component={Profile} />
       <Route exact path='/' component={LandingPage}/>
       <Route exact path='/' component={SearchBar} />
       <Route path='/' component={Footer} />

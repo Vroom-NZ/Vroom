@@ -1,6 +1,7 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { useFormik } from 'formik'
+import { connect } from 'react-redux'
 import * as Yup from 'yup'
 import { TextField } from '@mui/material'
 import Checkbox from '@mui/material/Checkbox'
@@ -12,7 +13,7 @@ import MenuItem from '@mui/material/MenuItem'
 import { addRides } from '../../apis/drivers'
 
 const rideSchema = Yup.object().shape({
-  leavingFrom: Yup.string()
+  startLocation: Yup.string()
     .required('Required'),
   destination: Yup.string()
     .required('Required'),
@@ -24,27 +25,25 @@ const rideSchema = Yup.object().shape({
     .required('Required'),
   date: Yup.string()
     .required('Required'),
-  seats: Yup.string()
+  seatsAvailable: Yup.string()
     .required('Required')
 })
 
-export default function Ride () {
+function Ride ({ user }) {
   const history = useHistory()
 
   const formik = useFormik({
     initialValues: {
-      leavingFrom: '',
+      startLocation: '',
       destination: '',
+      date: '',
       leavingTime: '',
       arrivalTime: '',
-      cost: '',
-      date: '',
-      seats: '',
-      petsAllowed: '',
-      masksMandatory: ''
+      seatsAvailable: '',
+      cost: ''
     },
     onSubmit: values => {
-      console.log(values)
+      console.log(user)
       const newRide = { values }
       addRides(newRide) && ridePosted() && history.push('/')
     },
@@ -60,7 +59,7 @@ export default function Ride () {
       ? formik.errors[inputName]
       : false
   }
-  const seats = [
+  const seatsAvailable = [
     {
       value: '1',
       label: '1'
@@ -95,13 +94,13 @@ export default function Ride () {
             <TextField
               sx={{ margin: '8px' }}
               className = 'InputField'
-              id="leavingFrom"
-              name="leavingFrom"
-              placeholder="Leaving from.."
-              label={showAnyErrors('leavingFrom') ? showAnyErrors('leavingFrom') : 'Leaving from..'}
-              value={formik.values.leavingFrom}
+              id="startLocation"
+              name="startLocation"
+              placeholder="Start location"
+              label={showAnyErrors('startLocation') ? showAnyErrors('startLocation') : 'Start location'}
+              value={formik.values.startLocation}
               onChange={formik.handleChange}
-              error={formik.touched.leavingFrom && Boolean(formik.errors.leavingFrom)}
+              error={formik.touched.startLocation && Boolean(formik.errors.startLocation)}
             />
             <br/>
             <TextField
@@ -166,16 +165,16 @@ export default function Ride () {
             />
             <br/>
             <TextField
-              id="seats"
+              id="seatsAvailable"
               className = 'InputField'
-              name="seats"
+              name="seatsAvailable"
               select
-              label={showAnyErrors('seats') ? showAnyErrors('seats') : 'Seats'}
-              value={formik.values.seats}
+              label={showAnyErrors('seatsAvailable') ? showAnyErrors('seatsAvailable') : 'Seats'}
+              value={formik.values.seatsAvailable}
               onChange={formik.handleChange}
-              error={formik.touched.seats && Boolean(formik.errors.seats)}
+              error={formik.touched.seatsAvailable && Boolean(formik.errors.seatsAvailable)}
             >
-              {seats.map((option) => (
+              {seatsAvailable.map((option) => (
                 <MenuItem key={option.value} value={option.value}>
                   {option.label}
                 </MenuItem>
@@ -184,13 +183,13 @@ export default function Ride () {
             <FormControl component="fieldset">
               <FormGroup aria-label="position" row>
                 <FormControlLabel
-                  value={formik.values.petsAllowed}
+                  value="pets"
                   control={<Checkbox />}
                   label="Pets Allowed"
                   labelPlacement="start"
                 />
                 <FormControlLabel
-                  value="start"
+                  value="masks"
                   control={<Checkbox />}
                   label="Mandatory Masks"
                   labelPlacement="start"
@@ -205,3 +204,11 @@ export default function Ride () {
     </>
   )
 }
+
+function mapStateToProps (state) {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(Ride)

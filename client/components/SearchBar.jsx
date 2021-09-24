@@ -72,7 +72,7 @@ function SearchBar () {
           <input type="text" className="searchTerm" placeholder="Date"></input>
           <TextField
             id="seats"
-            className = 'InputField'
+            className = 'searchTerm'
             name="seats"
             select
             label={showAnyErrors('seats') ? showAnyErrors('seats') : 'Seats'}
