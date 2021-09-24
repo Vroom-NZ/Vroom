@@ -15,16 +15,28 @@
   height: 20px;
   border-radius: 5px 0 0 5px;
   outline: none;
-  color: #9DBFAF;
+  color: rgb(133, 133, 133);
   display: flex;
   justify-content: center;
 }
 
 .searchTerm:focus{
-  color: black;
+  color: black
 }
 
 .searchButton {
+  width: 40px;
+  height: 36px;
+  border: 1px solid #F4A259;
+  background: #F4A259;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.passengerMenu {
   width: 40px;
   height: 36px;
   border: 1px solid #F4A259;
