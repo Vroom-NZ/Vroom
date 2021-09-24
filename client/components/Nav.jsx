@@ -3,6 +3,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { getLoginFn, getLogoutFn, getRegisterFn } from '../auth0-utils'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 function Nav (props) {
   const { user } = props
@@ -34,9 +35,9 @@ function Nav (props) {
             {/* <p>Hello, {user.name}</p> */}
           </div>
           <div className='nav-button-container'>
-            <a href='/' className='signin-register-buttons animate__infinite'>Home</a>
-            <a href='/profile' className='signin-register-buttons animate__infinite'>Profile</a>
-            <a href='/postride' className='signin-register-buttons animate__infinite'>Post a Ride</a>
+            <Link to='/' className='signin-register-buttons animate__infinite'>Home</Link>
+            <Link to='/profile' className='signin-register-buttons animate__infinite'>Profile</Link>
+            <Link to='/drivers' className='signin-register-buttons animate__infinite'>Post a ride </Link>
             <a href='/' onClick={handleLogoff} className='signin-register-buttons animate__infinite'>Log out</a>
           </div>
         </IfAuthenticated>
