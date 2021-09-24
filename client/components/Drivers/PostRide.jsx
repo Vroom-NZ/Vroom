@@ -180,7 +180,7 @@ export default function Ride () {
                 </div>
                 <div className="column ">
                   <TextField
-                    sx={{ margin: '8px' }}
+                    sx={{ margin: '8px', width: '240px' }}
                     id="seats"
                     className = 'InputField seatsField'
                     name="seats"
@@ -214,8 +214,9 @@ export default function Ride () {
                   />
                 </FormGroup>
               </FormControl>
-              <br/>
-              <button className='postRideButton orange-register-button animate__infinite' type='submit' data-testid='submitButton'>Post a ride!</button>
+            </div>
+            <div className="postRideButton">
+              <button className='orange-register-button animate__infinite' type='submit' data-testid='submitButton'>Post a ride!</button>
             </div>
           </form>
         </section>
