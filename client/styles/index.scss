@@ -1,11 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap');
+@import './main.scss';
+@import './search.scss';
+@import './buttons.scss';
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-
-html, 
-body {
-  font-family: 'roboto', arial, helvetica, sans-serif;
+html {
+  display: flex;
+  justify-content: center;
+  
 }
 
+body {
+  font-family: 'Montserrat', sans-serif;
+  text-decoration: none;
+}
 
 .InputField {
   text-align: center;
@@ -38,21 +45,13 @@ button {
 nav {
   display: flex;
   align-items: center;
-  border-bottom: 1rem solid #A7C957;
-  color: #A7C957
+  background-color: rgb(255, 255, 255);
+  color: black;
 }
 
 .logo {
   width: 50%;
-}
-
-.sign {
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 10px;
-  text-align: right;
-  justify-content: right;
-  gap: 10px; 
+  
 }
 
 a {
@@ -62,12 +61,7 @@ a {
 .nav-item {
   width: 50%;
   text-align: right;
-}
-
-.app {
-  display: flex;
-  flex-direction: column;
-  gap: 100px;
+  padding-right: 10% 
 }
 
 .registeration {
@@ -98,3 +92,12 @@ a {
   flex-direction: row;
   gap: 20px;
 }
+
+.text-link {
+
+  color: white;
+}
+
+
+
+
