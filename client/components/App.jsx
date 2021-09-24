@@ -7,6 +7,8 @@ import Registeration from './Registeration'
 import { Route } from 'react-router'
 import SearchBar from './SearchBar'
 import LandingPage from './LandingPage'
+import Footer from './Footer'
+import 'animate.css'
 
 function App () {
   cacheUser(useAuth0)
@@ -19,6 +21,7 @@ function App () {
       <Route path='/register' component={Registeration} />
       <Route exact path='/' component={LandingPage}/>
       <Route exact path='/' component={SearchBar} />
+      <Route exact path='/' component={Footer} />
     </div>
   )
 }

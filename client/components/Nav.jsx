@@ -26,26 +26,29 @@ function Nav (props) {
   }
 
   return (
-    <nav>
-      <h1 className='logo'></h1>
-      <section className='nav-item'>
+    <div>
+      <div className='main-title'>
+        {/* <section className='nav-item'> */}
         <IfAuthenticated>
-          <p>Hello, {user.name}</p>
-          <section className='sign'>
-            <a href='/' onClick={handleLogoff} className='nav-link'>Log out</a>
-          </section>
+          <div className='nav-hello'>
+            <p>Hello, {user.name}</p>
+          </div>
+          <div className='nav-button-container'>
+            <a href='/' onClick={handleLogoff} className='signin-register-buttons animate__infinite'>Log out</a>
+          </div>
         </IfAuthenticated>
         <IfNotAuthenticated>
-          {/* <section className='nav-item'> */}
-          <p>Hello, guest</p>
-          <section className='sign'>
-            <a href='/' onClick={handleLogin} className='nav-link'>Sign in</a>
-            <a href='/' onClick={handleRegister} className='nav-link'>Register</a>
-          </section>
-          {/* </section> */}
+          <div className='nav-hello'>
+            <p>Hello, guest</p>
+          </div>
+          <div className='nav-button-container'>
+            <a href='/' onClick={handleLogin} className='signin-register-buttons animate__infinite'>Sign in</a>
+            <a href='/' onClick={handleRegister} className='signin-register-buttons animate__infinite'>Register</a>
+          </div>
         </IfNotAuthenticated>
-      </section>
-    </nav >
+        {/* </section> */}
+      </div>
+    </div >
   )
 }
 
