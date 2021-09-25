@@ -99,7 +99,7 @@ function Ride ({ user }) {
                     id="startLocation"
                     name="startLocation"
                     placeholder="Leaving from.."
-                    label={showAnyErrors('startLocation') ? showAnyErrors('startLocation') : 'Leaving from..'}
+                    label={showAnyErrors('startLocation') ? showAnyErrors('startLocation') : 'Leaving from...'}
                     value={formik.values.startLocation}
                     onChange={formik.handleChange}
                     error={formik.touched.startLocation && Boolean(formik.errors.startLocation)}
@@ -112,7 +112,7 @@ function Ride ({ user }) {
                     id="destination"
                     name="destination"
                     placeholder="Destination.."
-                    label={showAnyErrors('destination') ? showAnyErrors('destination') : 'Destination..'}
+                    label={showAnyErrors('destination') ? showAnyErrors('destination') : 'Destination...'}
                     value={formik.values.destination}
                     onChange={formik.handleChange}
                     error={formik.touched.destination && Boolean(formik.errors.destination)}
