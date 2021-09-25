@@ -1,7 +1,20 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-export default function Profile () {
+function Profile (props) {
+  const { user } = props
+
   return (
-    <h1> hello </h1>
+    <div className="profile-container">
+      <p> Hello, { user.name} </p>
+    </div>
   )
 }
+
+function mapStateToProps (state) {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(Profile)
