@@ -21,8 +21,7 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', async (req, res) => {
-  const { startLocation, destination, date, leavingTime, arrivalTime, seatsAvailable, cost } = req.body
-  const ride = { startLocation, destination, date, leaving_time: leavingTime, estimated_arrival_time: arrivalTime, seatsAvailable, cost }
+  const ride = req.body
   try {
     await dbRides.addRide(ride)
     res.sendStatus(201)
