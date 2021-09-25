@@ -5,7 +5,7 @@ import { TextField } from '@mui/material'
 import MenuItem from '@mui/material/MenuItem'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-// import { getRides } from '../apis/rides'
+import { getRides } from '../apis/rides'
 
 const searchSchema = Yup.object().shape({
   leavingFrom: Yup.string()
@@ -23,14 +23,14 @@ function SearchBar ({ rides }) {
 
   const formik = useFormik({
     initialValues: {
-      leavingFrom: '',
+      startLocation: '',
       destination: '',
       date: '',
-      seats: ''
+      seatsAvailable: ''
     },
     onSubmit: values => {
-      console.log(values)
-      // const newSearch = { values }
+      console.log(getRides(values))
+      getRides()
       history.push('/viewrides')
     },
     validationSchema: searchSchema
@@ -42,7 +42,7 @@ function SearchBar ({ rides }) {
       : false
   }
 
-  const seats = [
+  const seatsAvailable = [
     {
       value: '1',
       label: '1'
@@ -78,13 +78,13 @@ function SearchBar ({ rides }) {
               <TextField
                 sx={{ margin: '8px' }}
                 className = 'searchInputField'
-                id="leavingFrom"
-                name="leavingFrom"
+                id="startLocation"
+                name="startLocation"
                 placeholder="Leaving from.."
-                label={showAnyErrors('leavingFrom') ? showAnyErrors('leavingFrom') : 'Leaving from..'}
-                value={formik.values.leavingFrom}
+                label={showAnyErrors('startLocation') ? showAnyErrors('startLocation') : 'Leaving from..'}
+                value={formik.values.startLocation}
                 onChange={formik.handleChange}
-                error={formik.touched.leavingFrom && Boolean(formik.errors.leavingFrom)}
+                error={formik.touched.startLocation && Boolean(formik.errors.startLocation)}
               />
             </div>
             <div className="">
@@ -117,16 +117,16 @@ function SearchBar ({ rides }) {
             <div className="">
               <TextField
                 sx={{ margin: '8px', width: '240px' }}
-                id="seats"
+                id="seatsAvailable"
                 className = 'searchInputField searchSeatsField'
-                name="seats"
+                name="seatsAvailable"
                 select
-                label={showAnyErrors('seats') ? showAnyErrors('seats') : 'Passengers'}
-                value={formik.values.seats}
+                label={showAnyErrors('seatsAvailable') ? showAnyErrors('seatsAvailable') : 'Passengers'}
+                value={formik.values.seatsAvailable}
                 onChange={formik.handleChange}
-                error={formik.touched.seats && Boolean(formik.errors.seats)}
+                error={formik.touched.seatsAvailable && Boolean(formik.errors.seatsAvailable)}
               >
-                {seats.map((option) => (
+                {seatsAvailable.map((option) => (
                   <MenuItem key={option.value} value={option.value}>
                     {option.label}
                   </MenuItem>
