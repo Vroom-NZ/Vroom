@@ -29,7 +29,6 @@ function App () {
       <Route exact path='/' component={PingRoutes} /> */}
       <Route path='/register' component={Registration} />
       <Route path='/drivers' component={PostRide} />
-      <Route path='/profile' component={Profile} />
       <Route exact path='/' component={LandingPage}/>
       <Route exact path='/' component={SearchBar} />
       <Route path='/viewrides' component={ViewRides} />

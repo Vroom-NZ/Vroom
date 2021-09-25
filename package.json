@@ -45,6 +45,7 @@
     "@emotion/styled": "^11.3.0",
     "@mui/material": "^5.0.1",
     "@mui/styled-engine-sc": "^5.0.0",
+    "@reduxjs/toolkit": "^1.6.1",
     "animate.css": "^4.1.1",
     "express": "^4.17.1",
     "express-jwt": "^6.1.0",
