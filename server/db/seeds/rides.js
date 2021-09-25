@@ -4,7 +4,7 @@ exports.seed = function (knex) {
       return knex('rides').insert([
         {
           id: 1, // ride id
-          user_id: 1,
+          auth0_id: 100100100,
           start_location: 'auckland',
           destination: 'abel tasman',
           date: '2021-10-14',
