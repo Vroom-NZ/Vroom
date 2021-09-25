@@ -9,7 +9,7 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 import FormControl from '@mui/material/FormControl'
 import MenuItem from '@mui/material/MenuItem'
 
-import { addRides } from '../../apis/drivers'
+// import { addRides } from '../../apis/drivers'
 
 const rideSchema = Yup.object().shape({
   leavingFrom: Yup.string()
@@ -45,15 +45,16 @@ export default function Ride () {
     },
     onSubmit: values => {
       console.log(values)
-      const newRide = { values }
-      addRides(newRide) && ridePosted() && history.push('/')
+      // const newRide = { values }
+      // addRides(newRide) && ridePosted() &&
+      history.push('/')
     },
     validationSchema: rideSchema
   })
 
-  function ridePosted () {
-    alert('Your ride has been posted. Happy travels!')
-  }
+  // function ridePosted () {
+  //   alert('Your ride has been posted. Happy travels!')
+  // }
 
   function showAnyErrors (inputName) {
     return formik.errors[inputName] && formik.touched[inputName]
@@ -128,10 +129,10 @@ export default function Ride () {
                     className = 'InputField'
                     id='leavingTime'
                     name='leavingTime'
-                    type='leavingTime'
+                    type='time'
                     placeholder='Leaving time'
                     onChange={formik.handleChange}
-                    label={showAnyErrors('leavingTime') ? showAnyErrors('leavingTime') : 'Leaving time'}
+                    label={showAnyErrors('leavingTime') ? showAnyErrors('leavingTime') : ''}
                     value={formik.values.leavingTime}
                     error={formik.touched.leavingTime && Boolean(formik.errors.leavingTime)}
                   />
@@ -142,8 +143,9 @@ export default function Ride () {
                     className = 'InputField'
                     id="arrivalTime"
                     name="arrivalTime"
+                    type='time'
                     placeholder="Arrival time"
-                    label={showAnyErrors('arrivalTime') ? showAnyErrors('arrivalTime') : 'Arrival time'}
+                    label={showAnyErrors('arrivalTime') ? showAnyErrors('arrivalTime') : ''}
                     value={formik.values.arrivalTime}
                     onChange={formik.handleChange}
                     error={formik.touched.arrivalTime && Boolean(formik.errors.arrivalTime)}
@@ -185,7 +187,7 @@ export default function Ride () {
                     className = 'InputField seatsField'
                     name="seats"
                     select
-                    label={showAnyErrors('seats') ? showAnyErrors('seats') : 'Seats'}
+                    label={showAnyErrors('seats') ? showAnyErrors('seats') : 'Passengers'}
                     value={formik.values.seats}
                     onChange={formik.handleChange}
                     error={formik.touched.seats && Boolean(formik.errors.seats)}
