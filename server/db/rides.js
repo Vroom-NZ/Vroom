@@ -20,7 +20,8 @@ function getRidesById (auth0Id, db = connection) { // to get rides for specific 
     })
 }
 
-function addRide (auth0Id, ride, db = connection) {
+function addRide (ride, id, db = connection) {
+  const { auth0Id } = id
   const { startLocation, destination, date, leavingTime, arrivalTime, seatsAvailable, cost } = ride
   const newRide = { auth0_id: auth0Id, start_location: startLocation, destination, date, leaving_time: leavingTime, estimated_arrival_time: arrivalTime, seats_available: seatsAvailable, cost }
   return db('rides')

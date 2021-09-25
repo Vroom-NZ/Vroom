@@ -10,8 +10,7 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 import FormControl from '@mui/material/FormControl'
 import MenuItem from '@mui/material/MenuItem'
 
-// import { addRides } from '../../apis/drivers'
-import { getUsers } from '../../apis/users'
+import { addRides } from '../../apis/drivers'
 
 const rideSchema = Yup.object().shape({
   startLocation: Yup.string()
@@ -30,10 +29,9 @@ const rideSchema = Yup.object().shape({
     .required('Required')
 })
 
-function Ride () {
-  // const history = useHistory()
+function Ride ({ user }) {
+  const history = useHistory()
 
-  const users = getUsers()
   const formik = useFormik({
     initialValues: {
       startLocation: '',
@@ -45,16 +43,14 @@ function Ride () {
       cost: ''
     },
     onSubmit: values => {
-      console.log(values, users)
-      // const newRide = { values }
-      // addRides(newRide) && ridePosted() && history.push('/')
+      addRides(values, user) && ridePosted() && history.push('/')
     },
     validationSchema: rideSchema
   })
 
-  // function ridePosted () {
-  //   alert('Your ride has been posted. Happy travels!')
-  // }
+  function ridePosted () {
+    alert('Your ride has been posted. Happy travels!')
+  }
 
   function showAnyErrors (inputName) {
     return formik.errors[inputName] && formik.touched[inputName]
