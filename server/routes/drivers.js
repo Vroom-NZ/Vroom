@@ -21,18 +21,15 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', async (req, res) => {
-  console.log('hello')
-  // const { auth0Id, email } = req.body.user
-  // const { firstName, lastName, phoneNumber } = req.body.values
-  // const user = { auth0Id, email, firstName, lastName, phoneNumber }
-
-  // try {
-  //   await dbRides.addRide(ride)
-  //   res.sendStatus(201)
-  // } catch (error) {
-  //   console.error(error)
-  //   res.status(500).json({ message: 'unable to insert user into the database' })
-  // }
+  const ride = req.body.newRide
+  const user = req.body.auth
+  try {
+    await dbRides.addRide(ride, user)
+    res.sendStatus(201)
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ message: 'unable to insert user into the database' })
+  }
 })
 
 module.exports = router

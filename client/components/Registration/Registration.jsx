@@ -102,7 +102,7 @@ function Register ({ user }) {
               error={formik.touched.phoneNumber && Boolean(formik.errors.phoneNumber)}
             />
             <br/>
-            <div className='orange-register-button' type='submit' data-testid='submitButton'>Register</div>
+            <button className='orange-register-button' type='submit' data-testid='submitButton'>Register</button>
           </div>
         </form>
       </section>

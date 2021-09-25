@@ -3,16 +3,16 @@ import request from 'superagent'
 const rootUrl = '/api/v1'
 
 export function getRides () {
-  return request.get(rootUrl + '/drivers')
+  return request.get(rootUrl + '/drivers/')
     .then(res => {
-      console.log(res.body)
       return res.body.rides
     })
 }
 
-export async function addRides (ride) {
+export async function addRides (ride, user) {
+  const rideUser = { newRide: ride, auth: user }
   return await request.post(rootUrl + '/drivers/')
-    .send(ride)
+    .send(rideUser)
 }
 
 export function getCar () {
