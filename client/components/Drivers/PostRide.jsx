@@ -86,139 +86,119 @@ function Ride ({ user }) {
 
   return (
     <>
-      <div className="forms">
-        <section className='flex-container'>
-          <form onSubmit={formik.handleSubmit}>
-            <div className="field">
-              <div className="row">
-                <div className="column">
-                  <TextField
-                    sx={{ margin: '8px' }}
-                    className = 'InputField'
-                    id="startLocation"
-                    name="startLocation"
-                    placeholder="Leaving from.."
-                    label={showAnyErrors('startLocation') ? showAnyErrors('startLocation') : 'Leaving from..'}
-                    value={formik.values.startLocation}
-                    onChange={formik.handleChange}
-                    error={formik.touched.startLocation && Boolean(formik.errors.startLocation)}
-                  />
-                </div>
-                <div className="column">
-                  <TextField
-                    sx={{ margin: '8px' }}
-                    className = 'InputField'
-                    id="destination"
-                    name="destination"
-                    placeholder="Destination.."
-                    label={showAnyErrors('destination') ? showAnyErrors('destination') : 'Destination..'}
-                    value={formik.values.destination}
-                    onChange={formik.handleChange}
-                    error={formik.touched.destination && Boolean(formik.errors.destination)}
-                  />
-                </div>
-              </div>
-              <div className="row">
-                <div className="column">
-                  <TextField
-                    sx={{ margin: '8px' }}
-                    className = 'InputField'
-                    id='leavingTime'
-                    name='leavingTime'
-                    type='time'
-                    placeholder='Leaving time'
-                    onChange={formik.handleChange}
-                    label={showAnyErrors('leavingTime') ? showAnyErrors('leavingTime') : ''}
-                    value={formik.values.leavingTime}
-                    error={formik.touched.leavingTime && Boolean(formik.errors.leavingTime)}
-                  />
-                </div>
-                <div className="column">
-                  <TextField
-                    sx={{ margin: '8px' }}
-                    className = 'InputField'
-                    id="arrivalTime"
-                    name="arrivalTime"
-                    type='time'
-                    placeholder="Arrival time"
-                    label={showAnyErrors('arrivalTime') ? showAnyErrors('arrivalTime') : ''}
-                    value={formik.values.arrivalTime}
-                    onChange={formik.handleChange}
-                    error={formik.touched.arrivalTime && Boolean(formik.errors.arrivalTime)}
-                  />
-                </div>
-              </div>
-              <div className="row">
-                <div className="column">
-                  <TextField
-                    sx={{ margin: '8px' }}
-                    className = 'InputField'
-                    id="cost"
-                    name="cost"
-                    placeholder="Cost"
-                    label={showAnyErrors('cost') ? showAnyErrors('cost') : 'Cost'}
-                    value={formik.values.cost}
-                    onChange={formik.handleChange}
-                    error={formik.touched.cost && Boolean(formik.errors.cost)}
-                  />
-                </div>
-                <div className="column dateinputfield">
-                  <TextField
-                    sx={{ margin: '8px' }}
-                    className = 'InputField'
-                    id='date'
-                    name='date'
-                    type='date'
-                    placeholder='date'
-                    onChange={formik.handleChange}
-                    label={showAnyErrors('date') ? showAnyErrors('date') : ''}
-                    value={formik.values.date}
-                    error={formik.touched.date && Boolean(formik.errors.date)}
-                  />
-                </div>
-                <div className="column ">
-                  <TextField
-                    sx={{ margin: '8px', width: '240px' }}
-                    id="seatsAvailable"
-                    className = 'InputField seatsField'
-                    name="seatsAvailable"
-                    select
-                    label={showAnyErrors('seatsAvailable') ? showAnyErrors('seatsAvailable') : 'Passengers'}
-                    value={formik.values.seatsAvailable}
-                    onChange={formik.handleChange}
-                    error={formik.touched.seatsAvailable && Boolean(formik.errors.seatsAvailable)}
-                  >
-                    {seatsAvailable.map((option) => (
-                      <MenuItem key={option.value} value={option.value}>
-                        {option.label}
-                      </MenuItem>
-                    ))}
-                  </TextField>
-                </div>
-              </div>
-              <FormControl component="fieldset">
-                <FormGroup aria-label="position" row>
-                  <FormControlLabel
-                    value={formik.values.petsAllowed}
-                    control={<Checkbox />}
-                    label="Pets Allowed"
-                    labelPlacement="start"
-                  />
-                  <FormControlLabel
-                    value="start"
-                    control={<Checkbox />}
-                    label="Mandatory Masks"
-                    labelPlacement="start"
-                  />
-                </FormGroup>
-              </FormControl>
-            </div>
-            <div className="postRideButton">
-              <button className='orange-register-button animate__infinite' type='submit' data-testid='submitButton'>Post a ride!</button>
-            </div>
-          </form>
-        </section>
-      </div>
+      <section className='flex-container'>
+        <form onSubmit={formik.handleSubmit}>
+          <div className="field">
+            <TextField
+              sx={{ margin: '8px' }}
+              className = 'InputField'
+              id="startLocation"
+              name="startLocation"
+              placeholder="Start location"
+              label={showAnyErrors('startLocation') ? showAnyErrors('startLocation') : 'Start location'}
+              value={formik.values.startLocation}
+              onChange={formik.handleChange}
+              error={formik.touched.startLocation && Boolean(formik.errors.startLocation)}
+            />
+            <br/>
+            <TextField
+              sx={{ margin: '8px' }}
+              className = 'InputField'
+              id="destination"
+              name="destination"
+              placeholder="Destination.."
+              label={showAnyErrors('destination') ? showAnyErrors('destination') : 'Destination..'}
+              value={formik.values.destination}
+              onChange={formik.handleChange}
+              error={formik.touched.destination && Boolean(formik.errors.destination)}
+            />
+            <br/>
+            <TextField
+              sx={{ margin: '8px' }}
+              className = 'InputField'
+              id='leavingTime'
+              name='leavingTime'
+              type='leavingTime'
+              placeholder='Leaving time'
+              onChange={formik.handleChange}
+              label={showAnyErrors('leavingTime') ? showAnyErrors('leavingTime') : 'Leaving time'}
+              value={formik.values.leavingTime}
+              error={formik.touched.leavingTime && Boolean(formik.errors.leavingTime)}
+            />
+            <br/>
+            <TextField
+              sx={{ margin: '8px' }}
+              className = 'InputField'
+              id="arrivalTime"
+              name="arrivalTime"
+              placeholder="Arrival time"
+              label={showAnyErrors('arrivalTime') ? showAnyErrors('arrivalTime') : 'Arrival time'}
+              value={formik.values.arrivalTime}
+              onChange={formik.handleChange}
+              error={formik.touched.arrivalTime && Boolean(formik.errors.arrivalTime)}
+            />
+            <TextField
+              sx={{ margin: '8px' }}
+              className = 'InputField'
+              id="cost"
+              name="cost"
+              placeholder="Cost"
+              label={showAnyErrors('cost') ? showAnyErrors('cost') : 'Cost'}
+              value={formik.values.cost}
+              onChange={formik.handleChange}
+              error={formik.touched.cost && Boolean(formik.errors.cost)}
+            />
+            <br/>
+            <TextField
+              sx={{ margin: '8px' }}
+              className = 'InputField'
+              id='date'
+              name='date'
+              type='date'
+              placeholder='Date'
+              onChange={formik.handleChange}
+              label={showAnyErrors('date') ? showAnyErrors('date') : 'Date'}
+              value={formik.values.date}
+              error={formik.touched.date && Boolean(formik.errors.date)}
+            />
+            <br/>
+            <TextField
+              id="seatsAvailable"
+              className = 'InputField'
+              name="seatsAvailable"
+              select
+              label={showAnyErrors('seatsAvailable') ? showAnyErrors('seatsAvailable') : 'Seats'}
+              value={formik.values.seatsAvailable}
+              onChange={formik.handleChange}
+              error={formik.touched.seatsAvailable && Boolean(formik.errors.seatsAvailable)}
+            >
+              {seatsAvailable.map((option) => (
+                <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                </MenuItem>
+              ))}
+            </TextField>
+            <FormControl component="fieldset">
+              <FormGroup aria-label="position" row>
+                <FormControlLabel
+                  value="pets"
+                  control={<Checkbox />}
+                  label="Pets Allowed"
+                  labelPlacement="start"
+                />
+                <FormControlLabel
+                  value="masks"
+                  control={<Checkbox />}
+                  label="Mandatory Masks"
+                  labelPlacement="start"
+                />
+              </FormGroup>
+            </FormControl>
+            <br/>
+            <button className='button-primary' type='submit' data-testid='submitButton'>Post a ride!</button>
+          </div>
+        </form>
+      </section>
     </>
   )
 }
