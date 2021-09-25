@@ -43,13 +43,14 @@ function Ride ({ user }) {
       cost: ''
     },
     onSubmit: values => {
-      addRides(values, user) && ridePosted() && history.push('/')
+      addRides(values, user) && ridePosted()
     },
     validationSchema: rideSchema
   })
 
   function ridePosted () {
     alert('Your ride has been posted. Happy travels!')
+    history.push('/')
   }
 
   function showAnyErrors (inputName) {
