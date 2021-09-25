@@ -35,7 +35,7 @@ function Register ({ user }) {
     },
     onSubmit: values => {
       const newUser = { values, user }
-      values.age <= 18
+      values.age < 18
         ? alert('Sorry you must be 18 years old to use Vroom')
         : addUser(newUser) && history.push('/')
     },
@@ -112,7 +112,7 @@ function Register ({ user }) {
                 </div>
               </div>
               <div className="postRideButton">
-                <div className='orange-register-button animate__infinite' type='submit' data-testid='submitButton'>Register</div>
+                <button className='orange-register-button animate__infinite' type='submit' data-testid='submitButton'>Register</button>
               </div>
             </div>
           </form>
