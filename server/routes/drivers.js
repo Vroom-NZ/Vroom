@@ -21,9 +21,10 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', async (req, res) => {
-  const ride = req.body
+  const ride = req.body.newRide
+  const user = req.body.auth
   try {
-    await dbRides.addRide(ride)
+    await dbRides.addRide(ride, user)
     res.sendStatus(201)
   } catch (error) {
     console.error(error)
