@@ -58,6 +58,7 @@ function Register ({ user }) {
               className = 'InputField'
               id="firstName"
               name="firstName"
+              type="text"
               placeholder="First name"
               label={showAnyErrors('firstName') ? showAnyErrors('firstName') : 'First name'}
               value={formik.values.firstName}
@@ -70,6 +71,7 @@ function Register ({ user }) {
               className = 'InputField'
               id="lastName"
               name="lastName"
+              tupe="text"
               placeholder="Last name"
               label={showAnyErrors('lastName') ? showAnyErrors('lastName') : 'Last name'}
               value={formik.values.lastName}
@@ -82,7 +84,7 @@ function Register ({ user }) {
               className = 'InputField'
               id='age'
               name='age'
-              type='age'
+              type='text'
               placeholder='Age'
               onChange={formik.handleChange}
               label={showAnyErrors('age') ? showAnyErrors('age') : 'Age'}
@@ -95,6 +97,7 @@ function Register ({ user }) {
               className = 'InputField'
               id="phoneNumber"
               name="phoneNumber"
+              type="text"
               placeholder="Phone number"
               label={showAnyErrors('phoneNumber') ? showAnyErrors('phoneNumber') : 'Phone number'}
               value={formik.values.phoneNumber}
