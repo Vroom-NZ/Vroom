@@ -2,7 +2,7 @@ const connection = require('./connection')
 
 function getRides (startLocation, destination, date, db = connection) {
   return db('rides')
-    .join('users', 'user_id', 'users.id')
+    .join('users', 'auth0_id', 'users.auth0_id')
     .where('start_location', startLocation)
     .where('destination', destination)
     .where('date', date)
@@ -12,24 +12,25 @@ function getRides (startLocation, destination, date, db = connection) {
     })
 }
 
-function getRidesById (userId, db = connection) { // to get rides for specific user
+function getRidesById (auth0Id, db = connection) { // to get rides for specific user
   return db('rides')
-    .where('user_id', userId)
+    .where('auth0_id', auth0Id)
     .then((result) => {
       return result
     })
 }
 
-function addRide (userId, ride, db = connection) {
-  const { startLocation, destination, date, leavingTime, estimatedArrivalTime, seatsAvailable, cost } = ride
-  const newRide = { user_id: userId, start_location: startLocation, destination, date, leaving_time: leavingTime, estimated_arrival_time: estimatedArrivalTime, seats_available: seatsAvailable, cost }
+function addRide (ride, id, db = connection) {
+  const { auth0Id } = id
+  const { startLocation, destination, date, leavingTime, arrivalTime, seatsAvailable, cost } = ride
+  const newRide = { auth0_id: auth0Id, start_location: startLocation, destination, date, leaving_time: leavingTime, estimated_arrival_time: arrivalTime, seats_available: seatsAvailable, cost }
   return db('rides')
     .insert(newRide)
-    .where('user_id', userId)
+    .where('auth0_id', auth0Id)
     .then(([id]) => {
       return {
         id,
-        user_id: newRide.user_id,
+        auth0Id: newRide.auth0_id,
         startLocation: newRide.start_location,
         destination: newRide.destination,
         date: newRide.date,
@@ -42,14 +43,14 @@ function addRide (userId, ride, db = connection) {
 }
 
 function updateRide (updatedRide, db = connection) {
-  const { id, user_id: userId, start_location: startLocation, destination, date, leaving_time: leavingTime, estimated_arrival_time: estimatedArrivalTime, seats_available: seatsAvailable, cost } = updatedRide
+  const { id, auth0_id: auth0Id, start_location: startLocation, destination, date, leaving_time: leavingTime, estimated_arrival_time: estimatedArrivalTime, seats_available: seatsAvailable, cost } = updatedRide
   return db('rides')
     .where('id', id)
     .update(updatedRide)
     .then(() => {
       return {
         id,
-        user_id: userId,
+        auth0_id: auth0Id,
         start_location: startLocation,
         destination: destination,
         date: date,
@@ -61,9 +62,9 @@ function updateRide (updatedRide, db = connection) {
     })
 }
 
-function deleteRide (id, userId, db = connection) {
+function deleteRide (id, auth0Id, db = connection) {
   return db('rides')
-    .where('user_id', userId)
+    .where('auth0_id', auth0Id)
     .where('rides.id', id)
     .del(id)
 }
