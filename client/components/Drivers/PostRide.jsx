@@ -50,7 +50,7 @@ function Ride ({ user }) {
 
   function ridePosted () {
     alert('Your ride has been posted. Happy travels!')
-    history.push('/')
+    history.push('/profile')
   }
 
   function showAnyErrors (inputName) {
