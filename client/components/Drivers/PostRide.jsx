@@ -43,14 +43,15 @@ function Ride ({ user }) {
       cost: ''
     },
     onSubmit: values => {
-      addRides(values, user) && ridePosted() && history.push('/')
+      addRides(values, user) && ridePosted()
     },
     validationSchema: rideSchema
   })
 
-  // function ridePosted () {
-  //   alert('Your ride has been posted. Happy travels!')
-  // }
+  function ridePosted () {
+    alert('Your ride has been posted. Happy travels!')
+    history.push('/profile')
+  }
 
   function showAnyErrors (inputName) {
     return formik.errors[inputName] && formik.touched[inputName]
