@@ -43,13 +43,14 @@ function Ride ({ user }) {
       cost: ''
     },
     onSubmit: values => {
-      addRides(values, user) && ridePosted() && history.push('/')
+      addRides(values, user) && ridePosted()
     },
     validationSchema: rideSchema
   })
 
   function ridePosted () {
     alert('Your ride has been posted. Happy travels!')
+    history.push('/profile')
   }
 
   function showAnyErrors (inputName) {
@@ -125,7 +126,7 @@ function Ride ({ user }) {
                     className = 'InputField'
                     id='leavingTime'
                     name='leavingTime'
-                    type='text'
+                    type='time'
                     placeholder='Leaving time'
                     onChange={formik.handleChange}
                     label={showAnyErrors('leavingTime') ? showAnyErrors('leavingTime') : ''}
@@ -139,7 +140,7 @@ function Ride ({ user }) {
                     className = 'InputField'
                     id="arrivalTime"
                     name="arrivalTime"
-                    type='text'
+                    type='time'
                     placeholder="Arrival time"
                     label={showAnyErrors('arrivalTime') ? showAnyErrors('arrivalTime') : ''}
                     value={formik.values.arrivalTime}
