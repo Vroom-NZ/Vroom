@@ -32,8 +32,6 @@ function addCar (userId, car, db = connection) {
 }
 
 function deleteCar (userId, id, db = connection) {
-  // const { id } = car
-  console.log(id)
   return db('cars')
     .where('user_Id', userId)
     .where('id', id)

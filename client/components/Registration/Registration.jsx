@@ -35,7 +35,7 @@ function Register ({ user }) {
     },
     onSubmit: values => {
       const newUser = { values, user }
-      values.age <= 18
+      values.age < 18
         ? alert('Sorry you must be 18 years old to use Vroom')
         : addUser(newUser) && history.push('/')
     },
@@ -50,62 +50,74 @@ function Register ({ user }) {
 
   return (
     <>
-      <section className='flex-container'>
-        <form className='column-6' onSubmit={formik.handleSubmit}>
-          <div className="field">
-            <TextField
-              sx={{ margin: '8px' }}
-              className = 'InputField'
-              id="firstName"
-              name="firstName"
-              placeholder="First name"
-              label={showAnyErrors('firstName') ? showAnyErrors('firstName') : 'First name'}
-              value={formik.values.firstName}
-              onChange={formik.handleChange}
-              error={formik.touched.firstName && Boolean(formik.errors.firstName)}
-            />
-            <br/>
-            <TextField
-              sx={{ margin: '8px' }}
-              className = 'InputField'
-              id="lastName"
-              name="lastName"
-              placeholder="Last name"
-              label={showAnyErrors('lastName') ? showAnyErrors('lastName') : 'Last name'}
-              value={formik.values.lastName}
-              onChange={formik.handleChange}
-              error={formik.touched.lastName && Boolean(formik.errors.lastName)}
-            />
-            <br/>
-            <TextField
-              sx={{ margin: '8px' }}
-              className = 'InputField'
-              id='age'
-              name='age'
-              type='age'
-              placeholder='Age'
-              onChange={formik.handleChange}
-              label={showAnyErrors('age') ? showAnyErrors('age') : 'Age'}
-              value={formik.values.age}
-              error={formik.touched.age && Boolean(formik.errors.age)}
-            />
-            <br/>
-            <TextField
-              sx={{ margin: '8px' }}
-              className = 'InputField'
-              id="phoneNumber"
-              name="phoneNumber"
-              placeholder="Phone number"
-              label={showAnyErrors('phoneNumber') ? showAnyErrors('phoneNumber') : 'Phone number'}
-              value={formik.values.phoneNumber}
-              onChange={formik.handleChange}
-              error={formik.touched.phoneNumber && Boolean(formik.errors.phoneNumber)}
-            />
-            <br/>
-            <div className='orange-register-button' type='submit' data-testid='submitButton'>Register</div>
-          </div>
-        </form>
-      </section>
+      <div className="forms">
+        <section className='flex-container'>
+          <form className='column-6' onSubmit={formik.handleSubmit}>
+            <div className="field">
+              <div className="row">
+                <div className="column">
+                  <TextField
+                    sx={{ margin: '8px' }}
+                    className = 'InputField'
+                    id="firstName"
+                    name="firstName"
+                    placeholder="First name"
+                    label={showAnyErrors('firstName') ? showAnyErrors('firstName') : 'First name'}
+                    value={formik.values.firstName}
+                    onChange={formik.handleChange}
+                    error={formik.touched.firstName && Boolean(formik.errors.firstName)}
+                  />
+                </div>
+                <div className="column">
+                  <TextField
+                    sx={{ margin: '8px' }}
+                    className = 'InputField'
+                    id="lastName"
+                    name="lastName"
+                    placeholder="Last name"
+                    label={showAnyErrors('lastName') ? showAnyErrors('lastName') : 'Last name'}
+                    value={formik.values.lastName}
+                    onChange={formik.handleChange}
+                    error={formik.touched.lastName && Boolean(formik.errors.lastName)}
+                  />
+                </div>
+              </div>
+              <div className="row">
+                <div className="column">
+                  <TextField
+                    sx={{ margin: '8px' }}
+                    className = 'InputField'
+                    id='age'
+                    name='age'
+                    type='age'
+                    placeholder='Age'
+                    onChange={formik.handleChange}
+                    label={showAnyErrors('age') ? showAnyErrors('age') : 'Age'}
+                    value={formik.values.age}
+                    error={formik.touched.age && Boolean(formik.errors.age)}
+                  />
+                </div>
+                <div className="column">
+                  <TextField
+                    sx={{ margin: '8px' }}
+                    className = 'InputField'
+                    id="phoneNumber"
+                    name="phoneNumber"
+                    placeholder="Phone number"
+                    label={showAnyErrors('phoneNumber') ? showAnyErrors('phoneNumber') : 'Phone number'}
+                    value={formik.values.phoneNumber}
+                    onChange={formik.handleChange}
+                    error={formik.touched.phoneNumber && Boolean(formik.errors.phoneNumber)}
+                  />
+                </div>
+              </div>
+              <div className="postRideButton">
+                <button className='orange-register-button animate__infinite' type='submit' data-testid='submitButton'>Register</button>
+              </div>
+            </div>
+          </form>
+        </section>
+      </div>
     </>
   )
 }
