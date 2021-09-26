@@ -15,7 +15,7 @@ export async function addRides (ride, user) {
     .send(rideUser)
 }
 
-export function getRidesSearch (values) {
+export function searchRides (values) {
   const {
     startLocation,
     destination,

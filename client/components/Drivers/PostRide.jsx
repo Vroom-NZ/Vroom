@@ -45,6 +45,7 @@ function Ride ({ user }) {
     },
     onSubmit: async values => {
       try {
+        console.log('postride values:', values)
         await addRides(values, user)
         store.dispatch({ type: 'SUBMIT', ride: values })
         ridePosted()
