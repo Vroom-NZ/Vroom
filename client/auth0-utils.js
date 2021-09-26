@@ -21,7 +21,8 @@ export async function cacheUser (useAuth0) {
       const token = await getAccessTokenSilently()
       const userToSave = { auth0Id: user.sub, email: user.email, name: user.nickname, token }
       const retrieveUser = await getUser(user.sub)
-      saveUser({ ...userToSave, retrieveUser })
+      console.log('auth0 file, retrieve user:', retrieveUser)
+      saveUser({ ...userToSave, ...retrieveUser })
     } catch (err) {
       console.error(err)
     }
