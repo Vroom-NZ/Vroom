@@ -12,9 +12,9 @@ function Profile (props) {
     <>
       <div className="profile-container">
         <p> Kia Ora, { user.name} </p>
-      </div>
-      <div>
-        <ProfileInfo />
+        <div >
+          <ProfileInfo />
+        </div>
       </div>
       {/* <div>
         <Link to='/profile/history'>Past Rides</Link>
