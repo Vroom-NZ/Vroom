@@ -38,6 +38,9 @@ function ViewRides (props) {
               })}
             </div>
           )}
+          <div className="bookRideButton">
+            <button className='orange-register-button animate__infinite' data-testid='submitButton'>Book this ride</button>
+          </div>
         </div>
       </div>
     </>
