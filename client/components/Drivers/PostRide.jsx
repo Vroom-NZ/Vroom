@@ -45,6 +45,7 @@ function Ride ({ user }) {
     },
     onSubmit: async values => {
       try {
+        console.log('postride values:', values)
         await addRides(values, user)
         store.dispatch({ type: 'SUBMIT', ride: values })
         ridePosted()
@@ -97,7 +98,7 @@ function Ride ({ user }) {
       <div className="forms">
         <section className='flex-container'>
           <form onSubmit={formik.handleSubmit}>
-            <div className="field">
+            <div>
               <div className="row">
                 <div className="column column-flex">
                   <TextField

@@ -1,0 +1,42 @@
+.view-rides-main-container {
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+  padding: 20px;
+  border-radius: 5px;
+  margin-top: 50px;
+
+}
+
+.start-end-date-container{
+  display: flex;
+  justify-content: top;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+  padding: 20px;
+}
+
+.route-container{
+  align-items: left;
+  width: 50%;
+  font-weight: bold;
+  color: #F4A259
+  }
+  
+.route-date-container {
+  display: flex;
+  justify-content: right;
+  width: 50%;
+  font-weight: bold;
+  color: #F4A259
+}
+
+.view-results-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.each-ride-container{
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+  padding: 12px;
+
+}

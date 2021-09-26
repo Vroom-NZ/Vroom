@@ -7,7 +7,8 @@ const initial = {
   leavingTime: '',
   arrivalTime: '',
   seatsAvailable: '',
-  cost: ''
+  cost: '',
+  driverId: ''
 }
 
 export function postedRides (state = [], action) {

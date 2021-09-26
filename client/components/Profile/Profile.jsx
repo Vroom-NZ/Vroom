@@ -18,6 +18,11 @@ function Profile (props) {
     setRides(filteredRides)
   }, [])
 
+  // useEffect(() => {
+  //   console.log('user.auth0: ', user.auth0Id)
+
+  // })
+
   return (
     <>
       <div className="profile-container">
