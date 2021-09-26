@@ -9,6 +9,13 @@ export function getUsers () {
     })
 }
 
+export function getUser (id) {
+  return request.get(rootUrl + '/users/' + `${id}`)
+    .then(res => {
+      return res.body.users
+    })
+}
+
 export async function addUser (user) {
   return await request.post(rootUrl + '/users/')
     .send(user)

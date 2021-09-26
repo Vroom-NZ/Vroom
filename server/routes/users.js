@@ -1,5 +1,5 @@
 const express = require('express')
-const { getUser } = require('../users')
+const { getUser } = require('../db/users')
 
 const db = require('../db/users')
 
