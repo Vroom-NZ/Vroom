@@ -6,17 +6,27 @@ const dbRides = require('../db/rides')
 
 const router = express.Router()
 
-// ROUTE api/v1/drivers/
+// ROUTE api/v1/rides/
+
+// this get route is for the search bar:
 
 router.get('/', (req, res) => {
-  dbRides.getRides()
+  console.log('query string params: ', req.query)
+  const {
+    startLocation,
+    destination,
+    date,
+    seatsAvailable
+  } = req.query
+
+  dbRides.getRides(startLocation, destination, date, seatsAvailable)
     .then(async rides => {
       res.json({ rides })
       return null
     })
     .catch(err => {
       console.error(err)
-      res.status(500).json({ message: 'Somthing went wrong' })
+      res.status(500).json({ message: 'Something went wrong' })
     })
 })
 

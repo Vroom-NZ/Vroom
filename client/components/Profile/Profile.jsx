@@ -1,7 +1,35 @@
 import React from 'react'
+import { connect } from 'react-redux'
+// import { Link, Route } from 'react-router-dom'
+// import History from './Rides/History'
 
-export default function Profile () {
+import ProfileInfo from './ProfileInfo/ProfileInfo'
+
+function Profile (props) {
+  const { user } = props
+
   return (
-    <h1> hello </h1>
+    <>
+      <div className="profile-container">
+        <p> Kia Ora, { user.name} </p>
+      </div>
+      <div>
+        <ProfileInfo />
+      </div>
+      {/* <div>
+        <Link to='/profile/history'>Past Rides</Link>
+      </div>
+      <div>
+        <Route path='profile/history' component={History} />
+      </div> */}
+    </>
   )
 }
+
+function mapStateToProps (state) {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(Profile)

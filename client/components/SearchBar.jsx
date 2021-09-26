@@ -1,17 +1,49 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import { TextField } from '@mui/material'
 import MenuItem from '@mui/material/MenuItem'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+// import { getRidesSearch } from '../apis/rides'
 
-const rideSchema = Yup.object().shape({
+const searchSchema = Yup.object().shape({
+  leavingFrom: Yup.string()
+    .required('Required'),
+  destination: Yup.string()
+    .required('Required'),
+  date: Yup.string()
+    .required('Required'),
   seats: Yup.string()
     .required('Required')
-
 })
 
-function SearchBar () {
-  const seats = [
+function SearchBar ({ values }) {
+  const history = useHistory()
+
+  const formik = useFormik({
+    initialValues: {
+      startLocation: '',
+      destination: '',
+      date: '',
+      seatsAvailable: ''
+    },
+    onSubmit: values => {
+      console.log('get me rides!')
+      // console.log(getRidesSearch(values))
+      // getRidesSearch()
+      history.push('/viewrides')
+    },
+    validationSchema: searchSchema
+  })
+
+  function showAnyErrors (inputName) {
+    return formik.errors[inputName] && formik.touched[inputName]
+      ? formik.errors[inputName]
+      : false
+  }
+
+  const seatsAvailable = [
     {
       value: '1',
       label: '1'
@@ -38,71 +70,87 @@ function SearchBar () {
     }
   ]
 
-  const formik = useFormik({
-    initialValues: {
-      seats: ''
-    },
-    onSubmit: values => {
-      console.log(values)
-    },
-
-    validationSchema: rideSchema
-  })
-
-  function showAnyErrors (inputName) {
-    return formik.errors[inputName] && formik.touched[inputName]
-      ? formik.errors[inputName]
-      : false
-  }
-
   return (
-    <div className="searchbar-container">
-      <div className='wrap'>
-        <div className="search">
-          <input type="text" className="searchTerm" placeholder="Leaving from..."></input>
-        </div>
+    <>
+      <div className="searchbar-container">
+        <form onSubmit={formik.handleSubmit}>
+          <div className="row">
+            <div className="column">
+              <TextField
+                sx={{ margin: '8px' }}
+                className = 'searchInputField'
+                id="startLocation"
+                name="startLocation"
+                placeholder="Leaving from.."
+                label={showAnyErrors('startLocation') ? showAnyErrors('startLocation') : 'Leaving from..'}
+                value={formik.values.startLocation}
+                onChange={formik.handleChange}
+                error={formik.touched.startLocation && Boolean(formik.errors.startLocation)}
+              />
+            </div>
+            <div className="column">
+              <TextField
+                sx={{ margin: '8px' }}
+                className = 'searchInputField'
+                id="destination"
+                name="destination"
+                placeholder="Destination.."
+                label={showAnyErrors('destination') ? showAnyErrors('destination') : 'Destination..'}
+                value={formik.values.destination}
+                onChange={formik.handleChange}
+                error={formik.touched.destination && Boolean(formik.errors.destination)}
+              />
+            </div>
+            <div className="column">
+              {/* className="dateinputfield" */}
+              <TextField
+                sx={{ margin: '8px' }}
+                className = 'searchInputField'
+                id='date'
+                name='date'
+                type='date'
+                placeholder='date'
+                onChange={formik.handleChange}
+                label={showAnyErrors('date') ? showAnyErrors('date') : ''}
+                value={formik.values.date}
+                error={formik.touched.date && Boolean(formik.errors.date)}
+              />
+            </div>
+            <div className="column">
+              <TextField
+                sx={{ margin: '8px', width: '240px' }}
+                id="seatsAvailable"
+                className = 'searchInputField searchSeatsField'
+                name="seatsAvailable"
+                select
+                label={showAnyErrors('seatsAvailable') ? showAnyErrors('seatsAvailable') : 'Passengers'}
+                value={formik.values.seatsAvailable}
+                onChange={formik.handleChange}
+                error={formik.touched.seatsAvailable && Boolean(formik.errors.seatsAvailable)}
+              >
+                {seatsAvailable.map((option) => (
+                  <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </div>
+            <div>
+              <button className="searchButton" type='submit' data-testid='submitButton'>
+                <i className="fa fa-search"><img src='images/MagnifyingGlass.png'></img></i>
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
-      <div className='wrap'>
-        <div className="search">
-          <input type="text" className="searchTerm" placeholder="Destination..."></input>
-        </div>
-      </div>
-      {/* <div className='wrap'>
-        <div className="search">
-          <input type="text" className="searchTerm" placeholder="Date"></input>
-        </div>
-      </div> */}
-      <div className="wrap">
-        <div className="search">
-          <input type="date" className="searchTerm" id="" name=""
-            value="2021-09-24"
-            min="2021-09-24" max="2023-09-24"></input>
-        </div>
-      </div>
-      <div className="wrap">
-        <div className="passengerMenu">
-          <TextField
-            id="standard-basic" variant="standard"
-            select
-            label={showAnyErrors('seats') ? showAnyErrors('seats') : 'Seats'}
-            value={formik.values.seats}
-            onChange={formik.handleChange}
-            error={formik.touched.seats && Boolean(formik.errors.seats)}
-          >
-            {seats.map((option) => (
-              <MenuItem key={option.value} value={option.value}>
-                {option.label}
-              </MenuItem>
-            ))}
-          </TextField>
-        </div>
-      </div>
-      <button type="submit" className="searchButton">
-        <i className="fa fa-search"><img src='images/MagnifyingGlass.png'></img></i>
-      </button>
-
-    </div>
+    </>
   )
 }
 
-export default SearchBar
+function mapStateToProps (state) {
+  return {
+    rides: state.rides
+  }
+}
+
+export default connect(mapStateToProps)(SearchBar)

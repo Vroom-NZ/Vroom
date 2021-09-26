@@ -1,19 +1,28 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
+.searchbar-container {
+  display: flex;
+  justify-content: center;
+  // box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+  // padding: 12px;
+  border-radius: 100px;
+
+}
+
 .search {
   width: 100%;
   // position: relative;
   display: flex;
-  justify-content: center;
+  // justify-content: center;
 }
 
 .searchTerm {
   width: 100%;
   border: 3px solid #F4A259;
   border-right: none;
-  padding: 5px;
+  // padding: 5px;
   height: 20px;
-  border-radius: 5px 0 0 5px;
+  // border-radius: 100px;
   outline: none;
   color: rgb(133, 133, 133);
   display: flex;
@@ -25,15 +34,23 @@
 }
 
 .searchButton {
-  width: 40px;
-  height: 36px;
-  border: 1px solid #F4A259;
+    // height: 100%;
+  margin-top: 5px;
+  padding: 20px;
+  border: none;
   background: #F4A259;
   text-align: center;
   color: #fff;
-  border-radius: 0 5px 5px 0;
+  border-radius: 5px;
   cursor: pointer;
   font-size: 20px;
+  // display: flex;
+  // align-items: left;
+  &:hover {
+    cursor: pointer;
+    animation: pulse; 
+    animation-duration: 1s;
+      } 
 }
 
 .passengerMenu {
@@ -52,9 +69,26 @@
 .wrap{
   display: flex;
   justify-content: center;
-  // width: 50%;
+  width: 50%;
   position: relative;
   // top: 50%;
   // left: 50%;
   // transform: translate(-50%, -50%);
+}
+
+.searchInputField {
+  // text-align: center;
+  // margin: 8px;
+  font-family: 'roboto', arial, helvetica;
+  background-color: rgba(244, 162, 89, 0.54);
+  color: #386641;
+}
+
+.searchSeatsField {
+  display: flex;
+  justify-content: right;
+  background-color: rgba(244, 162, 89, 0.54);
+  width: 100%;
+  margin: 8px;
+  color: white;
 }
