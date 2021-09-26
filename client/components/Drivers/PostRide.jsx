@@ -9,6 +9,7 @@ import FormGroup from '@mui/material/FormGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import FormControl from '@mui/material/FormControl'
 import MenuItem from '@mui/material/MenuItem'
+import store from '../../store'
 
 import { addRides } from '../../apis/rides'
 
@@ -42,15 +43,21 @@ function Ride ({ user }) {
       seatsAvailable: '',
       cost: ''
     },
-    onSubmit: values => {
-      addRides(values, user) && ridePosted()
+    onSubmit: async values => {
+      try {
+        await addRides(values, user)
+        store.dispatch({ type: 'SUBMIT', ride: values })
+        ridePosted()
+        history.push('/')
+      } catch (error) {
+        console.error(error)
+      }
     },
     validationSchema: rideSchema
   })
 
   function ridePosted () {
     alert('Your ride has been posted. Happy travels!')
-    history.push('/profile')
   }
 
   function showAnyErrors (inputName) {
