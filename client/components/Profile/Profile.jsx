@@ -2,11 +2,20 @@ import React from 'react'
 import { connect } from 'react-redux'
 // import { Link, Route } from 'react-router-dom'
 // import History from './Rides/History'
+import { fetchPostedRides } from '../../actions/rides'
 
 import ProfileInfo from './ProfileInfo/ProfileInfo'
 
 function Profile (props) {
   const { user } = props
+  // const { auth0Id } = props.user
+
+  function fetchedMyRides () {
+    // props.dispatch(fetchPostedRides(auth0Id))
+    console.log('props: ', props.dispatch(fetchPostedRides()))
+  }
+
+  fetchedMyRides()
 
   return (
     <>
@@ -15,13 +24,12 @@ function Profile (props) {
       </div>
       <div>
         <ProfileInfo />
+        <ul>
+          <li>
+
+          </li>
+        </ul>
       </div>
-      {/* <div>
-        <Link to='/profile/history'>Past Rides</Link>
-      </div>
-      <div>
-        <Route path='profile/history' component={History} />
-      </div> */}
     </>
   )
 }

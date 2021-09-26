@@ -1,3 +1,5 @@
+import { SET_RIDES } from '../actions/rides'
+
 const initial = {
   startLocation: '',
   destination: '',
@@ -6,6 +8,15 @@ const initial = {
   arrivalTime: '',
   seatsAvailable: '',
   cost: ''
+}
+
+export function postedRides (state = [], action) {
+  switch (action.type) {
+    case SET_RIDES:
+      return action.rides
+    default:
+      return state
+  }
 }
 
 function reduce (state = initial, action) {
