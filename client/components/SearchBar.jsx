@@ -5,7 +5,7 @@ import { TextField } from '@mui/material'
 import MenuItem from '@mui/material/MenuItem'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import { getRides } from '../apis/rides'
+// import { getRides } from '../apis/rides'
 
 const searchSchema = Yup.object().shape({
   leavingFrom: Yup.string()
@@ -18,7 +18,7 @@ const searchSchema = Yup.object().shape({
     .required('Required')
 })
 
-function SearchBar ({ rides }) {
+function SearchBar ({ values }) {
   const history = useHistory()
 
   const formik = useFormik({
@@ -29,8 +29,9 @@ function SearchBar ({ rides }) {
       seatsAvailable: ''
     },
     onSubmit: values => {
-      console.log(getRides(values))
-      getRides()
+      console.log('get me rides!')
+      // console.log(getRides(values))
+      // getRides()
       history.push('/viewrides')
     },
     validationSchema: searchSchema
