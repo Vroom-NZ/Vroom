@@ -32,7 +32,7 @@ function App () {
       <Route exact path='/' component={SearchBar} />
       <Route exact path='/' component={SiteInfo} />
       <Route path='/profile' component={Profile} />
-      <Route path='/viewrides' component={ViewRides} />
+      <Route path='/rides' component={ViewRides} />
       <Route path='/contact' component={Contact} />
       <Route path='/terms' component={Terms} />
       <Route path='/' component={Footer} />
