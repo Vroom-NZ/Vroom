@@ -5,7 +5,8 @@ const initial = {
   leavingTime: '',
   arrivalTime: '',
   seatsAvailable: '',
-  cost: ''
+  cost: '',
+  driverId: ''
 }
 
 function reduce (state = initial, action) {

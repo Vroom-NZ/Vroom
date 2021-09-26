@@ -8,13 +8,18 @@ import ProfileInfo from './ProfileInfo/ProfileInfo'
 function Profile (props) {
   const { user } = props
 
+  // useEffect(() => {
+  //   console.log('user.auth0: ', user.auth0Id)
+
+  // })
+
   return (
     <>
       <div className="profile-container">
         <p> Kia Ora, { user.name} </p>
-      </div>
-      <div>
-        <ProfileInfo />
+        <div >
+          <ProfileInfo />
+        </div>
       </div>
       {/* <div>
         <Link to='/profile/history'>Past Rides</Link>
