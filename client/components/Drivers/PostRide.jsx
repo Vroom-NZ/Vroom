@@ -177,7 +177,7 @@ function Ride ({ user }) {
                     error={formik.touched.date && Boolean(formik.errors.date)}
                   />
                 </div>
-                <div className="column column-flex">
+                <div className="column ">
                   <TextField
                     sx={{ margin: '8px', width: '240px' }}
                     id="seatsAvailable"
