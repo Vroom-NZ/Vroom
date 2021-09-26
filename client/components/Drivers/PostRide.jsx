@@ -98,7 +98,7 @@ function Ride ({ user }) {
       <div className="forms">
         <section className='flex-container'>
           <form onSubmit={formik.handleSubmit}>
-            <div className="field">
+            <div>
               <div className="row">
                 <div className="column column-flex">
                   <TextField
