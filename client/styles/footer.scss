@@ -1,0 +1,32 @@
+.footer-container {
+  background: white;
+  display: flex;
+  padding: 30px 20px;
+  border-top: 1px solid #c5c5c5;
+  border-left: 1px solid #c5c5c5;
+  border-right: 1px solid #c5c5c5;
+  // margin-top: auto;
+  position: absolute;
+  bottom: 0;
+  width: 76.5%;
+  height: 2.5rem;
+  justify-content: center;
+ }
+
+.footer {
+  display: flex;
+  justify-content: center;
+  // margin-left: 33.3%;
+  // margin-right: 33.3%;
+}
+
+.footer-links {
+  text-decoration: none;
+  color: black;
+  // justify-content: center;
+  &:hover {
+    cursor: pointer;
+    animation: pulse; 
+    animation-duration: 1s;
+      } 
+ }

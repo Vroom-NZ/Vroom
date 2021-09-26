@@ -92,7 +92,7 @@ function Ride ({ user }) {
           <form onSubmit={formik.handleSubmit}>
             <div className="field">
               <div className="row">
-                <div className="column">
+                <div className="column column-flex">
                   <TextField
                     sx={{ margin: '8px' }}
                     className = 'InputField'
@@ -105,7 +105,7 @@ function Ride ({ user }) {
                     error={formik.touched.startLocation && Boolean(formik.errors.startLocation)}
                   />
                 </div>
-                <div className="column">
+                <div className="column column-flex">
                   <TextField
                     sx={{ margin: '8px' }}
                     className = 'InputField'
@@ -120,7 +120,7 @@ function Ride ({ user }) {
                 </div>
               </div>
               <div className="row">
-                <div className="column">
+                <div className="column column-flex">
                   <TextField
                     sx={{ margin: '8px' }}
                     className = 'InputField'
@@ -134,7 +134,7 @@ function Ride ({ user }) {
                     error={formik.touched.leavingTime && Boolean(formik.errors.leavingTime)}
                   />
                 </div>
-                <div className="column">
+                <div className="column column-flex">
                   <TextField
                     sx={{ margin: '8px' }}
                     className = 'InputField'
@@ -150,7 +150,7 @@ function Ride ({ user }) {
                 </div>
               </div>
               <div className="row">
-                <div className="column">
+                <div className="column column-flex">
                   <TextField
                     sx={{ margin: '8px' }}
                     className = 'InputField'
@@ -163,7 +163,7 @@ function Ride ({ user }) {
                     error={formik.touched.cost && Boolean(formik.errors.cost)}
                   />
                 </div>
-                <div className="column dateinputfield">
+                <div className="column dateinputfield column-flex">
                   <TextField
                     sx={{ margin: '8px' }}
                     className = 'InputField'
@@ -177,7 +177,7 @@ function Ride ({ user }) {
                     error={formik.touched.date && Boolean(formik.errors.date)}
                   />
                 </div>
-                <div className="column ">
+                <div className="column column-flex">
                   <TextField
                     sx={{ margin: '8px', width: '240px' }}
                     id="seatsAvailable"
