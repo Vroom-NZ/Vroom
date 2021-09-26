@@ -14,38 +14,17 @@ function ViewRides (search, rides) {
   // console.log('viewrides - props: ', startLocation)
   return (
     <>
-      <div className='view-rides-container'>
+      <div className="view-rides-main-container">
         <div className='start-end-date-container'>
-          <div className='column column-flex'>
-            <div className='route-container'>
-              {searchStore.startLocation} to {searchStore.destination}
-            </div>
+          <div className='route-container'>
+            {searchStore.startLocation} to {searchStore.destination} for {searchStore.seatsAvailable} passengers
           </div>
-          <div className='column column-flex'>
-            <div className='route-date-container'>
-              {searchStore.date}
-            </div>
+          <div className='route-date-container'>
+            {searchStore.date}
           </div>
         </div>
-        <div className='search-results-container'>
-          <div className='row'>
-            <div className='column column-flex each-ride-container'>
-            Ride 1
-            </div>
-            <div className='column column-flex each-ride-container'>
-            Ride 2
-            </div>
-          </div>
-        </div>
-        <div className='search-results-container'>
-          <div className='row'>
-            <div className='column column-flex each-ride-container'>
-            Ride 3
-            </div>
-            <div className='column column-flex each-ride-container'>
-            Ride 4
-            </div>
-          </div>
+        <div className="view-results-container">
+          1 2 3 4
         </div>
       </div>
     </>

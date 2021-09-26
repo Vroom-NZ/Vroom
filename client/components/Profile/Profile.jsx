@@ -8,6 +8,11 @@ import ProfileInfo from './ProfileInfo/ProfileInfo'
 function Profile (props) {
   const { user } = props
 
+  // useEffect(() => {
+  //   console.log('user.auth0: ', user.auth0Id)
+
+  // })
+
   return (
     <>
       <div className="profile-container">
