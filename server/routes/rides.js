@@ -9,7 +9,6 @@ const router = express.Router()
 // ROUTE api/v1/rides/
 
 // this get route is for the search bar:
-
 router.get('/', (req, res) => {
   console.log('query string params: ', req.query)
   const {
