@@ -15,6 +15,7 @@ import ViewRides from './ViewRides'
 import Contact from './Contact'
 import Profile from './Profile/Profile'
 import Terms from './Terms'
+import SiteInfo from './SiteInfo'
 
 function App () {
   cacheUser(useAuth0)
@@ -29,6 +30,7 @@ function App () {
       <Route path='/profile' component={Profile} />
       <Route exact path='/' component={LandingPage}/>
       <Route exact path='/' component={SearchBar} />
+      <Route exact path='/' component={SiteInfo} />
       <Route path='/profile' component={Profile} />
       <Route path='/viewrides' component={ViewRides} />
       <Route path='/contact' component={Contact} />
