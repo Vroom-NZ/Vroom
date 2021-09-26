@@ -1,11 +1,12 @@
-import React from 'react'
 import { connect } from 'react-redux'
+import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { TextField } from '@mui/material'
 
 import { addUser } from '../../apis/users'
+import { setVroomUser } from '../../actions/vroomUser'
 
 const registerSchema = Yup.object().shape({
   firstName: Yup.string()
@@ -23,9 +24,9 @@ const registerSchema = Yup.object().shape({
     .min(7, 'Sorry, this is not a valid number')
 })
 
-function Register ({ user }) {
+function Register ({ user, dispatch }, props) {
   const history = useHistory()
-
+  // const dispatch = useDispatch()
   const formik = useFormik({
     initialValues: {
       firstName: '',
@@ -33,11 +34,13 @@ function Register ({ user }) {
       phoneNumber: '',
       age: ''
     },
-    onSubmit: values => {
-      const newUser = { values, user }
+    onSubmit: (values) => {
+      // setState(values)
+      // const newUser = { values, user }
       values.age < 18
         ? alert('Sorry you must be 18 years old to use Vroom')
-        : addUser(newUser) && history.push('/')
+        // : addUser(newUser) && history.push('/')
+        : props.dispatch(setVroomUser(values)) && history.push('/')
     },
     validationSchema: registerSchema
   })
@@ -47,6 +50,13 @@ function Register ({ user }) {
       ? formik.errors[inputName]
       : false
   }
+  // function setState (values) {
+  //   const action = setVroomUser(values.firstName)
+  //   props.dispatch(action)
+  //   // const vroomUser = values
+  //   // props.dispatch(setVroomUser(vroomUser))
+  // }
+  const user = {}
 
   return (
     <>
@@ -124,7 +134,8 @@ function Register ({ user }) {
 
 function mapStateToProps (state) {
   return {
-    user: state.user
+    user: state.user,
+    vroomUser: state.vroomUser
   }
 }
 
