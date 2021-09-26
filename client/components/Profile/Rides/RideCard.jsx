@@ -4,6 +4,8 @@ export default function Ride ({ ride }) {
   console.log(ride)
   const { date, arrivalTime, leavingTime, startLocation, destination, seatsAvailable, cost } = ride
 
+  // mockData
+
   return (
     <>
       <div className="profile-container">

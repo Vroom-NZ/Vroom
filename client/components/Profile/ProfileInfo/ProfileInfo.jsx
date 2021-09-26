@@ -11,6 +11,15 @@ export default function profileInfo ({ user }) {
     carId: 12
   }
 
+  const mockCar = {
+    make: 'Toyota',
+    model: 'Starlet',
+    lisencePlate: 'ALX420',
+    seatsAvailable: 2,
+    year: 1996,
+    colour: 'purple'
+  }
+
   return (
     <>
       <div className="profile-container">
@@ -18,7 +27,13 @@ export default function profileInfo ({ user }) {
         <p> </p>
         <p></p>
         {mockUser.hasVehicle &&
-        <p> display car info</p> }
+        <>
+          <p> {mockCar.make}</p>
+          <p> {mockCar.model}</p>
+          <p> {mockCar.colour}</p>
+          <p> {mockCar.year}</p>
+        </>
+        }
       </div>
     </>
   )
