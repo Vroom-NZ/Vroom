@@ -5,7 +5,7 @@ import { TextField } from '@mui/material'
 import MenuItem from '@mui/material/MenuItem'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import { getRides } from '../apis/rides'
+// import { getRides } from '../apis/rides'
 
 const searchSchema = Yup.object().shape({
   leavingFrom: Yup.string()
@@ -18,7 +18,7 @@ const searchSchema = Yup.object().shape({
     .required('Required')
 })
 
-function SearchBar ({ rides }) {
+function SearchBar ({ values }) {
   const history = useHistory()
 
   const formik = useFormik({
@@ -29,8 +29,9 @@ function SearchBar ({ rides }) {
       seatsAvailable: ''
     },
     onSubmit: values => {
-      console.log(getRides(values))
-      getRides()
+      console.log('get me rides!')
+      // console.log(getRides(values))
+      // getRides()
       history.push('/viewrides')
     },
     validationSchema: searchSchema
@@ -72,9 +73,9 @@ function SearchBar ({ rides }) {
   return (
     <>
       <div className="searchbar-container">
-        <div className="">
-          <form onSubmit={formik.handleSubmit}>
-            <div className="">
+        <form onSubmit={formik.handleSubmit}>
+          <div className="row">
+            <div className="column">
               <TextField
                 sx={{ margin: '8px' }}
                 className = 'searchInputField'
@@ -87,7 +88,7 @@ function SearchBar ({ rides }) {
                 error={formik.touched.startLocation && Boolean(formik.errors.startLocation)}
               />
             </div>
-            <div className="">
+            <div className="column">
               <TextField
                 sx={{ margin: '8px' }}
                 className = 'searchInputField'
@@ -100,7 +101,8 @@ function SearchBar ({ rides }) {
                 error={formik.touched.destination && Boolean(formik.errors.destination)}
               />
             </div>
-            <div className="dateinputfield">
+            <div className="column">
+              {/* className="dateinputfield" */}
               <TextField
                 sx={{ margin: '8px' }}
                 className = 'searchInputField'
@@ -114,7 +116,7 @@ function SearchBar ({ rides }) {
                 error={formik.touched.date && Boolean(formik.errors.date)}
               />
             </div>
-            <div className="">
+            <div className="column">
               <TextField
                 sx={{ margin: '8px', width: '240px' }}
                 id="seatsAvailable"
@@ -133,13 +135,13 @@ function SearchBar ({ rides }) {
                 ))}
               </TextField>
             </div>
-            <div className=''>
+            <div>
               <button className="searchButton" type='submit' data-testid='submitButton'>
-                <i className="fa fa-search"><img src='images/Vectormag2.png'></img></i>
+                <i className="fa fa-search"><img src='images/MagnifyingGlass.png'></img></i>
               </button>
             </div>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
     </>
   )

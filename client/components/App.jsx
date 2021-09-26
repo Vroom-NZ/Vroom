@@ -15,6 +15,7 @@ import ViewRides from './ViewRides'
 import Contact from './Contact'
 import Profile from './Profile/Profile'
 import Terms from './Terms'
+import SiteInfo from './SiteInfo'
 import History from './Profile/Rides/History'
 import Posted from './Profile/Rides/Posted'
 import Upcoming from './Profile/Rides/Upcoming'
@@ -31,13 +32,15 @@ function App () {
       <Route path='/drivers' component={PostRide} />
       <Route exact path='/' component={LandingPage}/>
       <Route exact path='/' component={SearchBar} />
+      <Route exact path='/' component={SiteInfo} />
+      <Route path='/profile' component={Profile} />
       <Route path='/viewrides' component={ViewRides} />
-      <Route path='/contact' component={Contact} />
-      <Route path='/terms' component={Terms} />
-      <Route path='/' component={Footer} />
       <Route path='profile/history' component={History} />
       <Route path='profile/posted' component={Posted} />
       <Route path='profile/upcoming' component={Upcoming} />
+      <Route path='/contact' component={Contact} />
+      <Route path='/terms' component={Terms} />
+      <Route path='/' component={Footer} />
     </div>
   )
 }

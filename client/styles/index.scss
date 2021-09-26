@@ -5,6 +5,8 @@
 @import './forms.scss';
 @import './profile.scss';
 @import './calendar.scss';
+@import './footer.scss';
+@import './site-info.scss';
 
 html {
   display: flex;
@@ -72,7 +74,7 @@ a {
   display: flex;
   flex-direction: column;
   gap: 10px;
-}
+  }
 
 .title {
   font-size: larger;
