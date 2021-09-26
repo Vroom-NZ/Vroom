@@ -1,26 +1,34 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 // import { Link, Route } from 'react-router-dom'
 // import History from './Rides/History'
-import { fetchPostedRides } from '../../actions/rides'
 
 import ProfileInfo from './ProfileInfo/ProfileInfo'
+import { getRides } from '../../apis/rides'
+import RideCard from './Rides/RideCard'
 
 function Profile (props) {
-  const { user } = props
-  // const { auth0Id } = props.user
+  const [rides, setRides] = useState([])
+  const { auth0Id } = props.user
 
-  function fetchedMyRides () {
-    // props.dispatch(fetchPostedRides(auth0Id))
-    console.log('props: ', props.dispatch(fetchPostedRides()))
-  }
-
-  fetchedMyRides()
+  useEffect(async () => {
+    const postedRides = await getRides()
+    // const user = await getUsers(id)
+    const filteredRides = postedRides.filter((ride) => ride.auth0Id === auth0Id)
+    setRides(filteredRides)
+  }, [])
 
   return (
     <>
       <div className="profile-container">
-        <p> Kia Ora, { user.name} </p>
+        <p> Kia Ora, { props.user.name} </p>
+        {rides.length && (
+          <div>
+            {rides.map((ride) => {
+              return <RideCard key={ride.id} ride={ride}/>
+            })}
+          </div>
+        )}
       </div>
       <div>
         <ProfileInfo />
