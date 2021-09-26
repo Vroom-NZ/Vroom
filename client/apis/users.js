@@ -12,7 +12,7 @@ export function getUsers (id) {
 export function getUser (id) {
   return request.get(rootUrl + '/users/' + `${id}`)
     .then(res => {
-      return res.body.users
+      return res.body.user
     })
 }
 
