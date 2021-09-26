@@ -5,7 +5,7 @@ import { TextField } from '@mui/material'
 import MenuItem from '@mui/material/MenuItem'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-// import { getRides } from '../apis/rides'
+// import { getRidesSearch } from '../apis/rides'
 
 const searchSchema = Yup.object().shape({
   leavingFrom: Yup.string()
@@ -30,8 +30,8 @@ function SearchBar ({ values }) {
     },
     onSubmit: values => {
       console.log('get me rides!')
-      // console.log(getRides(values))
-      // getRides()
+      // console.log(getRidesSearch(values))
+      // getRidesSearch()
       history.push('/viewrides')
     },
     validationSchema: searchSchema
