@@ -34,7 +34,7 @@ function App () {
       <Route exact path='/' component={SearchBar} />
       <Route exact path='/' component={SiteInfo} />
       <Route path='/profile' component={Profile} />
-      <Route path='/viewrides' component={ViewRides} />
+      <Route path='/rides' component={ViewRides} />
       <Route path='profile/history' component={History} />
       <Route path='profile/posted' component={Posted} />
       <Route path='profile/upcoming' component={Upcoming} />

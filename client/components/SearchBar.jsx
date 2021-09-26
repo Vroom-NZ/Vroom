@@ -5,20 +5,21 @@ import { TextField } from '@mui/material'
 import MenuItem from '@mui/material/MenuItem'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-// import { getRidesSearch } from '../apis/rides'
+// import { searchRides } from '../apis/rides'
+import store from './../store'
 
 const searchSchema = Yup.object().shape({
-  leavingFrom: Yup.string()
+  startLocation: Yup.string()
     .required('Required'),
   destination: Yup.string()
     .required('Required'),
   date: Yup.string()
     .required('Required'),
-  seats: Yup.string()
+  seatsAvailable: Yup.string()
     .required('Required')
 })
 
-function SearchBar ({ values }) {
+function SearchBar () {
   const history = useHistory()
 
   const formik = useFormik({
@@ -28,11 +29,15 @@ function SearchBar ({ values }) {
       date: '',
       seatsAvailable: ''
     },
-    onSubmit: values => {
-      console.log('get me rides!')
-      // console.log(getRidesSearch(values))
-      // getRidesSearch()
-      history.push('/viewrides')
+    onSubmit: async values => {
+      try {
+        console.log('values:', values)
+        // await searchRides(values)
+        store.dispatch({ type: 'SEARCH', search: values })
+        history.push('/rides')
+      } catch (error) {
+        console.error(error)
+      }
     },
     validationSchema: searchSchema
   })
@@ -72,76 +77,78 @@ function SearchBar ({ values }) {
 
   return (
     <>
-      <div className="searchbar-container">
-        <form onSubmit={formik.handleSubmit}>
-          <div className="row">
-            <div className="column">
-              <TextField
-                sx={{ margin: '8px' }}
-                className = 'searchInputField'
-                id="startLocation"
-                name="startLocation"
-                placeholder="Leaving from.."
-                label={showAnyErrors('startLocation') ? showAnyErrors('startLocation') : 'Leaving from..'}
-                value={formik.values.startLocation}
-                onChange={formik.handleChange}
-                error={formik.touched.startLocation && Boolean(formik.errors.startLocation)}
-              />
+      <div>
+        <section>
+          <form onSubmit={formik.handleSubmit}>
+            <div className="searchbar-container">
+              <div className="row">
+                <div className="column">
+                  <TextField
+                    sx={{ margin: '8px' }}
+                    className = 'searchInputField'
+                    id="startLocation"
+                    name="startLocation"
+                    placeholder="Leaving from.."
+                    label={showAnyErrors('startLocation') ? showAnyErrors('startLocation') : 'Leaving from..'}
+                    value={formik.values.startLocation}
+                    onChange={formik.handleChange}
+                    error={formik.touched.startLocation && Boolean(formik.errors.startLocation)}
+                  />
+                </div>
+                <div className="column">
+                  <TextField
+                    sx={{ margin: '8px' }}
+                    className = 'searchInputField'
+                    id="destination"
+                    name="destination"
+                    placeholder="Destination.."
+                    label={showAnyErrors('destination') ? showAnyErrors('destination') : 'Destination..'}
+                    value={formik.values.destination}
+                    onChange={formik.handleChange}
+                    error={formik.touched.destination && Boolean(formik.errors.destination)}
+                  />
+                </div>
+                <div className="column">
+                  {/* className="dateinputfield" */}
+                  <TextField
+                    sx={{ margin: '8px' }}
+                    className = 'searchInputField'
+                    id='date'
+                    name='date'
+                    type='date'
+                    placeholder='date'
+                    onChange={formik.handleChange}
+                    label={showAnyErrors('date') ? showAnyErrors('date') : ''}
+                    value={formik.values.date}
+                    error={formik.touched.date && Boolean(formik.errors.date)}
+                  />
+                </div>
+                <div className="column">
+                  <TextField
+                    sx={{ margin: '8px', width: '240px' }}
+                    id="seatsAvailable"
+                    className = 'searchInputField searchSeatsField'
+                    name="seatsAvailable"
+                    select
+                    label={showAnyErrors('seatsAvailable') ? showAnyErrors('seatsAvailable') : 'Passengers'}
+                    value={formik.values.seatsAvailable}
+                    onChange={formik.handleChange}
+                    error={formik.touched.seatsAvailable && Boolean(formik.errors.seatsAvailable)}
+                  >
+                    {seatsAvailable.map((option) => (
+                      <MenuItem key={option.value} value={option.value}>
+                        {option.label}
+                      </MenuItem>
+                    ))}
+                  </TextField>
+                </div>
+                <button className="searchButton" type='submit' data-testid='submitButton'>
+                  <img src='images/MagnifyingGlass.png'></img>
+                </button>
+              </div>
             </div>
-            <div className="column">
-              <TextField
-                sx={{ margin: '8px' }}
-                className = 'searchInputField'
-                id="destination"
-                name="destination"
-                placeholder="Destination.."
-                label={showAnyErrors('destination') ? showAnyErrors('destination') : 'Destination..'}
-                value={formik.values.destination}
-                onChange={formik.handleChange}
-                error={formik.touched.destination && Boolean(formik.errors.destination)}
-              />
-            </div>
-            <div className="column">
-              {/* className="dateinputfield" */}
-              <TextField
-                sx={{ margin: '8px' }}
-                className = 'searchInputField'
-                id='date'
-                name='date'
-                type='date'
-                placeholder='date'
-                onChange={formik.handleChange}
-                label={showAnyErrors('date') ? showAnyErrors('date') : ''}
-                value={formik.values.date}
-                error={formik.touched.date && Boolean(formik.errors.date)}
-              />
-            </div>
-            <div className="column">
-              <TextField
-                sx={{ margin: '8px', width: '240px' }}
-                id="seatsAvailable"
-                className = 'searchInputField searchSeatsField'
-                name="seatsAvailable"
-                select
-                label={showAnyErrors('seatsAvailable') ? showAnyErrors('seatsAvailable') : 'Passengers'}
-                value={formik.values.seatsAvailable}
-                onChange={formik.handleChange}
-                error={formik.touched.seatsAvailable && Boolean(formik.errors.seatsAvailable)}
-              >
-                {seatsAvailable.map((option) => (
-                  <MenuItem key={option.value} value={option.value}>
-                    {option.label}
-                  </MenuItem>
-                ))}
-              </TextField>
-            </div>
-            <div>
-              <button className="searchButton" type='submit' data-testid='submitButton'>
-                <i className="fa fa-search"><img src='images/MagnifyingGlass.png'></img></i>
-              </button>
-            </div>
-          </div>
-        </form>
+          </form>
+        </section>
       </div>
     </>
   )
@@ -149,7 +156,7 @@ function SearchBar ({ values }) {
 
 function mapStateToProps (state) {
   return {
-    rides: state.rides
+    search: state.search
   }
 }
 
