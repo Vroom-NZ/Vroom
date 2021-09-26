@@ -9,14 +9,15 @@ function getCar (userId, db = connection) {
     })
 }
 
-function addCar (userId, car, db = connection) {
+function addCar (car, user, db = connection) {
+  const { auth0Id } = user
   const { make, model, year, colour, licensePlate, registration, wof, seatsAvailable, petsAllowed } = car
   const newCar = { make, model, year, colour, license_plate: licensePlate, registration, wof, seats_available: seatsAvailable, pets_allowed: petsAllowed }
   return db('cars')
     .insert(newCar)
     .then(([id]) => {
       return {
-        user_id: userId,
+        user_id: auth0Id,
         id: id,
         make: newCar.make,
         model: newCar.model,

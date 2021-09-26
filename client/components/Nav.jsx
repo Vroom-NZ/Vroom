@@ -35,6 +35,7 @@ function Nav (props) {
             {/* <p>Hello, {user.name}</p> */}
           </div>
           <div className='nav-button-container'>
+            <Link to='/cars' className='signin-register-buttons animate__infinite'>Car Rego</Link>
             <Link to='/' className='signin-register-buttons animate__infinite'>Home</Link>
             <Link to='/profile' className='signin-register-buttons animate__infinite'>Profile</Link>
             <Link to='/drivers' className='signin-register-buttons animate__infinite'>Post a ride </Link>

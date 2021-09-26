@@ -29,7 +29,7 @@ function SearchBar ({ values }) {
       seatsAvailable: ''
     },
     onSubmit: values => {
-      console.log('get me rides!')
+      ('get me rides!')
       // console.log(getRidesSearch(values))
       // getRidesSearch()
       history.push('/viewrides')

@@ -4,22 +4,18 @@ import { useFormik } from 'formik'
 import { connect } from 'react-redux'
 import * as Yup from 'yup'
 import { TextField } from '@mui/material'
-import Checkbox from '@mui/material/Checkbox'
-import FormGroup from '@mui/material/FormGroup'
-import FormControlLabel from '@mui/material/FormControlLabel'
-import FormControl from '@mui/material/FormControl'
 import MenuItem from '@mui/material/MenuItem'
 
-import { addCar } from '../../apis/drivers'
+import { addCar } from '../../apis/cars'
 
 const carSchema = Yup.object().shape({
   make: Yup.string()
     .required('Required'),
   model: Yup.string()
     .required('Required'),
-  year: Yup.numberstring()
+  year: Yup.string()
     .required('Required'),
-  licencePlate: Yup.string()
+  licensePlate: Yup.string()
     .required('Required'),
   colour: Yup.string()
     .required('Required'),
@@ -40,12 +36,12 @@ function RegisterCar ({ user }) {
       model: '',
       year: '',
       colour: '',
-      licencePlate: '',
+      licensePlate: '',
       registration: '',
       wof: ''
     },
     onSubmit: values => {
-      addCar(values, user) && history.push('/drivers')
+      addCar(values, user) && history.push('/')
     },
     validationSchema: carSchema
   })
@@ -55,6 +51,33 @@ function RegisterCar ({ user }) {
       ? formik.errors[inputName]
       : false
   }
+
+  const seatsAvailable = [
+    {
+      value: '1',
+      label: '1'
+    },
+    {
+      value: '2',
+      label: '2'
+    },
+    {
+      value: '3',
+      label: '3'
+    },
+    {
+      value: '4',
+      label: '4'
+    },
+    {
+      value: '5',
+      label: '5'
+    },
+    {
+      value: '6',
+      label: '6'
+    }
+  ]
 
   return (
     <>
@@ -66,23 +89,11 @@ function RegisterCar ({ user }) {
               className = 'InputField'
               id="make"
               name="make"
-              placeholder="Model"
-              label={showAnyErrors('make') ? showAnyErrors('make') : 'Model'}
+              placeholder="Make"
+              label={showAnyErrors('make') ? showAnyErrors('make') : 'Make'}
               value={formik.values.make}
               onChange={formik.handleChange}
               error={formik.touched.make && Boolean(formik.errors.make)}
-            />
-            <br/>
-            <TextField
-              sx={{ margin: '8px' }}
-              className = 'InputField'
-              id="year"
-              name="year"
-              placeholder="Year"
-              label={showAnyErrors('year') ? showAnyErrors('year') : 'Year'}
-              value={formik.values.year}
-              onChange={formik.handleChange}
-              error={formik.touched.year && Boolean(formik.errors.year)}
             />
             <br/>
             <TextField
@@ -101,6 +112,18 @@ function RegisterCar ({ user }) {
             <TextField
               sx={{ margin: '8px' }}
               className = 'InputField'
+              id="year"
+              name="year"
+              placeholder="Year"
+              label={showAnyErrors('year') ? showAnyErrors('year') : 'Year'}
+              value={formik.values.year}
+              onChange={formik.handleChange}
+              error={formik.touched.year && Boolean(formik.errors.year)}
+            />
+            <br/>
+            <TextField
+              sx={{ margin: '8px' }}
+              className = 'InputField'
               id="colour"
               name="colour"
               placeholder="Colour"
@@ -112,13 +135,13 @@ function RegisterCar ({ user }) {
             <TextField
               sx={{ margin: '8px' }}
               className = 'InputField'
-              id="licencePlate"
-              name="licencePlate"
-              placeholder="Licence plate"
-              label={showAnyErrors('licencePlate') ? showAnyErrors('licencePlate') : 'Licence plate'}
-              value={formik.values.licencePlate}
+              id="licensePlate"
+              name="licensePlate"
+              placeholder="License plate"
+              label={showAnyErrors('licensePlate') ? showAnyErrors('licensePlate') : 'License plate'}
+              value={formik.values.licensePlate}
               onChange={formik.handleChange}
-              error={formik.touched.licencePlate && Boolean(formik.errors.licencePlate)}
+              error={formik.touched.licensePlate && Boolean(formik.errors.licensePlate)}
             />
             <br/>
             <TextField
@@ -144,7 +167,25 @@ function RegisterCar ({ user }) {
               onChange={formik.handleChange}
               error={formik.touched.wof && Boolean(formik.errors.wof)}
             />
-            <button className='button-primary' type='submit' data-testid='submitButton'>Post a ride!</button>
+            <br/>
+            <TextField
+              sx={{ margin: '8px', width: '240px' }}
+              id="seatsAvailable"
+              className = 'InputField seatsField'
+              name="seatsAvailable"
+              select
+              label={showAnyErrors('seatsAvailable') ? showAnyErrors('seatsAvailable') : 'Passengers'}
+              value={formik.values.seatsAvailable}
+              onChange={formik.handleChange}
+              error={formik.touched.seatsAvailable && Boolean(formik.errors.seatsAvailable)}
+            >
+              {seatsAvailable.map((option) => (
+                <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                </MenuItem>
+              ))}
+            </TextField>
+            <button className='button-primary' type='submit' data-testid='submitButton'>Register your car!</button>
           </div>
         </form>
       </section>
