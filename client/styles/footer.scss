@@ -2,15 +2,16 @@
   background: white;
   display: flex;
   padding: 30px 20px;
-  border-top: 1px solid #c5c5c5;
-  border-left: 1px solid #c5c5c5;
-  border-right: 1px solid #c5c5c5;
+  // border-top: 1px solid #c5c5c5;
+  // border-left: 1px solid #c5c5c5;
+  // border-right: 1px solid #c5c5c5;
   // margin-top: auto;
   position: absolute;
   bottom: 0;
-  width: 76.5%;
+  width: 74%;
   height: 2.5rem;
-  justify-content: center;
+  justify-content: right;
+  font-weight: bold;
  }
 
 .footer {
@@ -18,11 +19,12 @@
   justify-content: center;
   // margin-left: 33.3%;
   // margin-right: 33.3%;
+  color:#A7C957 ;
 }
 
 .footer-links {
   text-decoration: none;
-  color: black;
+  color:#A7C957 ;
   // justify-content: center;
   &:hover {
     cursor: pointer;

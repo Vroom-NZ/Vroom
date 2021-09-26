@@ -25,14 +25,15 @@ body {
   display: flex;
   justify-content: left;
   padding: 12px;
-  width: 50%
+  width: 50%;
   }
   
 .nav-button-container {
   display: flex;
   justify-content: right;
   padding: 12px;
-  width: 50%
+  width: 50%;
+  font-weight: bold;
 }
 
 .logo-container {
@@ -42,7 +43,7 @@ body {
   // padding: 20px;
   border-radius: 5px;
   padding-top: 10%;
-  padding-bottom: 2%;
+  padding-bottom: 5%;
 }
 
 
