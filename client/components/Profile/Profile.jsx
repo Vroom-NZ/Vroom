@@ -29,7 +29,7 @@ function Profile (props) {
   return (
     <>
       <div>
-        <p> Kia Ora, { props.user.name}</p>
+        <h1> Kia Ora, { props.user.firstName}</h1>
       </div>
       <div >
         <ProfileInfo key={car.id} car={car}/>

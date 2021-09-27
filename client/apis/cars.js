@@ -5,7 +5,7 @@ const rootUrl = '/api/v1'
 export function getCar (id) {
   return request.get(rootUrl + `/cars/${id}`)
     .then(res => {
-      return res.body.car
+      return res.body
     })
 }
 

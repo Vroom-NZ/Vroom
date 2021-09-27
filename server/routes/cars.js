@@ -24,8 +24,8 @@ router.post('/', async (req, res) => {
 router.get('/:id', (req, res) => {
   const id = req.params.id
   dbCars.getCar(id)
-    .then(rides => {
-      res.json(rides)
+    .then(cars => {
+      res.json(cars)
       return null
     }).catch(err => {
       res.status(500).send(err.message)
