@@ -35,6 +35,7 @@ function Register ({ user }) {
       age: ''
     },
     onSubmit: async values => {
+      console.log('submitting test')
       const { firstName, lastName, phoneNumber } = values
       // const { auth0Id, email } = user
       const newUser = { values, user }
