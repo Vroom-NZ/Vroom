@@ -6,7 +6,7 @@ const protectedRoutes = require('./routes/protected')
 const privateRoutes = require('./routes/private')
 const usersRoutes = require('./routes/users')
 const ridesRoutes = require('./routes/rides')
-const profileRoutes = require('./routes/profile')
+const carsRoutes = require('./routes/cars')
 
 const server = express()
 
@@ -18,6 +18,6 @@ server.use('/api/v1/public', publicRoutes)
 server.use('/api/v1/protected', protectedRoutes)
 server.use('/api/v1/private', privateRoutes)
 server.use('/api/v1/rides', ridesRoutes)
-server.use('/api/v1/profile', profileRoutes)
+server.use('/api/v1/cars', carsRoutes)
 
 module.exports = server
