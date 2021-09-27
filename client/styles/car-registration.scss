@@ -1,0 +1,65 @@
+.forms {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  // box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.flex-container {
+  width: 100vh;
+  height: 70vh;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  color:#386641 ;
+}
+
+.column-flex {
+  flex: 80%;
+}
+
+.dateinputfield {
+  display: flex;
+  justify-content: right;
+}
+
+.InputField {
+  text-align: center;
+  margin: 8px;
+  font-family: 'roboto', arial, helvetica;
+  background-color: #D7E6B2;
+  color: #386641;
+  width: 95%
+}
+
+.seatsField {
+  display: flex;
+  justify-content: right;
+  background-color: #D7E6B2;
+  width: 100%;
+  margin: 8px;
+}
+
+.orange-register-button {
+  text-align: center;
+  text-decoration: none;
+  background-color: #F4A259;
+  border-radius: 5px;
+  border: none;
+  padding: 10px;
+  color: white;
+  width: 150px;
+  margin: 12px 20px;
+  &:hover {
+    cursor: pointer;
+    animation: pulse; 
+    animation-duration: 1s;
+      }
+}
+
+.postRideButton {
+  display: flex;
+  justify-content: center;
+}

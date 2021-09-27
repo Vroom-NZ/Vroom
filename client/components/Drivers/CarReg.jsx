@@ -40,8 +40,9 @@ function RegisterCar ({ user }) {
       registration: '',
       wof: ''
     },
+
     onSubmit: values => {
-      addCar(values, user) && history.push('/')
+      addCar(values, user) && history.push('/drivers')
     },
     validationSchema: carSchema
   })

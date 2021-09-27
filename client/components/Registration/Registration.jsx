@@ -36,14 +36,14 @@ function Register ({ user }) {
     },
     onSubmit: async values => {
       const { firstName, lastName, phoneNumber } = values
-      const { auth0Id, email } = user
+      // const { auth0Id, email } = user
       const newUser = { values, user }
       if (values.age <= 18) {
         alert('Sorry you must be 18 years old to use Vroom')
       } else {
         try {
           await addUser(newUser)
-          store.dispatch({ type: 'REGISTER', combinedUser: { firstName, lastName, phoneNumber, auth0Id, email } })
+          store.dispatch({ type: 'SET_USER', user: { ...user, firstName, lastName, phoneNumber } })
           history.push('/')
         } catch (error) {
           console.error(error)

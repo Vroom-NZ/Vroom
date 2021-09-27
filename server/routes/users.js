@@ -1,5 +1,5 @@
 const express = require('express')
-const { getUserRoles } = require('../auth0')
+const { getUser } = require('../db/users')
 
 const db = require('../db/users')
 
@@ -31,14 +31,14 @@ router.post('/', async (req, res) => {
   }
 })
 
-router.get('/:id', async (req, res) => {
+router.get('/:auth0id', async (req, res) => {
   try {
-    const id = req.params.id
-    const roles = await getUserRoles(id)
-    res.json({ roles })
+    const auth0id = req.params.auth0id
+    const user = await getUser(auth0id)
+    res.json({ user })
   } catch (error) {
     console.error(error.message)
-    res.status(500).json({ message: 'unable to retreive user roles' })
+    res.status(500).json({ message: 'unable to retreive user' })
   }
 })
 

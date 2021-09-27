@@ -2,10 +2,10 @@ import request from 'superagent'
 
 const rootUrl = '/api/v1'
 
-export function getRides () {
-  return request.get(rootUrl + '/rides/')
+export async function getRides () {
+  return await request.get(rootUrl + '/rides/')
     .then(res => {
-      return res.body.rides
+      return res.body
     })
 }
 
@@ -15,7 +15,7 @@ export async function addRides (ride, user) {
     .send(rideUser)
 }
 
-export function getRidesSearch (values) {
+export function searchRides (values) {
   const {
     startLocation,
     destination,

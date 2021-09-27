@@ -10,7 +10,7 @@ export function getCar () {
 }
 
 export async function addCar (car, user) {
-  const carWithUser = { carRego: car, auth: user }
+  const carWithUser = { carRego: car, auth0Id: user.auth0Id }
   return await request.post(rootUrl + '/cars/')
     .send(carWithUser)
 }
