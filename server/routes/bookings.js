@@ -20,10 +20,11 @@ router.get('/', (req, res) => {
 // User can book a ride with
 
 router.post('/', async (req, res) => {
-  const ride = req.body.ride
-  const user = req.body.auth
+  const rideDetails = req.body.rideDetails
+  const passengerId = req.body.passengerId
   try {
-    await dbBookings.bookRide(ride, user)
+    console.log('ride details:', rideDetails, 'passengerID:', passengerId)
+    await dbBookings.bookRide(rideDetails, passengerId)
     res.sendStatus(201)
   } catch (error) {
     console.error(error)

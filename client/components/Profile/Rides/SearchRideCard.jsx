@@ -1,15 +1,17 @@
 import React from 'react'
-// import { connect } from 'react-redux'
+import { connect } from 'react-redux'
 import { bookRide } from '../../../apis/bookings'
 import { useHistory } from 'react-router-dom'
 
-export default function SearchRideCard ({ ride, user }) {
-  const { date, arrivalTime, leavingTime, startLocation, destination, seatsAvailable, cost } = ride
+function SearchRideCard ({ ride, user }) {
+  const { date, arrivalTime, leavingTime, startLocation, destination, seatsAvailable, cost, id, auth0Id } = ride
   const history = useHistory()
+  const rideDetails = { auth0Id, id }
+  const passengerId = user.auth0Id
 
   function handleSubmit () {
-    console.log('book ride sends this info: ', ride)
-    bookRide(ride, user)
+    console.log('book ride sends this info. RIDE DETAILS', rideDetails, 'hello hello', passengerId)
+    bookRide(rideDetails, passengerId)
     rideBookedMessage()
     history.push('/')
   }
@@ -38,3 +40,11 @@ export default function SearchRideCard ({ ride, user }) {
     </>
   )
 }
+
+function mapStateToProps (state) {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(SearchRideCard)

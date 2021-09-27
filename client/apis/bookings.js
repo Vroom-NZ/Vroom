@@ -9,8 +9,8 @@ export async function getBookedRides () {
     })
 }
 
-export async function bookRide (ride, user) {
-  const ridePassenger = { ride, user }
-  return await request.post(rootUrl + '/bookings')
+export async function bookRide (rideDetails, passengerId) {
+  const ridePassenger = { rideDetails, passengerId }
+  return await request.post(rootUrl + '/bookings/')
     .send(ridePassenger)
 }

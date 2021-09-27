@@ -30,7 +30,6 @@ test('POST book a ride', () => {
 
   return db.bookRide(newRide, passengerId, testDb)
     .then(ride => {
-      console.log('booking test result:', ride)
       expect(ride.driver_id).toBe(100100100)
       return null
     })
