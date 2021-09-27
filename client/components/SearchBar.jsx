@@ -31,6 +31,7 @@ function SearchBar () {
     },
     onSubmit: async values => {
       try {
+        console.log('gosh arent i happy with this lovely code')
         console.log('values:', values)
         // await searchRides(values)
         store.dispatch({ type: 'SEARCH', search: values })
