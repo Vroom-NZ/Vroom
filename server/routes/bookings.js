@@ -21,9 +21,9 @@ router.get('/', (req, res) => {
 
 router.post('/', async (req, res) => {
   const ride = req.body.ride
-  const passenger = req.body.auth
+  const user = req.body.auth
   try {
-    await dbBookings.bookRide(ride, passenger)
+    await dbBookings.bookRide(ride, user)
     res.sendStatus(201)
   } catch (error) {
     console.error(error)

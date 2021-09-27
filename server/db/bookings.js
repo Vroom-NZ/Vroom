@@ -7,17 +7,16 @@ module.exports = {
 
 function bookRide (ride, passengerId, db = connection) {
   const { driverId, rideId } = ride
-  const { auth0Id } = passengerId
-  const newBooking = { driverId, rideId, auth0Id }
+  const newBooking = { driver_id: driverId, ride_id: rideId, passenger_id: passengerId }
   return db('ridepassengers')
-    // .join('rides', 'ride_id', 'rides.id')
     .insert(newBooking)
     .where('ride_id', rideId)
-    .then(() => {
+    .then(([id]) => {
+      console.log('bookings db results:', id)
       return {
-        driver_id: newBooking.driverId,
-        ride_id: newBooking.rideId,
-        passenger_id: newBooking.auth0Id
+        driver_id: newBooking.driver_id,
+        ride_id: id,
+        passenger_id: newBooking.passenger_id
       }
     })
 }
@@ -25,7 +24,8 @@ function bookRide (ride, passengerId, db = connection) {
 function getBookedRides (passengerId, db = connection) {
   return db('ridepassengers')
     .where('passenger_id', passengerId)
-    .then((results) => {
+    .select()
+    .then(([results]) => {
       return results
     })
 }

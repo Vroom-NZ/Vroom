@@ -6,7 +6,7 @@ import { getRides } from '../apis/rides'
 import SearchRideCard from './Profile/Rides/SearchRideCard'
 
 function ViewRides (props) {
-  const { startLocation, destination, date, seatsAvailable, id } = props.search
+  const { startLocation, destination, date, seatsAvailable } = props.search
 
   const [rides, setRides] = useState([])
 
