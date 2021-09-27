@@ -42,6 +42,4 @@ router.get('/:auth0id', async (req, res) => {
   }
 })
 
-router.update()
-
 module.exports = router
