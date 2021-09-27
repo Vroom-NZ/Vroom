@@ -18,14 +18,13 @@ function profileInfo (props) {
           <h1 className='text-margin'> {firstName} {lastName}  </h1>
           <h2>{mockUser.rating}</h2>
           <p className='bio-box'> {mockUser.bio}</p>
-          {hasVehicle
-            ? <div className="vehicle-box">
+          {hasVehicle &&
+            <div className="vehicle-box">
               <h3> Vehicle Details</h3>
               <p> {make} {model} </p>
               <p> {year} </p>
               <p>{colour}</p>
             </div>
-            : null
           }
         </div>
       </div>
