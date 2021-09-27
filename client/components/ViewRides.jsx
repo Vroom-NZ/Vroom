@@ -32,7 +32,7 @@ function ViewRides (props) {
         </div>
         <div className="view-results-container">
           {rides.length ? (
-            <div>
+            <>
               {rides.map((ride) => {
                 console.log(ride)
                 return (
@@ -40,7 +40,7 @@ function ViewRides (props) {
                 )
               })}
 
-            </div>
+            </>
           ) : (
             <div>
               <p>Sorry there is no ride available from {startLocation} to {destination} on {date}</p>
