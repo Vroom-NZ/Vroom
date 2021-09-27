@@ -1,17 +1,26 @@
 import React from 'react'
 // import { connect } from 'react-redux'
+// import { bookRide } from '../../../apis/bookings'
 
 export default function SearchRideCard ({ ride }) {
   console.log('search ride result: ', ride)
-  const { date, arrivalTime, leavingTime, startLocation, destination, seatsAvailable, cost } = ride
+  const { date, arrivalTime, leavingTime, startLocation, destination, seatsAvailable, cost, id } = ride
 
   function handleSubmit () {
     console.log('book ride sends this info: ', ride)
+    // bookRide(ride, user.auth0Id)
+    // rideBookedMessage()
+    // history.push('/')
   }
+
+  // function rideBookedMessage () {
+  //   alert('Your ride has been booked! Redirecting you back to home page')
+  // }
+
   return (
     <>
       <div className="each-ride-container">
-        {/* <p> Driving from <span className='bold-ride-info'>{startLocation}</span> to <span className='bold-ride-info'>{destination}</span> on <span className='bold-ride-info'>{date}</span>.</p> */}
+        <p> Driving from <span className='bold-ride-info'>{startLocation}</span> to <span className='bold-ride-info'>{destination}</span> on <span className='bold-ride-info'>{date}</span>.</p>
         <div className='ride-card-profile-pic'>
           <img src='images/Avatarprofpic.png'></img>
         </div>
@@ -28,13 +37,3 @@ export default function SearchRideCard ({ ride }) {
     </>
   )
 }
-
-// function mapStateToProps (state) {
-//   return {
-//     ride: state.ride,
-//     user: state.user,
-//     search: state.search
-//   }
-// }
-
-// export default connect(mapStateToProps)(SearchRideCard)

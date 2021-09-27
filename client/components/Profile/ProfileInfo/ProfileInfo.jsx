@@ -5,7 +5,6 @@ function profileInfo (props) {
   const { firstName, lastName, hasVehicle, profilePic, bio, rating } = props.user
   const { make, model, year, colour } = props.car
   const mockUser = {
-    lastName: 'Lawler',
     bio: 'This is my bio wow so sick, lets vroomvroombaby!',
     profilePic: 'images/Avatarprofpic.png',
     rating: '★ 5/5'
@@ -16,7 +15,7 @@ function profileInfo (props) {
       <div className="profile-box">
         <div className="personal-info">
           <img className='avatar'src={mockUser.profilePic}></img>
-          <h1 className='text-margin'> {firstName} {mockUser.lastName}  </h1>
+          <h1 className='text-margin'> {firstName} {lastName}  </h1>
           <h2>{mockUser.rating}</h2>
           <p className='bio-box'> {mockUser.bio}</p>
           {hasVehicle &&
