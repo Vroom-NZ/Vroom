@@ -2,9 +2,9 @@ import React from 'react'
 // import { connect } from 'react-redux'
 // import { bookRide } from '../../../apis/bookings'
 
-export default function SearchRideCard ({ ride, user }) {
-  console.log('search ride result: ', user)
-  const { date, arrivalTime, leavingTime, startLocation, destination, seatsAvailable, cost } = ride
+export default function SearchRideCard ({ ride }) {
+  console.log('search ride result: ', ride)
+  const { date, arrivalTime, leavingTime, startLocation, destination, seatsAvailable, cost, id } = ride
 
   function handleSubmit () {
     console.log('book ride sends this info: ', ride)
