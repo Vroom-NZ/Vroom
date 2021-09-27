@@ -1,25 +1,53 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-export default function profileInfo ({ user }) {
-  // const { firstName, lastName, email, phoneNumber, hasVehicle, bio, profilePic, carId } = user
+function profileInfo (props) {
+  const { firstName, lastName, hasVehicle, profilePic, bio, rating } = props.user
+  const { make, model, year, colour } = props.car
   const mockUser = {
-    firstName: 'Sophia',
     lastName: 'Lawler',
-    hasVehicle: true,
-    bio: 'This is my bio wow so fun!',
-    profilePic: 'https://media.npr.org/assets/img/2021/08/23/about_love-a5c5a160b609b952ef65d037dc214fe3dc8b692f-s800-c85.webp',
-    carId: 12
+    bio: 'This is my bio wow so sick, lets vroomvroombaby!',
+    profilePic: 'images/Avatarprofpic.png',
+    rating: '★ 5/5'
+  }
+
+  const mockCar = {
+    make: 'Toyota',
+    model: 'Starlet',
+    lisencePlate: 'ALX420',
+    seatsAvailable: 2,
+    year: 1996,
+    colour: 'purple'
   }
 
   return (
     <>
-      <div className="profile-container">
-        <p> {mockUser.firstName} {mockUser.lastName} </p>
-        <p> </p>
-        <p></p>
-        {mockUser.hasVehicle &&
-        <p> display car info</p> }
+      <div className="profile-box">
+        <div className="personal-info">
+          <img className='avatar'src={mockUser.profilePic}></img>
+          <h1 className='text-margin'> {firstName} {mockUser.lastName}  </h1>
+          <h2>{mockUser.rating}</h2>
+          <p className='bio-box'> {mockUser.bio}</p>
+          {hasVehicle &&
+            <div className="vehicle-box">
+              <h3> Vehicle Details</h3>
+              <p> {make} {model} </p>
+              <p> {year} </p>
+              <p>{colour}</p>
+
+            </div>
+
+          }
+        </div>
       </div>
     </>
   )
 }
+
+function mapStateToProps (state) {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(profileInfo)

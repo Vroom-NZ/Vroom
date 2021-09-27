@@ -5,10 +5,13 @@ import { connect } from 'react-redux'
 
 import ProfileInfo from './ProfileInfo/ProfileInfo'
 import { getRides } from '../../apis/rides'
+import { getCar } from '../../apis/cars'
+
 import RideCard from './Rides/RideCard'
 
 function Profile (props) {
   const [rides, setRides] = useState([])
+  const [car, setCar] = useState([])
   const { auth0Id } = props.user
 
   useEffect(async () => {
@@ -18,25 +21,32 @@ function Profile (props) {
     setRides(filteredRides)
   }, [])
 
+  useEffect(async () => {
+    const myCar = await getCar(auth0Id)
+    setCar(myCar)
+  }, [])
+
   return (
     <>
-      <div className="profile-container">
-        <p> Kia Ora, { props.user.name} </p>
-        {rides.length && (
-          <div>
-            {rides.map((ride) => {
-              return <RideCard key={ride.id} ride={ride}/>
-            })}
-          </div>
-        )}
-      </div>
       <div>
-        <ProfileInfo />
-        <ul>
-          <li>
+        <h1> Kia Ora, { props.user.firstName}</h1>
+      </div>
+      <div >
+        <ProfileInfo key={car.id} car={car}/>
+      </div>
 
-          </li>
-        </ul>
+      <div>
+        {rides.length && (
+          <>
+            <h1> Rides you have posted!</h1>
+
+            <div>
+              {rides.map((ride) => {
+                return <RideCard key={ride.id} ride={ride}/>
+              })}
+            </div>
+          </>
+        )}
       </div>
     </>
   )

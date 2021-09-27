@@ -35,6 +35,8 @@ function App () {
       <Route path='/profile' component={Profile} />
       <Route path='/rides' component={ViewRides} />
       <Route path='/cars' component={CarReg} />
+      <Route path='/register' component={Registration} />
+      <Route path='/drivers' component={PostRide} />
       <Route path='/contact' component={Contact} />
       <Route path='/terms' component={Terms} />
       <Route path='/' component={Footer} />
