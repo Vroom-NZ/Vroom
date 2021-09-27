@@ -26,15 +26,9 @@ function App () {
       <Route path='/' component={Nav} />
       {/* <Route exact path='/' component={Users} />
       <Route exact path='/' component={PingRoutes} /> */}
-<<<<<<< HEAD
       <Route path='/register' component={Registration} />
       <Route path='/drivers' component={PostRide} />
       <Route path='/profile' component={Profile} />
-||||||| merged common ancestors
-      <Route path='/register' component={Registration} />
-      <Route path='/drivers' component={PostRide} />
-=======
->>>>>>> styling to profile info
       <Route exact path='/' component={LandingPage}/>
       <Route exact path='/' component={SearchBar} />
       <Route exact path='/' component={SiteInfo} />
