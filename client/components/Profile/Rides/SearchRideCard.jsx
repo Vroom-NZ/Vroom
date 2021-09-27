@@ -11,7 +11,7 @@ export default function SearchRideCard ({ ride }) {
   return (
     <>
       <div className="each-ride-container">
-        {/* <p> Driving from <span className='bold-ride-info'>{startLocation}</span> to <span className='bold-ride-info'>{destination}</span> on <span className='bold-ride-info'>{date}</span>.</p> */}
+        <p> Driving from <span className='bold-ride-info'>{startLocation}</span> to <span className='bold-ride-info'>{destination}</span> on <span className='bold-ride-info'>{date}</span>.</p>
         <div className='ride-card-profile-pic'>
           <img src='images/Avatarprofpic.png'></img>
         </div>
