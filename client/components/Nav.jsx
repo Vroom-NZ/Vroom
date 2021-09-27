@@ -38,7 +38,7 @@ function Nav (props) {
             <Link to='/profile' className='signin-register-buttons animate__infinite'>Profile</Link>
             {hasVehicle
               ? <Link to='/drivers' className='signin-register-buttons animate__infinite'>Post a ride </Link>
-              : <Link to='/cars' className='signin-register-buttons animate__infinite'>Register your car</Link>
+              : <Link to='/cars' className='signin-register-buttons animate__infinite'>Post a ride</Link>
             }
             <a href='/' onClick={handleLogoff} className='signin-register-buttons animate__infinite'>Log out</a>
           </div>
