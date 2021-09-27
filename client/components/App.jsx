@@ -16,10 +16,7 @@ import Contact from './Contact'
 import Profile from './Profile/Profile'
 import Terms from './Terms'
 import SiteInfo from './SiteInfo'
-<<<<<<< HEAD
-=======
 import CarReg from './Drivers/CarReg'
->>>>>>> 89c460ff14e5419fc4e68e6700d8975788769041
 
 function App () {
   cacheUser(useAuth0)
