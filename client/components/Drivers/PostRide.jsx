@@ -96,6 +96,7 @@ function Ride ({ user }) {
     <>
       <div className="forms">
         <section className='flex-container'>
+          <h1> Sup {user.firstName}, post your trip details here and get Vrooming!!! </h1>
           <form onSubmit={formik.handleSubmit}>
             <div>
               <div className="row">

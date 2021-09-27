@@ -1,21 +1,21 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { bookRide } from '../../../apis/bookings'
+// import { connect } from 'react-redux'
+// import { bookRide } from '../../../apis/bookings'
 
-function SearchRideCard ({ ride, user }) {
-  console.log('search ride result: ', ride)
+export default function SearchRideCard ({ ride, user }) {
+  console.log('search ride result: ', user)
   const { date, arrivalTime, leavingTime, startLocation, destination, seatsAvailable, cost } = ride
 
   function handleSubmit () {
-    // console.log('book ride sends this info: ', ride)
-    bookRide(ride, user.auth0Id)
-    rideBookedMessage()
-    history.push('/')
+    console.log('book ride sends this info: ', ride)
+    // bookRide(ride, user.auth0Id)
+    // rideBookedMessage()
+    // history.push('/')
   }
 
-  function rideBookedMessage () {
-    alert('Your ride has been booked! Redirecting you back to home page')
-  }
+  // function rideBookedMessage () {
+  //   alert('Your ride has been booked! Redirecting you back to home page')
+  // }
 
   return (
     <>
@@ -37,13 +37,3 @@ function SearchRideCard ({ ride, user }) {
     </>
   )
 }
-
-function mapStateToProps (state) {
-  return {
-    ride: state.ride,
-    user: state.user
-
-  }
-}
-
-export default connect(mapStateToProps)(SearchRideCard)

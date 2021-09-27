@@ -8,3 +8,41 @@
   border-radius: 5px;
   margin-top: 50px
 }
+
+ .avatar{
+  display: flex;
+  justify-content: center;
+ }
+ .bio-box{
+  margin: 5px;
+  color: #386641;
+  background-color: #FFFDED;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+  border-radius: 5px;
+  padding: 20px;
+ }
+ .vehicle-box{
+  margin: 5px;
+  color: #386641;
+  background-color: #FFFDED;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+  border-radius: 5px;
+  padding: 20px;
+ }
+ .personal-info{
+   width: 40vh;
+  margin: 5px;
+  color: #386641;
+  background-color: #F9CDA5;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+  padding: 10px;
+  margin: 25px;
+  border-radius: 5px;
+ }
+ h2 {
+   color: #386641;
+ }
+
+ h1 {
+  color: #386641;
+ }

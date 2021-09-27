@@ -32,7 +32,7 @@ function ViewRides (props) {
           {rides.length ? (
             <>
               {rides.map((ride) => {
-                console.log(ride.id)
+                console.log('this message', ride)
                 return (
                   <SearchRideCard key={ride.id} ride={ride} />
                 )
@@ -56,8 +56,8 @@ function ViewRides (props) {
 
 function mapStateToProps (state) {
   return {
-    search: state.search,
-    ride: state.ride
+    search: state.search
+    // ride: state.ride
   }
 }
 
