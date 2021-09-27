@@ -36,9 +36,6 @@ function App () {
       <Route path='/contact' component={Contact} />
       <Route path='/terms' component={Terms} />
       <Route path='/' component={Footer} />
-      <Route path='profile/history' component={History} />
-      <Route path='profile/posted' component={Posted} />
-      <Route path='profile/upcoming' component={Upcoming} />
     </div>
   )
 }
