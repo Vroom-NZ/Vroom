@@ -27,7 +27,8 @@ const rideSchema = Yup.object().shape({
   date: Yup.string()
     .required('Required'),
   seatsAvailable: Yup.string()
-    .required('Required')
+    .required('Required'),
+  passengerarray: Yup.string()
 })
 
 function Ride ({ user }) {
@@ -41,7 +42,8 @@ function Ride ({ user }) {
       leavingTime: '',
       arrivalTime: '',
       seatsAvailable: '',
-      cost: ''
+      cost: '',
+      passengerarray: ''
     },
     onSubmit: async values => {
       try {
