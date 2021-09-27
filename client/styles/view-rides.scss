@@ -38,5 +38,19 @@
 .each-ride-container{
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
   padding: 12px;
-
+  border-radius: 5px;
+  background-color: #D7E6B2;
+  color: #386641;
 }
+
+.no-ride {
+  align-items: left;
+  text-decoration: none;
+  color:#A7C957 ;
+  // justify-content: center;
+  &:hover {
+    cursor: pointer;
+    animation: pulse; 
+    animation-duration: 1s;
+      } 
+ }

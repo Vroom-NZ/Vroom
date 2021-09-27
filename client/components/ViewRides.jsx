@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 import { getRides } from '../apis/rides'
-import RideCard from './Profile/Rides/RideCard'
+import SearchRideCard from './Profile/Rides/SearchRideCard'
 
 function ViewRides (props) {
   const { startLocation, destination, date, seatsAvailable } = props.search
@@ -30,17 +31,25 @@ function ViewRides (props) {
           </div>
         </div>
         <div className="view-results-container">
-          {rides.length && (
+          {rides.length ? (
             <div>
               {rides.map((ride) => {
                 console.log(ride)
-                return <RideCard key={ride.id} ride={ride} />
+                return (
+                  <SearchRideCard key={ride.id} ride={ride} />
+                )
               })}
+
+            </div>
+          ) : (
+            <div>
+              <p>Sorry there is no ride available from {startLocation} to {destination} on {date}</p>
+              <div className="bookRideButton">
+                <Link to='/' className='no-ride animate__infinite'>Search for another ride</Link>
+              </div>
             </div>
           )}
-          <div className="bookRideButton">
-            <button className='orange-register-button animate__infinite' data-testid='submitButton'>Book this ride</button>
-          </div>
+
         </div>
       </div>
     </>
@@ -49,7 +58,8 @@ function ViewRides (props) {
 
 function mapStateToProps (state) {
   return {
-    search: state.search
+    search: state.search,
+    ride: state.ride
   }
 }
 
