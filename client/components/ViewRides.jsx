@@ -8,8 +8,6 @@ import SearchRideCard from './Profile/Rides/SearchRideCard'
 function ViewRides (props) {
   const { startLocation, destination, date, seatsAvailable } = props.search
 
-  console.log('getRides in viewRides: ', props.search)
-
   const [rides, setRides] = useState([])
 
   useEffect(async () => {
@@ -34,7 +32,7 @@ function ViewRides (props) {
           {rides.length ? (
             <>
               {rides.map((ride) => {
-                console.log(ride)
+                console.log(ride.id)
                 return (
                   <SearchRideCard key={ride.id} ride={ride} />
                 )
