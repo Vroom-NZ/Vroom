@@ -6,6 +6,7 @@ const dbUsers = require('../db/users')
 const router = express.Router()
 
 module.exports = router
+// ap/v1/cars
 
 router.post('/', async (req, res) => {
   const car = req.body.carRego
@@ -18,4 +19,15 @@ router.post('/', async (req, res) => {
     console.error(error)
     res.status(500).json({ message: 'unable to insert car into the database' })
   }
+})
+
+router.get('/:id', (req, res) => {
+  const id = req.params.id
+  dbCars.getCar(id)
+    .then(rides => {
+      res.json(rides)
+      return null
+    }).catch(err => {
+      res.status(500).send(err.message)
+    })
 })
