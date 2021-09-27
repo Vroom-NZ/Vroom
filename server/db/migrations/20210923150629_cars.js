@@ -1,7 +1,7 @@
 exports.up = (knex) => {
   return knex.schema.createTable('cars', (table) => {
     table.increments('id').primary()
-    table.integer('user_id').references('users.id') // joins to table user.id
+    table.string('user_id').references('users.auth0_id') // joins to table user.id
     table.string('make')
     table.string('model')
     table.integer('year')

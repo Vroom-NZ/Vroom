@@ -1,22 +1,22 @@
 const connection = require('./connection')
 
-function getCar (userId, db = connection) {
+function getCar (auth0Id, db = connection) {
   return db('cars')
-    .where('user_id', userId)
+    .where('user_id', auth0Id)
     .select()
     .then(result => {
       return result[0]
     })
 }
 
-function addCar (userId, car, db = connection) {
+function addCar (car, auth0Id, db = connection) {
   const { make, model, year, colour, licensePlate, registration, wof, seatsAvailable, petsAllowed } = car
-  const newCar = { make, model, year, colour, license_plate: licensePlate, registration, wof, seats_available: seatsAvailable, pets_allowed: petsAllowed }
+  const newCar = { user_id: auth0Id, make, model, year, colour, license_plate: licensePlate, registration, wof, seats_available: seatsAvailable, pets_allowed: petsAllowed }
   return db('cars')
     .insert(newCar)
     .then(([id]) => {
       return {
-        user_id: userId,
+        user_id: auth0Id,
         id: id,
         make: newCar.make,
         model: newCar.model,
@@ -46,7 +46,6 @@ function updateCar (car, db = connection) {
     .update(updatedCar)
     .then(() => {
       return {
-
         id: id,
         make: updatedCar.make,
         model: updatedCar.model,

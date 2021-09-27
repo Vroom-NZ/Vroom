@@ -16,6 +16,10 @@ import Contact from './Contact'
 import Profile from './Profile/Profile'
 import Terms from './Terms'
 import SiteInfo from './SiteInfo'
+<<<<<<< HEAD
+=======
+import CarReg from './Drivers/CarReg'
+>>>>>>> 89c460ff14e5419fc4e68e6700d8975788769041
 
 function App () {
   cacheUser(useAuth0)
@@ -33,6 +37,7 @@ function App () {
       <Route exact path='/' component={SiteInfo} />
       <Route path='/profile' component={Profile} />
       <Route path='/rides' component={ViewRides} />
+      <Route path='/cars' component={CarReg} />
       <Route path='/contact' component={Contact} />
       <Route path='/terms' component={Terms} />
       <Route path='/' component={Footer} />
