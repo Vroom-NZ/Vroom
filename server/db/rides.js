@@ -35,8 +35,8 @@ function getRidesById (auth0Id, db = connection) { // to get rides for specific 
 
 function addRide (ride, id, db = connection) {
   const { auth0Id } = id
-  const { startLocation, destination, date, leavingTime, arrivalTime, seatsAvailable, cost, passengerarray } = ride
-  const newRide = { auth0_id: auth0Id, start_location: startLocation, destination, date, leaving_time: leavingTime, estimated_arrival_time: arrivalTime, seats_available: seatsAvailable, cost, passengerarray }
+  const { startLocation, destination, date, leavingTime, arrivalTime, seatsAvailable, cost } = ride
+  const newRide = { auth0_id: auth0Id, start_location: startLocation, destination, date, leaving_time: leavingTime, estimated_arrival_time: arrivalTime, seats_available: seatsAvailable, cost }
   return db('rides')
     .insert(newRide)
     .where('auth0_id', auth0Id)
@@ -50,8 +50,7 @@ function addRide (ride, id, db = connection) {
         leavingTime: newRide.leaving_time,
         estimatedArrivalTime: newRide.estimated_arrival_time,
         seatsAvailable: newRide.seats_available,
-        cost: newRide.cost,
-        passengerarray: newRide.passengerarray
+        cost: newRide.cost
       }
     })
 }

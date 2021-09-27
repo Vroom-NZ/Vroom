@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function SearchRideCard ({ ride }) {
   console.log('search ride result: ', ride)
-  const { date, arrivalTime, leavingTime, startLocation, destination, seatsAvailable, cost, passengerarray } = ride
+  const { date, arrivalTime, leavingTime, startLocation, destination, seatsAvailable, cost, passengers } = ride
 
   function handleSubmit () {
     console.log('book ride sends this info: ', ride)
@@ -15,7 +15,7 @@ export default function SearchRideCard ({ ride }) {
         <p>{date} {leavingTime}-{arrivalTime} </p>
         <p> {cost}</p>
         <p>{seatsAvailable}</p>
-        <p>You will be joining: {passengerarray}</p>
+        <p>You will be joining: </p>
       </div>
       <div className="bookRideButton">
         <button className='orange-register-button animate__infinite' onClick={handleSubmit}>Book this ride</button>
