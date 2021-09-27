@@ -7,8 +7,6 @@ const clientId = '9GJ0SaUS2L8Nhu3dRHvUj7yHXjUQusmz'
 const secret = process.env.AUTH0_API_EXPLORER_SECRET
 
 const getUserRoles = async (uid) => {
-  console.log('domain:', domain)
-  console.log('client id:', clientId)
   const accessToken = await getAccessToken()
   const { body } = await request(`${domain}/api/v2/users/${uid}/roles`)
     .set({ authorization: `Bearer ${accessToken}` })

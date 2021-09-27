@@ -1,7 +1,6 @@
 import React from 'react'
 
 export default function Ride ({ ride }) {
-  console.log(ride)
   const { date, arrivalTime, leavingTime, startLocation, destination, seatsAvailable, cost } = ride
 
   return (

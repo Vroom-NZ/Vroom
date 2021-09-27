@@ -1,7 +1,6 @@
 const express = require('express')
 
 const dbRides = require('../db/rides')
-// const dbCar = require('../db/cars')
 
 const router = express.Router()
 
@@ -45,7 +44,7 @@ router.post('/', async (req, res) => {
     res.sendStatus(201)
   } catch (error) {
     console.error(error)
-    res.status(500).json({ message: 'unable to insert user into the database' })
+    res.status(500).json({ message: 'unable to insert rides into the database' })
   }
 })
 

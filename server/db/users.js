@@ -34,6 +34,13 @@ function getUser (auth0Id, db = connection) {
     .first()
 }
 
+function setHasCar (auth0Id, db = connection) {
+  console.log('auth0: ', auth0Id)
+  return db('users')
+    .where('auth0_id', auth0Id)
+    .update('has_vehicle', true)
+}
+
 function addUser (user, db = connection) {
   const { auth0Id, email, firstName, lastName, phoneNumber } = user
   const newUser = { auth0_id: auth0Id, first_name: firstName, last_name: lastName, email, phone_number: phoneNumber }
@@ -50,5 +57,6 @@ function addUser (user, db = connection) {
 module.exports = {
   getUsers,
   getUser,
+  setHasCar,
   addUser
 }
