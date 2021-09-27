@@ -11,15 +11,6 @@ function profileInfo (props) {
     rating: '★ 5/5'
   }
 
-  const mockCar = {
-    make: 'Toyota',
-    model: 'Starlet',
-    lisencePlate: 'ALX420',
-    seatsAvailable: 2,
-    year: 1996,
-    colour: 'purple'
-  }
-
   return (
     <>
       <div className="profile-box">
