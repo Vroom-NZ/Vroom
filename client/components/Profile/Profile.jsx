@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 // import { Link, Route } from 'react-router-dom'
 // import History from './Rides/History'
 
+
 import ProfileInfo from './ProfileInfo/ProfileInfo'
 import { getRides } from '../../apis/rides'
 import { getCar } from '../../apis/cars'
