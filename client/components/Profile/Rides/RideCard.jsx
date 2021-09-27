@@ -5,7 +5,7 @@ export default function Ride ({ ride }) {
 
   return (
     <>
-      <div className="each-ride-container">
+      <div className="profile-container">
         <p> {startLocation}- {destination} </p>
         <p>{date} {leavingTime}-{arrivalTime} </p>
         <p> {cost}</p>
