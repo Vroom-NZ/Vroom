@@ -5,7 +5,7 @@ import { TextField } from '@mui/material'
 import MenuItem from '@mui/material/MenuItem'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-// import { searchRides } from '../apis/rides'
+// import { getRides } from '../apis/rides'
 import store from './../store'
 
 const searchSchema = Yup.object().shape({
@@ -31,7 +31,6 @@ function SearchBar () {
     },
     onSubmit: async values => {
       try {
-        console.log('gosh arent i happy with this lovely code')
         console.log('values:', values)
         // await searchRides(values)
         store.dispatch({ type: 'SEARCH', search: values })
