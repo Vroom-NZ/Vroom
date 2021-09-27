@@ -48,12 +48,6 @@ function addUser (user, db = connection) {
     .insert(newUser)
 }
 
-// function bookRide (auth0Id, rideId, db = connection) {
-//   return db('users')
-//     .where('auth0_id', auth0Id)
-//     .update('ride_id', rideId)
-// }
-
 module.exports = {
   getUsers,
   getUser,

@@ -1,22 +1,21 @@
 .view-rides-main-container {
-  // box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
   padding: 20px;
   border-radius: 5px;
   margin-top: 50px;
-  margin-bottom: 50px
+
 }
 
 .start-end-date-container{
   display: flex;
   justify-content: top;
-  // box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
   padding: 20px;
-  font-size: 35px;
 }
 
 .route-container{
   align-items: left;
-  width: 70%;
+  width: 50%;
   font-weight: bold;
   color: #F4A259
   }
@@ -24,7 +23,7 @@
 .route-date-container {
   display: flex;
   justify-content: right;
-  width: 30%;
+  width: 50%;
   font-weight: bold;
   color: #F4A259
 }
@@ -32,8 +31,6 @@
 .view-results-container {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: center;
   padding: 20px;
   border-radius: 5px;
 }
@@ -41,31 +38,5 @@
 .each-ride-container{
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
   padding: 12px;
-  margin: 25px;
-  border-radius: 5px;
-  background-color: #D7E6B2;
-  color: #386641;
+
 }
-
-.no-ride {
-  align-items: left;
-  text-decoration: none;
-  color:#A7C957 ;
-  // justify-content: center;
-  &:hover {
-    cursor: pointer;
-    animation: pulse; 
-    animation-duration: 1s;
-      } 
- }
-
- .ride-card-profile-pic{
-  display: flex;
-  justify-content: center;
-  
- }
-
- .ride-card-info{
-  margin: 5px;
-  
- }
