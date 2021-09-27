@@ -38,8 +38,13 @@ function RegisterCar ({ user }) {
       wof: ''
     },
 
-    onSubmit: values => {
-      addCar(values, user) && history.push('/drivers')
+    onSubmit: async values => {
+      try {
+        await addCar(values, user)
+        history.push('/drivers')
+      } catch (error) {
+        console.error(error)
+      }
     },
     validationSchema: carSchema
   })

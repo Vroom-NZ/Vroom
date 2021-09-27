@@ -12,7 +12,7 @@ import RideCard from './Rides/RideCard'
 function Profile (props) {
   const [rides, setRides] = useState([])
   const [car, setCar] = useState([])
-  const { auth0Id } = props.user
+  const { auth0Id, firstName } = props.user
 
   useEffect(async () => {
     const postedRides = await getRides()
@@ -28,24 +28,19 @@ function Profile (props) {
 
   return (
     <>
-      <div>
-        <h1> Kia Ora, { props.user.firstName}</h1>
-      </div>
-      <div >
+      <div className="view-rides-main-container">
         <ProfileInfo key={car.id} car={car}/>
       </div>
-
-      <div>
+      <h1> Rides you have posted!</h1>
+      <div className="view-results-container">
         {rides.length && (
-          <>
-            <h1> Rides you have posted!</h1>
 
-            <div>
-              {rides.map((ride) => {
-                return <RideCard key={ride.id} ride={ride}/>
-              })}
-            </div>
-          </>
+          <div>
+            {rides.map((ride, user) => {
+              return <RideCard key={ride.id} ride={ride} user={firstName}/>
+            })}
+          </div>
+
         )}
       </div>
     </>
