@@ -59,7 +59,7 @@ function RegisterCar ({ user }) {
     <>
       <div className="forms">
         <section className='flex-container'>
-          <h1> Hi {user.firstName}, </h1>
+          <h1> Kia ora {user.firstName}, </h1>
           <h1> please register your car before booking a ride.</h1>
           <form onSubmit={formik.handleSubmit}>
             <div className="field">
