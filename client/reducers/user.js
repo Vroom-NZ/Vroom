@@ -3,7 +3,17 @@ import { SET_USER, CLEAR_USER } from '../actions/user'
 const emptyUser = {
   id: null,
   username: '',
-  token: ''
+  token: '',
+  firstName: '',
+  lastName: '',
+  phoneNumber: '',
+  auth0Id: '',
+  email: '',
+  hasVehicle: false,
+  carId: '',
+  rating: '',
+  bio: '',
+  profilePic: ''
 }
 
 export default function user (state = emptyUser, action) {

@@ -9,8 +9,9 @@ import FormGroup from '@mui/material/FormGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import FormControl from '@mui/material/FormControl'
 import MenuItem from '@mui/material/MenuItem'
+import store from '../../store'
 
-import { addRides } from '../../apis/drivers'
+import { addRides } from '../../apis/rides'
 
 const rideSchema = Yup.object().shape({
   startLocation: Yup.string()
@@ -42,8 +43,15 @@ function Ride ({ user }) {
       seatsAvailable: '',
       cost: ''
     },
-    onSubmit: values => {
-      addRides(values, user) && ridePosted() && history.push('/')
+    onSubmit: async values => {
+      try {
+        await addRides(values, user)
+        store.dispatch({ type: 'SUBMIT', ride: values })
+        ridePosted()
+        history.push('/')
+      } catch (error) {
+        console.error(error)
+      }
     },
     validationSchema: rideSchema
   })
@@ -88,30 +96,31 @@ function Ride ({ user }) {
     <>
       <div className="forms">
         <section className='flex-container'>
+          <h1> Sup {user.firstName}, post your trip details here and get Vrooming!!! </h1>
           <form onSubmit={formik.handleSubmit}>
-            <div className="field">
+            <div>
               <div className="row">
-                <div className="column">
+                <div className="column column-flex">
                   <TextField
                     sx={{ margin: '8px' }}
                     className = 'InputField'
                     id="startLocation"
                     name="startLocation"
                     placeholder="Leaving from.."
-                    label={showAnyErrors('startLocation') ? showAnyErrors('startLocation') : 'Leaving from..'}
+                    label={showAnyErrors('startLocation') ? showAnyErrors('startLocation') : 'Leaving from...'}
                     value={formik.values.startLocation}
                     onChange={formik.handleChange}
                     error={formik.touched.startLocation && Boolean(formik.errors.startLocation)}
                   />
                 </div>
-                <div className="column">
+                <div className="column column-flex">
                   <TextField
                     sx={{ margin: '8px' }}
                     className = 'InputField'
                     id="destination"
                     name="destination"
                     placeholder="Destination.."
-                    label={showAnyErrors('destination') ? showAnyErrors('destination') : 'Destination..'}
+                    label={showAnyErrors('destination') ? showAnyErrors('destination') : 'Destination...'}
                     value={formik.values.destination}
                     onChange={formik.handleChange}
                     error={formik.touched.destination && Boolean(formik.errors.destination)}
@@ -119,7 +128,7 @@ function Ride ({ user }) {
                 </div>
               </div>
               <div className="row">
-                <div className="column">
+                <div className="column column-flex">
                   <TextField
                     sx={{ margin: '8px' }}
                     className = 'InputField'
@@ -133,7 +142,7 @@ function Ride ({ user }) {
                     error={formik.touched.leavingTime && Boolean(formik.errors.leavingTime)}
                   />
                 </div>
-                <div className="column">
+                <div className="column column-flex">
                   <TextField
                     sx={{ margin: '8px' }}
                     className = 'InputField'
@@ -149,7 +158,7 @@ function Ride ({ user }) {
                 </div>
               </div>
               <div className="row">
-                <div className="column">
+                <div className="column column-flex">
                   <TextField
                     sx={{ margin: '8px' }}
                     className = 'InputField'
@@ -162,7 +171,7 @@ function Ride ({ user }) {
                     error={formik.touched.cost && Boolean(formik.errors.cost)}
                   />
                 </div>
-                <div className="column dateinputfield">
+                <div className="column dateinputfield column-flex">
                   <TextField
                     sx={{ margin: '8px' }}
                     className = 'InputField'

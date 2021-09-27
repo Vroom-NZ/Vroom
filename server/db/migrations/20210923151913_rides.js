@@ -9,6 +9,7 @@ exports.up = (knex) => {
     table.time('estimated_arrival_time')
     table.integer('seats_available')
     table.integer('cost')
+    // table.specificType('passengerarray', 'text ARRAY')
   })
 }
 

@@ -7,13 +7,13 @@
   border-radius: 5px;
 }
 
-.row {
+.flex-container {
+  width: 100vh;
+  height: 70vh;
+  align-items: center;
   display: flex;
-
-}
-
-.column {
-  // flex: 80%;
+  justify-content: center;
+  color:#386641 ;
 }
 
 .column-flex {
@@ -40,4 +40,26 @@
   background-color: #D7E6B2;
   width: 100%;
   margin: 8px;
+}
+
+.orange-register-button {
+  text-align: center;
+  text-decoration: none;
+  background-color: #F4A259;
+  border-radius: 5px;
+  border: none;
+  padding: 10px;
+  color: white;
+  width: 150px;
+  margin: 12px 20px;
+  &:hover {
+    cursor: pointer;
+    animation: pulse; 
+    animation-duration: 1s;
+      }
+}
+
+.postRideButton {
+  display: flex;
+  justify-content: center;
 }

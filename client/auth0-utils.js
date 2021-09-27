@@ -1,3 +1,5 @@
+// import { getUser } from '../server/db/users'
+import { getUser } from '../client/apis/users'
 import { setUser } from './actions/user'
 import store from './store'
 
@@ -18,7 +20,8 @@ export async function cacheUser (useAuth0) {
     try {
       const token = await getAccessTokenSilently()
       const userToSave = { auth0Id: user.sub, email: user.email, name: user.nickname, token }
-      saveUser(userToSave)
+      const retrieveUser = await getUser(user.sub)
+      saveUser({ ...userToSave, ...retrieveUser })
     } catch (err) {
       console.error(err)
     }

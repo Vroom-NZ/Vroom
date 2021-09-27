@@ -15,6 +15,8 @@ import ViewRides from './ViewRides'
 import Contact from './Contact'
 import Profile from './Profile/Profile'
 import Terms from './Terms'
+import SiteInfo from './SiteInfo'
+import CarReg from './Drivers/CarReg'
 
 function App () {
   cacheUser(useAuth0)
@@ -22,15 +24,14 @@ function App () {
   return (
     <div className='app'>
       <Route path='/' component={Nav} />
-      {/* <Route exact path='/' component={Users} />
-      <Route exact path='/' component={PingRoutes} /> */}
-      <Route path='/register' component={Registration} />
-      <Route path='/drivers' component={PostRide} />
-      <Route path='/profile' component={Profile} />
       <Route exact path='/' component={LandingPage}/>
       <Route exact path='/' component={SearchBar} />
+      <Route exact path='/' component={SiteInfo} />
       <Route path='/profile' component={Profile} />
-      <Route path='/viewrides' component={ViewRides} />
+      <Route path='/rides' component={ViewRides} />
+      <Route path='/cars' component={CarReg} />
+      <Route path='/register' component={Registration} />
+      <Route path='/drivers' component={PostRide} />
       <Route path='/contact' component={Contact} />
       <Route path='/terms' component={Terms} />
       <Route path='/' component={Footer} />

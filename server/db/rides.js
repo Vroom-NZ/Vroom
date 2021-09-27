@@ -12,6 +12,19 @@ function getRides (startLocation, destination, date, db = connection) {
     })
 }
 
+function getAllRides (db = connection) {
+  return db('rides').select(
+    'auth0_id as auth0Id',
+    'start_location as startLocation',
+    'destination',
+    'date',
+    'leaving_time as leavingTime',
+    'estimated_arrival_time as arrivalTime',
+    'seats_available as seatsAvailable',
+    'cost'
+  )
+}
+
 function getRidesById (auth0Id, db = connection) { // to get rides for specific user
   return db('rides')
     .where('auth0_id', auth0Id)
@@ -74,5 +87,6 @@ module.exports = {
   getRidesById,
   addRide,
   updateRide,
-  deleteRide
+  deleteRide,
+  getAllRides
 }

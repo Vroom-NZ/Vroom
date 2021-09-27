@@ -5,6 +5,10 @@
 @import './forms.scss';
 @import './profile.scss';
 @import './calendar.scss';
+@import './footer.scss';
+@import './site-info.scss';
+@import './view-rides.scss';
+@import './car-registration.scss';
 
 html {
   display: flex;
@@ -72,7 +76,7 @@ a {
   display: flex;
   flex-direction: column;
   gap: 10px;
-}
+  }
 
 .title {
   font-size: larger;
