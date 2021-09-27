@@ -4,7 +4,6 @@ import { useFormik } from 'formik'
 import { connect } from 'react-redux'
 import * as Yup from 'yup'
 import { TextField } from '@mui/material'
-import MenuItem from '@mui/material/MenuItem'
 
 import { addCar } from '../../apis/cars'
 
@@ -22,8 +21,6 @@ const carSchema = Yup.object().shape({
   registration: Yup.string()
     .required('Required'),
   wof: Yup.string()
-    .required('Required'),
-  seatsAvailable: Yup.string()
     .required('Required')
 })
 
@@ -52,33 +49,6 @@ function RegisterCar ({ user }) {
       ? formik.errors[inputName]
       : false
   }
-
-  const seatsAvailable = [
-    {
-      value: '1',
-      label: '1'
-    },
-    {
-      value: '2',
-      label: '2'
-    },
-    {
-      value: '3',
-      label: '3'
-    },
-    {
-      value: '4',
-      label: '4'
-    },
-    {
-      value: '5',
-      label: '5'
-    },
-    {
-      value: '6',
-      label: '6'
-    }
-  ]
 
   return (
     <>
@@ -169,23 +139,6 @@ function RegisterCar ({ user }) {
               error={formik.touched.wof && Boolean(formik.errors.wof)}
             />
             <br/>
-            <TextField
-              sx={{ margin: '8px', width: '240px' }}
-              id="seatsAvailable"
-              className = 'InputField seatsField'
-              name="seatsAvailable"
-              select
-              label={showAnyErrors('seatsAvailable') ? showAnyErrors('seatsAvailable') : 'Passengers'}
-              value={formik.values.seatsAvailable}
-              onChange={formik.handleChange}
-              error={formik.touched.seatsAvailable && Boolean(formik.errors.seatsAvailable)}
-            >
-              {seatsAvailable.map((option) => (
-                <MenuItem key={option.value} value={option.value}>
-                  {option.label}
-                </MenuItem>
-              ))}
-            </TextField>
             <button className='button-primary' type='submit' data-testid='submitButton'>Register your car!</button>
           </div>
         </form>

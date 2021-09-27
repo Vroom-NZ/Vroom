@@ -29,11 +29,16 @@ function SearchBar () {
       date: '',
       seatsAvailable: ''
     },
-    onSubmit: values => {
-      ('get me rides!')
-      // console.log(getRidesSearch(values))
-      // getRidesSearch()
-      history.push('/viewrides')
+    onSubmit: async values => {
+      try {
+        console.log('gosh arent i happy with this lovely code')
+        console.log('values:', values)
+        // await searchRides(values)
+        store.dispatch({ type: 'SEARCH', search: values })
+        history.push('/rides')
+      } catch (error) {
+        console.error(error)
+      }
     },
     validationSchema: searchSchema
   })
