@@ -1,5 +1,5 @@
 .view-rides-main-container {
-  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+  // box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
   padding: 20px;
   border-radius: 5px;
   margin-top: 50px;
@@ -16,7 +16,7 @@
 
 .route-container{
   align-items: left;
-  width: 50%;
+  width: 70%;
   font-weight: bold;
   color: #F4A259
   }
@@ -24,7 +24,7 @@
 .route-date-container {
   display: flex;
   justify-content: right;
-  width: 50%;
+  width: 30%;
   font-weight: bold;
   color: #F4A259
 }
@@ -57,4 +57,15 @@
     animation: pulse; 
     animation-duration: 1s;
       } 
+ }
+
+ .ride-card-profile-pic{
+  display: flex;
+  justify-content: center;
+  
+ }
+
+ .ride-card-info{
+  margin: 5px;
+  
  }
