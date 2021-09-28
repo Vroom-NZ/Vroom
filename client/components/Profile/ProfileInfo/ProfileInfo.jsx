@@ -19,21 +19,21 @@ function profileInfo (props) {
           <span className="bio-header-text">{mockUser.rating}</span>
         </div>
       </div>
-      <span className='bio-box'>
+      <div className='bio-box'>
         <span className="bio-header-text"><b>Bio:</b><br></br></span>
         {mockUser.bio}
-      </span>
+      </div>
       {hasVehicle &&
             <div className="vehicle-box">
               <span className="bio-header-text"><b>Vehicle Info:</b><br></br></span>
               <span><b>Make: </b>{make} {model}<br></br></span>
               <span><b>year: </b>{year} <br></br></span>
               <span><b>Colour: </b>{colour}</span>
+              <div className="bio-buttons">
+                <span>EDIT PROFILE</span>
+              </div>
             </div>
       }
-      <div className="bio-buttons">
-        <span>EDIT PROFILE</span>
-      </div>
     </>
   )
 }
