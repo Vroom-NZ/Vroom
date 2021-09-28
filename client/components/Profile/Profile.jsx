@@ -32,11 +32,14 @@ function Profile (props) {
         {props.user.hasVehicle ? <ProfileInfo key={car.id} car={car}/>
           : <ProfileInfo />}
       </div>
+
       <div className='profile-ride-display'>
+
         <div className="profile-nav">
           <div className="profile-buttons">IM DRIVING</div>
           <div className="profile-buttons">IM A PASSANGER</div>
         </div>
+
         {rides.length && (
           <div className="profile-cards-container">
             {rides.map((ride, user) => {
@@ -44,7 +47,9 @@ function Profile (props) {
             })}
           </div>
         )}
+
       </div>
+
     </div>
   )
 }
