@@ -96,8 +96,10 @@ function Ride ({ user }) {
     <>
       <div className="forms">
         <section className='flex-container'>
-          <h1> {user.firstName}, tell us about your upcoming drive! </h1>
           <form onSubmit={formik.handleSubmit}>
+            <div className='form-title-container'>
+              <h1> {user.firstName}, tell us about your upcoming drive... </h1>
+            </div>
             <div>
               <div className="row">
                 <div className="column column-flex">
@@ -165,7 +167,7 @@ function Ride ({ user }) {
                     id="cost"
                     name="cost"
                     placeholder="Cost"
-                    label={showAnyErrors('cost') ? showAnyErrors('cost') : 'Cost'}
+                    label={showAnyErrors('cost') ? showAnyErrors('cost') : 'Cost ($)'}
                     value={formik.values.cost}
                     onChange={formik.handleChange}
                     error={formik.touched.cost && Boolean(formik.errors.cost)}
@@ -185,7 +187,7 @@ function Ride ({ user }) {
                     error={formik.touched.date && Boolean(formik.errors.date)}
                   />
                 </div>
-                <div className="column ">
+                <div className="column">
                   <TextField
                     sx={{ margin: '8px', width: '240px' }}
                     id="seatsAvailable"
