@@ -27,14 +27,16 @@ function Profile (props) {
   }, [])
 
   return (
-    <>
-      <div className="view-rides-main-container">
+    <div className='main-profile-container'>
+      <div className="profile-box">
         <ProfileInfo key={car.id} car={car}/>
       </div>
-      <h1> Rides you have posted!</h1>
-      <div className="view-results-container">
+      <div className='profile-ride-display'>
+        <div className="profile-nav-buttons">
+          <div> Rides you have posted!<div>
+          </div>Rides youre going on!</div>
+        </div>
         {rides.length && (
-
           <div>
             {rides.map((ride, user) => {
               return <RideCard key={ride.id} ride={ride} user={firstName}/>
@@ -43,7 +45,7 @@ function Profile (props) {
 
         )}
       </div>
-    </>
+    </div>
   )
 }
 
