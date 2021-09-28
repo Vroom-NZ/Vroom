@@ -28,12 +28,13 @@ const router = express.Router()
 // })
 
 router.get('/', (req, res) => {
-  dbRides.getAllRides().then(rides => {
-    res.json(rides)
-    return null
-  }).catch(err => {
-    res.status(500).send(err.message)
-  })
+  dbRides.getAllRides()
+    .then(rides => {
+      res.json(rides)
+      return null
+    }).catch(err => {
+      res.status(500).send(err.message)
+    })
 })
 
 router.post('/', async (req, res) => {

@@ -10,7 +10,7 @@ function SearchRideCard ({ ride, user }) {
   const passengerId = user.auth0Id
 
   function handleSubmit () {
-    console.log('book ride sends this info. RIDE DETAILS', rideDetails, 'hello hello', passengerId)
+    // console.log('book ride sends this info. RIDE DETAILS', rideDetails, 'hello hello', passengerId)
     bookRide(rideDetails, passengerId)
     rideBookedMessage()
     history.push('/')
