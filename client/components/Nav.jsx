@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 
 function Nav (props) {
   const { user } = props
-  const { hasVehicle } = user
+  const { hasVehicle, firstName } = user
   const login = getLoginFn(useAuth0)
   const logout = getLogoutFn(useAuth0)
   const register = getRegisterFn(useAuth0)
@@ -34,13 +34,15 @@ function Nav (props) {
           <div className='nav-hello'>
           </div>
           <div className='nav-button-container'>
-            <Link to='/' className='signin-register-buttons animate__infinite'>Home</Link>
-            <Link to='/profile' className='signin-register-buttons animate__infinite'>Profile</Link>
-            <Link to='/bookedrides' className='signin-register-buttons animate__infinite'>Booked Rides</Link>
-
-            {hasVehicle
-              ? <Link to='/drivers' className='signin-register-buttons animate__infinite'>Post a ride </Link>
-              : <Link to='/cars' className='signin-register-buttons animate__infinite'>Post a ride</Link>
+            {firstName &&
+            <>
+              <Link to='/' className='signin-register-buttons animate__infinite'>Home</Link>
+              <Link to='/profile' className='signin-register-buttons animate__infinite'>Profile</Link>
+              {hasVehicle
+                ? <Link to='/drivers' className='signin-register-buttons animate__infinite'>Post a ride </Link>
+                : <Link to='/cars' className='signin-register-buttons animate__infinite'>Post a ride</Link>
+              }
+            </>
             }
             <a href='/' onClick={handleLogoff} className='signin-register-buttons animate__infinite'>Log out</a>
           </div>
