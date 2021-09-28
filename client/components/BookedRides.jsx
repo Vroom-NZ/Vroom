@@ -7,33 +7,26 @@ import BookingCard from './Profile/Rides/BookingCard'
 function BookedRides (props) {
   const { auth0Id } = props.user
   const [bookings, setBookings] = useState([])
+  const [rides, setRides] = useState([])
 
   useEffect(async () => {
     const showBookings = await getBookedRides()
+    setBookings(showBookings)
     const showRides = await getRides()
-    const filteredBookings = showBookings.filter((booking) =>
-      (booking.passengerId === auth0Id))
-    setBookings(filteredBookings)
-    if (showRides.id === bookings.id) {
-      console.log('if statement in BookedRides.jsx returns: ', props.rides)
-      const ridesMap = showRides.map((ride) => ride)
-      console.log('ride: ', ridesMap)
-      if (ridesMap.id === bookings.rideId) {
-        console.log('ridesMap returns: ', ridesMap)
-      }
-      // all props.ride where ride.id === props.id
-    }
+    setRides(showRides)
   }, [])
+
+  const filteredBookings = bookings.filter((booking) => booking.passengerId === auth0Id)
+  const myRides = rides.filter((ride) => { return filteredBookings.some((booking) => booking.rideId === ride.id) })
 
   return (
     <>
       <div className='view-booked-rides-container'>
-        {bookings.map(booking => {
+        {myRides.map(ride => {
           return (
-            <BookingCard key={booking.id} booking={booking} />
+            <BookingCard key={ride.id} ride={ride} />
           )
         })}
-
       </div>
     </>
   )
@@ -41,8 +34,7 @@ function BookedRides (props) {
 
 function mapStateToProps (state) {
   return {
-    user: state.user,
-    rides: state.rides
+    user: state.user
   }
 }
 

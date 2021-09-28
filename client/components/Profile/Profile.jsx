@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 // import { Link, Route } from 'react-router-dom'
 // import History from './Rides/History'
 
-
 import ProfileInfo from './ProfileInfo/ProfileInfo'
 import { getRides } from '../../apis/rides'
 import { getCar } from '../../apis/cars'
@@ -30,7 +29,8 @@ function Profile (props) {
   return (
     <>
       <div className="view-rides-main-container">
-        <ProfileInfo key={car.id} car={car}/>
+        {props.user.hasVehicle ? <ProfileInfo key={car.id} car={car}/>
+          : <ProfileInfo />}
       </div>
       <h1> Rides you have posted!</h1>
       <div className="view-results-container">
