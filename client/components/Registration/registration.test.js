@@ -1,69 +1,47 @@
 import React from 'react'
-import { render, screen, waitFor } from '@testing-library/react'
+import { screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import '@testing-library/jest-dom/extend-expect'
 
 import Register from './Registration'
+import { renderWithRedux } from '../../test-utils'
+
+import { addUser } from '../../apis/users'
+
+jest.mock('../../apis/users')
 
 describe('Register form field', () => {
-  it('updates correctly on user input', async () => {
-    render(<Register/>)
+  it('rendering and submitting a basic Formik form', async () => {
+    addUser.mockImplementation((user) => {
+      expect(user.values.firstName).toBe('John')
+      expect(user.values.lastName).toBe('Dee')
+      expect(user.values.phoneNumber).toBe('02102752710')
+      return Promise.resolve()
+    })
+    renderWithRedux(<Register/>)
 
-    const firstNameInput = screen.getByRole('textbox', { name: 'First Name' })
-    const lastNameInput = screen.getByRole('textbox', { name: 'Last Name' })
+    userEvent.type(screen.getByLabelText(/first name/i), 'John')
+    userEvent.type(screen.getByLabelText(/last name/i), 'Dee')
+    userEvent.type(screen.getByLabelText(/phone number/i), '02102752710')
+    userEvent.type(screen.getByLabelText(/age/i), '25')
 
     userEvent.click(screen.getByRole('button', { name: /register/i }))
 
-    userEvent.type(firstNameInput, 'Mr Cool')
-    userEvent.type(lastNameInput, 'Is Cool')
-
-    await waitFor(() => {
-      expect(firstNameInput).toHaveValue('Mr Cool')
-      expect(lastNameInput).toHaveValue('Is Cool')
-    })
+    return await waitFor(() =>
+      expect(addUser).toHaveBeenCalled()
+    )
   })
-  it.skip('"Required" comes up on empty input', async () => {
-    const handleSubmit = jest.fn()
-    render(<Register onSubmit={handleSubmit}/>)
+  it('all fields are required', async () => {
+    renderWithRedux(<Register/>)
 
     userEvent.clear(screen.getByLabelText(/first name/i))
     userEvent.clear(screen.getByLabelText(/last name/i))
     userEvent.clear(screen.getByLabelText(/phone number/i))
+    userEvent.clear(screen.getByLabelText(/age/i))
 
     userEvent.click(screen.getByRole('button', { name: /register/i }))
 
     const element = await screen.findAllByText('Required')
-    expect(element[0]).toBeInTheDocument()
-  })
-  it.skip('message comes up on short input', async () => {
-    const handleSubmit = jest.fn()
-    render(<Register onSubmit={handleSubmit}/>)
-
-    userEvent.type(screen.getByLabelText(/first name/i), 'a')
-    userEvent.type(screen.getByLabelText(/last name/i), 'b')
-
-    userEvent.click(screen.getByRole('button', { name: /register/i }))
-
-    const element = await screen.findAllByText('This must be at least 2 characters long')
-    expect(element[0]).toBeInTheDocument()
-  })
-  it.skip('message comes up on long input', async () => {
-    const handleSubmit = jest.fn()
-    render(<Register onSubmit={handleSubmit}/>)
-
-    userEvent.type(screen.getByLabelText(/first name/i), 'whatawonderfuldaytobealive')
-
-    userEvent.click(screen.getByRole('button', { name: /register/i }))
-
-    const element = await screen.findAllByText('Sorry, this must be under 15 characters long')
-    expect(element[0]).toBeInTheDocument()
-  })
-  it.skip('user must be 18 alert', async () => {
-    const handleSubmit = jest.fn()
-    render(<Register onSubmit={handleSubmit}/>)
-
-    const ageInput = screen.getByRole('textbox', { name: 'Age' })
-    userEvent.type(ageInput, '10')
-    const element = await screen.findByText('Sorry, you must be')
     expect(element[0]).toBeInTheDocument()
   })
 })

@@ -44,11 +44,12 @@ function Ride ({ user }) {
       cost: ''
     },
     onSubmit: async values => {
+      console.log('addRides')
       try {
         await addRides(values, user)
         store.dispatch({ type: 'SUBMIT', ride: values })
-        ridePosted()
-        history.push('/')
+        // ridePosted()
+        // history.push('/')
       } catch (error) {
         console.error(error)
       }
@@ -56,9 +57,9 @@ function Ride ({ user }) {
     validationSchema: rideSchema
   })
 
-  function ridePosted () {
-    alert('Your ride has been posted. Happy travels!')
-  }
+  // function ridePosted () {
+  //   alert('Your ride has been posted. Happy travels!')
+  // }
 
   function showAnyErrors (inputName) {
     return formik.errors[inputName] && formik.touched[inputName]
@@ -223,7 +224,7 @@ function Ride ({ user }) {
               </FormControl>
             </div>
             <div className="postRideButton">
-              <button className='orange-register-button animate__infinite' type='submit' data-testid='submitButton'>Post a ride!</button>
+              <button className='orange-register-button animate__infinite' type='submit' data-testid='submitButton'>Post</button>
             </div>
           </form>
         </section>

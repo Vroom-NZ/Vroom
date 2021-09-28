@@ -37,11 +37,3 @@ function profileInfo (props) {
     </>
   )
 }
-
-function mapStateToProps (state) {
-  return {
-    user: state.user
-  }
-}
-
-export default connect(mapStateToProps)(profileInfo)
