@@ -3,8 +3,6 @@ import React from 'react'
 export default function Ride (props) {
   const { date, arrivalTime, leavingTime, startLocation, destination, seatsAvailable, cost } = props.ride
 
-  // mockData
-
   return (
     <>
       <div className="each-ride-container-profile">

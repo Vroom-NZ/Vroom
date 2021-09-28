@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 function profileInfo (props) {
   const { firstName, lastName, hasVehicle, profilePic, bio, rating } = props.user
-  const { make, model, year, colour } = props.car
+  // const { make, model, year, colour } = props.car
   const mockUser = {
     bio: 'this is my really really long bio that i have written to explain why i like to drive very far distances and come across as good company so people will want to join me. I am a very lonely man',
     profilePic: 'images/Avatarprofpic.png',
@@ -26,9 +26,9 @@ function profileInfo (props) {
       {hasVehicle &&
             <div className="vehicle-box">
               <span className="bio-header-text"><b>Vehicle Info:</b><br></br></span>
-              <span><b>Make: </b>{make} {model}<br></br></span>
-              <span><b>year: </b>{year} <br></br></span>
-              <span><b>Colour: </b>{colour}</span>
+              <span><b>Make: </b>{props.car.make} {props.car.model}<br></br></span>
+              <span><b>year: </b>{props.car.year} <br></br></span>
+              <span><b>Colour: </b>{props.car.colour}</span>
               <div className="bio-buttons">
                 <span>EDIT PROFILE</span>
               </div>

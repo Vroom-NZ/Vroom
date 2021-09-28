@@ -29,7 +29,8 @@ function Profile (props) {
   return (
     <div className='main-profile-container'>
       <div className="profile-box">
-        <ProfileInfo key={car.id} car={car}/>
+        {props.user.hasVehicle ? <ProfileInfo key={car.id} car={car}/>
+          : <ProfileInfo />}
       </div>
       <div className='profile-ride-display'>
         <div className="profile-nav">

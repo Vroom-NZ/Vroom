@@ -36,6 +36,8 @@ function Nav (props) {
           <div className='nav-button-container'>
             <Link to='/' className='signin-register-buttons animate__infinite'>Home</Link>
             <Link to='/profile' className='signin-register-buttons animate__infinite'>Profile</Link>
+            <Link to='/bookedrides' className='signin-register-buttons animate__infinite'>Booked Rides</Link>
+
             {hasVehicle
               ? <Link to='/drivers' className='signin-register-buttons animate__infinite'>Post a ride </Link>
               : <Link to='/cars' className='signin-register-buttons animate__infinite'>Post a ride</Link>

@@ -31,7 +31,7 @@ function ViewRides (props) {
         <div className="view-results-container">
           {rides.length ? (
             <>
-              {rides.map((ride) => {
+              {rides.map(ride => {
                 return (
                   <SearchRideCard key={ride.id} ride={ride} />
                 )
