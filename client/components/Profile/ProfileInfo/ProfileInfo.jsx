@@ -23,9 +23,7 @@ function profileInfo (props) {
               <p> {make} {model} </p>
               <p> {year} </p>
               <p>{colour}</p>
-
             </div>
-
         }
       </div>
     </>
