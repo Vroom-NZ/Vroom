@@ -24,13 +24,13 @@
   height: 20px;
   // border-radius: 100px;
   outline: none;
-  color: rgb(133, 133, 133);
+  color: #50925d;
   display: flex;
   justify-content: center;
 }
 
 .searchTerm:focus{
-  color: black
+  color: #386641;
 }
 
 .searchButton {
