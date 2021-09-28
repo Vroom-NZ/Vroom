@@ -23,7 +23,7 @@ test('GET car by user id', () => {
 )
 
 test('ADD car by user id', () => {
-  const newCar = {
+  const testCar = {
     make: 'mazda',
     model: 'axela',
     year: 2005,
@@ -34,8 +34,9 @@ test('ADD car by user id', () => {
     seats_available: 2,
     pets_allowed: true
   }
-  return db.addCar(2, newCar, testDb)
+  return db.addCar(testCar, 2, testDb)
     .then(car => {
+      console.log('make:', car)
       expect(car.id).toBe(124)
       expect(car.make).toBe('mazda')
       return null

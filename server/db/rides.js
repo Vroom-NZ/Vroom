@@ -44,7 +44,7 @@ function addRide (ride, id, db = connection) {
     .then(([id]) => {
       return {
         id,
-        auth0Id: newRide.auth0_id,
+        auth0Id: newRide.auth0Id,
         startLocation: newRide.start_location,
         destination: newRide.destination,
         date: newRide.date,
