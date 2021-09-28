@@ -11,20 +11,30 @@ import RideCard from './Rides/RideCard'
 
 function Profile (props) {
   const [rides, setRides] = useState([])
-  const [car, setCar] = useState([])
+  const [car, setCar] = useState({})
   const { auth0Id, firstName } = props.user
 
   useEffect(async () => {
-    const postedRides = await getRides()
-    // const user = await getUsers(id)
-    const filteredRides = postedRides.filter((ride) => ride.auth0Id === auth0Id)
-    setRides(filteredRides)
-  }, [])
+    try {
+      const postedRides = await getRides()
+      // const user = await getUsers(id)
+      const filteredRides = postedRides.filter((ride) => ride.auth0Id === auth0Id)
+      setRides(filteredRides)
+    } catch (error) {
+      console.error(error)
+    }
+  }, [auth0Id])
 
   useEffect(async () => {
-    const myCar = await getCar(auth0Id)
-    setCar(myCar)
-  }, [])
+    try {
+      if (auth0Id) {
+        const myCar = await getCar(auth0Id)
+        setCar(myCar)
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }, [auth0Id])
 
   return (
     <div className='main-profile-container'>
