@@ -37,7 +37,7 @@ function Profile (props) {
           <div className="profile-buttons">IM A PASSANGER</div>
         </div>
         {rides.length && (
-          <div>
+          <div className="profile-cards-container">
             {rides.map((ride, user) => {
               return <RideCard key={ride.id} ride={ride} user={firstName}/>
             })}
