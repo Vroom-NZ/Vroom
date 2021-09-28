@@ -12,6 +12,7 @@ function bookRide (rideDetails, passengerId, db = connection) {
     .insert(newBooking)
     .where('ride_id', id)
     .then(([id]) => {
+      console.log(auth0Id)
       return {
         driver_id: newBooking.driver_id,
         ride_id: id,
