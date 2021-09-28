@@ -5,7 +5,7 @@
 .profile-box{
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
+  // flex-wrap: wrap;
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
   padding: 20px;
   margin: 30px;
@@ -102,6 +102,7 @@
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
   padding: 2vh;
   margin: 1vh;
+  // width: 100%;
   background-color: #F4A259;
   color: #FFF;
   border-radius: 50px;
