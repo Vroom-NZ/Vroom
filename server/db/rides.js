@@ -14,6 +14,7 @@ function getRides (startLocation, destination, date, db = connection) {
 
 function getAllRides (db = connection) {
   return db('rides').select(
+    'id',
     'auth0_id as auth0Id',
     'start_location as startLocation',
     'destination',
