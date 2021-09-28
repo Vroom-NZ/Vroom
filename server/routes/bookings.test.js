@@ -23,7 +23,7 @@ test('GET getBookedRides returns all booked rides', () => {
 
 test('POST books a new ride', () => {
   db.bookRide = jest.fn()
-  db.bookRide.mockImplementation(newFriend => {
+  db.bookRide.mockImplementation(newBooking => {
     return Promise.resolve()
   })
   const newBooking = { driver_id: '10001', ride_id: 1, passenger_id: 'auth21093710' }
