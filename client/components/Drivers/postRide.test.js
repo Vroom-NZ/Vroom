@@ -11,7 +11,7 @@ import { addRides } from '../../apis/rides'
 jest.mock('../../apis/rides')
 
 describe('Register form field', () => {
-  it('rendering and submitting a postRide Formik form', async () => {
+  it.skip('rendering and submitting a postRide Formik form', async () => {
     addRides.mockImplementation((rides) => {
       expect(rides.values.startLocation).toBe('Auckland')
       expect(rides.values.destination).toBe('Hamilton')
@@ -39,16 +39,15 @@ describe('Register form field', () => {
       expect(addRides).toHaveBeenCalled()
     )
   })
-  it.skip('required all fields', async () => {
+  it('required all fields', async () => {
     renderWithRedux(<Ride/>)
 
-    userEvent.clear(screen.getByLabelText(/leaving from.../i), 'Auckland')
-    userEvent.clear(screen.getByLabelText(/destination/i), 'Hamilton')
-    userEvent.clear(screen.getByPlaceholderText(/leaving time/i), '12:00pm')
-    userEvent.clear(screen.getByPlaceholderText(/arrival time/i), '15:00pm')
-    userEvent.clear(screen.getByLabelText(/cost/), '10')
-    userEvent.clear(screen.getByLabelText(/date/i), '30/09/2021')
-    userEvent.clear(screen.getByLabelText(/passengers/i), '2')
+    userEvent.clear(screen.getByLabelText(/leaving from.../i))
+    userEvent.clear(screen.getByLabelText(/destination/i))
+    userEvent.clear(screen.getByPlaceholderText(/leaving time/i))
+    userEvent.clear(screen.getByPlaceholderText(/arrival time/i))
+    userEvent.clear(screen.getByLabelText(/cost/i))
+    userEvent.clear(screen.getByPlaceholderText(/date/i))
 
     userEvent.click(screen.getByRole('button', { name: /post/i }))
 

@@ -41,7 +41,6 @@ function App () {
 
 const mapStateToProps = (globalState) => {
   return {
-    fruits: globalState.fruits,
     token: globalState.user.token
   }
 }
