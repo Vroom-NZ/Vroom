@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 // import { Link, Route } from 'react-router-dom'
 // import History from './Rides/History'
 
-
 import ProfileInfo from './ProfileInfo/ProfileInfo'
 import { getRides } from '../../apis/rides'
 import { getCar } from '../../apis/cars'
@@ -28,23 +27,25 @@ function Profile (props) {
   }, [])
 
   return (
-    <>
-      <div className="view-rides-main-container">
-        <ProfileInfo key={car.id} car={car}/>
+    <div className='main-profile-container'>
+      <div className="profile-box">
+        {props.user.hasVehicle ? <ProfileInfo key={car.id} car={car}/>
+          : <ProfileInfo />}
       </div>
-      <h1> Rides you have posted!</h1>
-      <div className="view-results-container">
+      <div className='profile-ride-display'>
+        <div className="profile-nav">
+          <div className="profile-buttons">IM DRIVING</div>
+          <div className="profile-buttons">IM A PASSANGER</div>
+        </div>
         {rides.length && (
-
-          <div>
+          <div className="profile-cards-container">
             {rides.map((ride, user) => {
               return <RideCard key={ride.id} ride={ride} user={firstName}/>
             })}
           </div>
-
         )}
       </div>
-    </>
+    </div>
   )
 }
 

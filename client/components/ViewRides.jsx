@@ -6,7 +6,7 @@ import { getRides } from '../apis/rides'
 import SearchRideCard from './Profile/Rides/SearchRideCard'
 
 function ViewRides (props) {
-  const { startLocation, destination, date, seatsAvailable, id } = props.search
+  const { startLocation, destination, date, seatsAvailable } = props.search
 
   const [rides, setRides] = useState([])
 
@@ -31,7 +31,7 @@ function ViewRides (props) {
         <div className="view-results-container">
           {rides.length ? (
             <>
-              {rides.map((ride) => {
+              {rides.map(ride => {
                 return (
                   <SearchRideCard key={ride.id} ride={ride} />
                 )

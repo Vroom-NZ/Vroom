@@ -1,21 +1,23 @@
 import React from 'react'
-// import { connect } from 'react-redux'
-// import { bookRide } from '../../../apis/bookings'
+import { connect } from 'react-redux'
+import { bookRide } from '../../../apis/bookings'
+import { useHistory } from 'react-router-dom'
 
-export default function SearchRideCard ({ ride }) {
-  console.log('search ride result: ', ride)
-  const { date, arrivalTime, leavingTime, startLocation, destination, seatsAvailable, cost, id } = ride
+function SearchRideCard ({ ride, user }) {
+  const { date, arrivalTime, leavingTime, startLocation, destination, seatsAvailable, cost, id, auth0Id } = ride
+  const history = useHistory()
+  const rideDetails = { auth0Id, id }
+  const passengerId = user.auth0Id
 
   function handleSubmit () {
-    console.log('book ride sends this info: ', ride)
-    // bookRide(ride, user.auth0Id)
-    // rideBookedMessage()
-    // history.push('/')
+    bookRide(rideDetails, passengerId)
+    rideBookedMessage()
+    history.push('/')
   }
 
-  // function rideBookedMessage () {
-  //   alert('Your ride has been booked! Redirecting you back to home page')
-  // }
+  function rideBookedMessage () {
+    alert('Your ride has been booked! Redirecting you back to home page')
+  }
 
   return (
     <>
@@ -37,3 +39,11 @@ export default function SearchRideCard ({ ride }) {
     </>
   )
 }
+
+function mapStateToProps (state) {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(SearchRideCard)

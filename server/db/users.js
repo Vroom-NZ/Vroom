@@ -35,7 +35,6 @@ function getUser (auth0Id, db = connection) {
 }
 
 function setHasCar (auth0Id, db = connection) {
-  console.log('auth0: ', auth0Id)
   return db('users')
     .where('auth0_id', auth0Id)
     .update('has_vehicle', true)
@@ -47,12 +46,6 @@ function addUser (user, db = connection) {
   return db('users')
     .insert(newUser)
 }
-
-// function bookRide (auth0Id, rideId, db = connection) {
-//   return db('users')
-//     .where('auth0_id', auth0Id)
-//     .update('ride_id', rideId)
-// }
 
 module.exports = {
   getUsers,

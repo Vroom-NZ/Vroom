@@ -5,27 +5,34 @@ module.exports = {
   getBookedRides
 }
 
-function bookRide (ride, passengerId, db = connection) {
-  const { driverId, rideId } = ride
-  const { auth0Id } = passengerId
-  const newBooking = { driverId, rideId, auth0Id }
+function bookRide (rideDetails, passengerId, db = connection) {
+  const { auth0Id, id } = rideDetails
+  const newBooking = { driver_id: auth0Id, ride_id: id, passenger_id: passengerId }
   return db('ridepassengers')
-    // .join('rides', 'ride_id', 'rides.id')
     .insert(newBooking)
-    .where('ride_id', rideId)
-    .then(() => {
+    .where('ride_id', id)
+    .then(([id]) => {
       return {
-        driver_id: newBooking.driverId,
-        ride_id: newBooking.rideId,
-        passenger_id: newBooking.auth0Id
+        driver_id: newBooking.driver_id,
+        ride_id: id,
+        passenger_id: newBooking.passenger_id
       }
     })
 }
 
-function getBookedRides (passengerId, db = connection) {
+// function getBookedRides (passengerId, db = connection) {
+//   return db('ridepassengers')
+//     .where('passenger_id', passengerId)
+//     .then((result) => {
+//       return result
+//     })
+// }
+
+function getBookedRides (db = connection) {
   return db('ridepassengers')
-    .where('passenger_id', passengerId)
-    .then((results) => {
-      return results
-    })
+    .select(
+      'driver_id as driverId',
+      'ride_id as rideId',
+      'passenger_id as passengerId'
+    )
 }
