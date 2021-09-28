@@ -31,7 +31,7 @@ function SearchBar () {
     },
     onSubmit: async values => {
       try {
-        console.log('values:', values)
+        console.log('search bar.jsx values:', values)
         // await searchRides(values)
         store.dispatch({ type: 'SEARCH', search: values })
         history.push('/rides')
@@ -157,6 +157,7 @@ function SearchBar () {
 function mapStateToProps (state) {
   return {
     search: state.search
+    // rides: state.ride
   }
 }
 
