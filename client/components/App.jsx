@@ -24,14 +24,10 @@ function App () {
   return (
     <div className='app'>
       <Route path='/' component={Nav} />
-      {/* <Route exact path='/' component={Users} />
-      <Route exact path='/' component={PingRoutes} /> */}
-      <Route path='/register' component={Registration} />
-      <Route path='/drivers' component={PostRide} />
-      <Route path='/profile' component={Profile} />
       <Route exact path='/' component={LandingPage}/>
       <Route exact path='/' component={SearchBar} />
       <Route exact path='/' component={SiteInfo} />
+      <Route path='/profile' component={Profile} />
       <Route path='/rides' component={ViewRides} />
       <Route path='/cars' component={CarReg} />
       <Route path='/register' component={Registration} />
