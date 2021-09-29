@@ -16,7 +16,7 @@ export default function Ride (props) {
             </span>
           </div>
           <div>
-            <img className="pin-image" src='images/component2.svg'/>
+            <img className="pin-image" src='images/pin.jpg'/>
           </div>
           <div>
             <span className='bold-ride-info'>{props.user}</span><br></br>
