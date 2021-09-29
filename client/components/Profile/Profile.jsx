@@ -59,8 +59,8 @@ function Profile (props) {
       <div className='profile-ride-display'>
 
         <div className="profile-nav">
-          <button className="profile-buttons" onClick={() => handleClick('driving')}> My booked rides</button>
-          <button className="profile-buttons"onClick={() => handleClick('passenger') }>My posted rides</button>
+          <button className="profile-buttons" onClick={() => handleClick('driving')}> My posted rides</button>
+          <button className="profile-buttons"onClick={() => handleClick('passenger') }>My booked rides</button>
         </div>
         { view === 'driving'
         // Posted rides below
