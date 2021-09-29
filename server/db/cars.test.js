@@ -36,6 +36,7 @@ test('ADD car by user id', () => {
   }
   return db.addCar(testCar, 2, testDb)
     .then(car => {
+      console.log('make:', car)
       expect(car.id).toBe(124)
       expect(car.make).toBe('mazda')
       return null

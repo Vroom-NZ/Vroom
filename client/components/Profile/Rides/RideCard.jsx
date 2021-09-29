@@ -1,18 +1,18 @@
 import React from 'react'
 
 export default function Ride (props) {
-  const { date, arrivalTime, leavingTime, startLocation, destination, seatsAvailable, cost } = props.ride
+  const { date, arrivalTime, leavingTime, startLocation, destination, cost } = props.ride
 
   return (
     <>
       <div className="each-ride-container-profile">
         <div className='profile-ride-card-info'>
-          <div>
+          <div className="time-loc-details">
             <span>
               From <span className='bold-ride-info'>{startLocation}</span><br></br>
               <span>At <span className='bold-ride-info'>{leavingTime}</span></span><br></br>
               To: <span> <span className='bold-ride-info'>{destination}</span></span><br></br>
-              <span>At <span className='bold-ride-info'>{arrivalTime}</span></span>
+              <span>ETA:  <span className='bold-ride-info'>{arrivalTime}</span></span>
             </span>
           </div>
           <div>

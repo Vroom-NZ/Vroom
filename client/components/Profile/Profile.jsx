@@ -55,7 +55,9 @@ function Profile (props) {
         {props.user.hasVehicle ? <ProfileInfo key={car.id} car={car}/>
           : <ProfileInfo />}
       </div>
+
       <div className='profile-ride-display'>
+
         <div className="profile-nav">
           <button className="profile-buttons" onClick={() => handleClick('driving')}> My booked rides</button>
           <button className="profile-buttons"onClick={() => handleClick('passenger') }>My posted rides</button>
@@ -74,19 +76,20 @@ function Profile (props) {
           )
           // Booked rides below
           : (myRides.length
-            ? <div className='view-booked-rides-container'>
+            ? <div className='profile-cards-container'>
               {myRides.map(ride => {
                 return (
                   <BookingCard key={ride.id} ride={ride} />
                 )
               })}
             </div>
-            : <div className="view-booked-rides-container">
+            : <div className="profile-cards-container">
               <h2>Sorry {firstName} you have not booked any rides yet</h2>
             </div>
           )
         }
       </div>
+
     </div>
   )
 }

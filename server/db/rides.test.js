@@ -34,6 +34,7 @@ test('ADD new rides', () => {
   }
   return db.addRide(newRide, 2, testDb)
     .then(ride => {
+      console.log('ride:', ride)
       expect(ride.startLocation).toBe('auckland')
       return null
     })
