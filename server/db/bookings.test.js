@@ -13,9 +13,9 @@ beforeEach(() => {
 })
 
 test('GET booked rides', () => {
-  return db.getBookedRides('auth0|614c009c298e0400716ded6c', testDb)
+  return db.getBookedRides(testDb)
     .then(ride => {
-      expect(ride.ride_id).toBe(2)
+      expect(ride).toHaveLength(3)
       return null
     })
 }
@@ -23,8 +23,8 @@ test('GET booked rides', () => {
 
 test('POST book a ride', () => {
   const newRide = {
-    driverId: 100100100,
-    rideId: 3
+    auth0Id: 100100100,
+    id: 3
   }
   const passengerId = 'auth|8612538'
 

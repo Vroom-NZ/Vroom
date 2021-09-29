@@ -30,6 +30,14 @@
   border-radius: 50px;
   font-weight: 600;
   font-size: larger;
+  border: none;
+}
+
+.profile-buttons:active, .profile-buttons:hover, .profile-buttons:focus{
+  background-color: #f27d15;
+  // border:#386641;
+  // border-style: solid;
+  // border-width: 2.5px;
 }
 
 .profile-ride-display{
@@ -120,6 +128,15 @@
   line-height: 2;
 }
 
+.profile-ride-card-info-passenger{
+  margin: 2vh;
+  display: grid;
+	grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+	grid-gap: 10px;
+  line-height: 2;
+}
+
 .pin-image{
   height: 125px;
 }
@@ -151,6 +168,9 @@ text-align: right}
   background-color: #D7E6B2;
   color: #386641;
   width: 100%;
+}
+.time-loc-details{
+  text-align: right;
 }
 
 @media (max-width: 470px) { 
