@@ -1,7 +1,6 @@
 const request = require('supertest')
 const server = require('../server')
 const db = require('../db/bookings')
-// const { test } = require('../db/knexfile')
 jest.mock('../db/bookings')
 
 test('GET getBookedRides returns all booked rides', () => {

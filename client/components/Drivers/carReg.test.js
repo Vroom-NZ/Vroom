@@ -10,6 +10,10 @@ import { addCar } from '../../apis/cars'
 
 jest.mock('../../apis/cars')
 
+afterEach(() => {
+  return jest.resetAllMocks()
+})
+
 describe('CarRegister form field', () => {
   it('rendering and submitting a carReg form with Redux & Formik', async () => {
     addCar.mockImplementation((car) => {

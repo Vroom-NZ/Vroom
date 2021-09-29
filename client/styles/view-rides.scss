@@ -1,5 +1,4 @@
 .view-rides-main-container {
-  // box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
   padding: 20px;
   border-radius: 5px;
   margin-top: 50px;
@@ -9,7 +8,6 @@
 .start-end-date-container{
   display: flex;
   justify-content: top;
-  // box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
   padding: 20px;
   font-size: 35px;
 }
@@ -51,7 +49,6 @@
   align-items: left;
   text-decoration: none;
   color:#A7C957 ;
-  // justify-content: center;
   &:hover {
     cursor: pointer;
     animation: pulse; 

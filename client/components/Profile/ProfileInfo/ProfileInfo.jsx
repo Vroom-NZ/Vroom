@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 
 function profileInfo (props) {
   const { firstName, lastName, hasVehicle, profilePic, bio, rating } = props.user
-  // const { make, model, year, colour } = props.car
   const mockUser = {
     bio: 'Lonely man, shorter Bio. Happily driving around Aotearoa and taking people along with me.',
     profilePic: 'images/Avatarprofpic.png',
