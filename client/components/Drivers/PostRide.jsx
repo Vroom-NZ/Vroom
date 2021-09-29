@@ -44,7 +44,6 @@ function Ride ({ user }) {
       cost: ''
     },
     onSubmit: async values => {
-      console.log('addRides')
       try {
         await addRides(values, user)
         store.dispatch({ type: 'SUBMIT', ride: values })

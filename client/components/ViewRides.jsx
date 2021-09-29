@@ -56,7 +56,6 @@ function ViewRides (props) {
 function mapStateToProps (state) {
   return {
     search: state.search
-    // rides: state.ride
   }
 }
 
