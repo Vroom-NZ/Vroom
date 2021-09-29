@@ -13,20 +13,33 @@ import RideCard from './Rides/RideCard'
 
 function Profile (props) {
   const [rides, setRides] = useState([])
-  const [car, setCar] = useState([])
+  const [car, setCar] = useState({})
   const [view, setView] = useState('passenger')
   const [bookings, setBookings] = useState([])
 
   const { auth0Id, firstName } = props.user
 
   useEffect(async () => {
-    const postedRides = await getRides()
-    setRides(postedRides)
-    const myCar = await getCar(auth0Id)
-    setCar(myCar)
-    const showBookings = await getBookedRides()
-    setBookings(showBookings)
-  }, [])
+    try {
+      const postedRides = await getRides()
+      setRides(postedRides)
+      const showBookings = await getBookedRides()
+      setBookings(showBookings)
+    } catch (error) {
+      console.error(error)
+    }
+  }, [auth0Id])
+
+  useEffect(async () => {
+    try {
+      if (auth0Id) {
+        const myCar = await getCar(auth0Id)
+        setCar(myCar)
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }, [auth0Id])
 
   function handleClick (nav) {
     setView(nav)

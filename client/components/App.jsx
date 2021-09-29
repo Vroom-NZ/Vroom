@@ -27,13 +27,13 @@ function App () {
       <Route exact path='/' component={LandingPage}/>
       <Route exact path='/' component={SearchBar} />
       <Route exact path='/' component={SiteInfo} />
-      <Route path='/profile' component={Profile} />
-      <Route path='/rides' component={ViewRides} />
-      <Route path='/cars' component={CarReg} />
-      <Route path='/register' component={Registration} />
-      <Route path='/drivers' component={PostRide} />
-      <Route path='/contact' component={Contact} />
-      <Route path='/terms' component={Terms} />
+      <Route exact path='/profile' component={Profile} />
+      <Route exact path='/rides' component={ViewRides} />
+      <Route exact path='/cars' component={CarReg} />
+      <Route exact path='/register' component={Registration} />
+      <Route exact path='/drivers' component={PostRide} />
+      <Route exact path='/contact' component={Contact} />
+      <Route exact path='/terms' component={Terms} />
       <Route path='/' component={Footer} />
     </div>
   )
@@ -41,7 +41,6 @@ function App () {
 
 const mapStateToProps = (globalState) => {
   return {
-    fruits: globalState.fruits,
     token: globalState.user.token
   }
 }
