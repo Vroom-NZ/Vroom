@@ -36,11 +36,11 @@ function Nav (props) {
           <div className='nav-button-container'>
             {firstName &&
             <>
-              <Link to='/' className='signin-register-buttons animate__infinite'>Home</Link>
-              <Link to='/profile' className='signin-register-buttons animate__infinite'>Profile</Link>
+              <Link to='/' replace className='signin-register-buttons animate__infinite'>Home</Link>
+              <Link to='/profile' replace className='signin-register-buttons animate__infinite'>Profile</Link>
               {hasVehicle
-                ? <Link to='/drivers' className='signin-register-buttons animate__infinite'>Post a ride </Link>
-                : <Link to='/cars' className='signin-register-buttons animate__infinite'>Post a ride</Link>
+                ? <Link to='/drivers' replace className='signin-register-buttons animate__infinite'>Post a ride </Link>
+                : <Link to='/cars' replace className='signin-register-buttons animate__infinite'>Post a ride</Link>
               }
             </>
             }

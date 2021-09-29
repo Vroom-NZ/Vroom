@@ -28,6 +28,7 @@ router.get('/:id', (req, res) => {
       res.json(cars)
       return null
     }).catch(err => {
+      console.error(err)
       res.status(500).send(err.message)
     })
 })
