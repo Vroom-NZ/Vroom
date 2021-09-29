@@ -47,7 +47,7 @@ function Ride ({ user }) {
       try {
         await addRides(values, user)
         store.dispatch({ type: 'SUBMIT', ride: values })
-        ridePosted()
+        // ridePosted()
         history.push('/')
       } catch (error) {
         console.error(error)
@@ -56,9 +56,9 @@ function Ride ({ user }) {
     validationSchema: rideSchema
   })
 
-  function ridePosted () {
-    alert('Your ride has been posted. Happy travels!')
-  }
+  // function ridePosted () {
+  //   alert('Your ride has been posted. Happy travels!')
+  // }
 
   function showAnyErrors (inputName) {
     return formik.errors[inputName] && formik.touched[inputName]

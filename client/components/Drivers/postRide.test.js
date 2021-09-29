@@ -11,7 +11,7 @@ import { addRides } from '../../apis/rides'
 jest.mock('../../apis/rides')
 
 describe('Register form field', () => {
-  it.skip('rendering and submitting a postRide Formik form', async () => {
+  it('rendering and submitting a postRide Formik form', async () => {
     addRides.mockImplementation((rides) => {
       expect(rides.values.startLocation).toBe('Auckland')
       expect(rides.values.destination).toBe('Hamilton')
@@ -35,8 +35,10 @@ describe('Register form field', () => {
     userEvent.type(screen.getByLabelText(/passengers/i), '2')
     userEvent.click(button)
 
-    return await waitFor(() =>
-      expect(addRides).toHaveBeenCalled()
+    return await waitFor(() => {
+      const errors = screen.queryAllByText('Required')
+      expect(errors).toHaveLength(0)
+    }
     )
   })
   it('required all fields', async () => {
