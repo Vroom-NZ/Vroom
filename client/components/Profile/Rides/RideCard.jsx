@@ -6,8 +6,6 @@ export default function Ride (props) {
   return (
     <>
       <div className="each-ride-container-profile">
-        {/* <div className='ride-card-profile-pic'> */}
-        {/* </div> */}
         <div className='profile-ride-card-info'>
           <div>
             <span>
@@ -28,9 +26,6 @@ export default function Ride (props) {
           <div>
             <img src='images/Avatarprofpic.png'/>
           </div>
-
-          {/* <span> There are <span className='bold-ride-info'>{seatsAvailable}</span> seats still free. </span> */}
-          {/* <span>Your passengers are: <span className='bold-ride-info'>Bob, Mary</span></span> */}
         </div>
       </div>
     </>

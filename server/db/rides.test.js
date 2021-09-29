@@ -34,7 +34,6 @@ test('ADD new rides', () => {
   }
   return db.addRide(newRide, 2, testDb)
     .then(ride => {
-      console.log('ride:', ride)
       expect(ride.startLocation).toBe('auckland')
       return null
     })
@@ -59,7 +58,6 @@ test('UPDATE existing ride', () => {
     })
 })
 
-// ask facilitator for how to test
 test('DELETE ride by id', () => {
   return db.deleteRide(1, 1, testDb)
     .then(() => {

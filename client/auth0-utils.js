@@ -1,4 +1,3 @@
-// import { getUser } from '../server/db/users'
 import { getUser } from '../client/apis/users'
 import { setUser } from './actions/user'
 import store from './store'

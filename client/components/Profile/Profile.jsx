@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-// import { Link, Route } from 'react-router-dom'
-// import History from './Rides/History'
 
 import ProfileInfo from './ProfileInfo/ProfileInfo'
 import BookingCard from './Rides/BookingCard'
