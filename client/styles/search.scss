@@ -3,26 +3,20 @@
 .searchbar-container {
   display: flex;
   justify-content: center;
-  // box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
-  // padding: 12px;
   border-radius: 100px;
 
 }
 
 .search {
   width: 100%;
-  // position: relative;
   display: flex;
-  // justify-content: center;
 }
 
 .searchTerm {
   width: 100%;
   border: 3px solid #F4A259;
   border-right: none;
-  // padding: 5px;
   height: 20px;
-  // border-radius: 100px;
   outline: none;
   color: #50925d;
   display: flex;
@@ -34,7 +28,6 @@
 }
 
 .searchButton {
-    // height: 100%;
   margin-top: 5px;
   padding: 20px;
   border: none;
@@ -44,8 +37,6 @@
   border-radius: 5px;
   cursor: pointer;
   font-size: 20px;
-  // display: flex;
-  // align-items: left;
   &:hover {
     cursor: pointer;
     animation: pulse; 
@@ -64,7 +55,6 @@
   font-size: 20px;
 }
 
-/*Resize the wrap to see the search bar change!*/
 .wrap{
   display: flex;
   justify-content: center;
