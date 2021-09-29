@@ -14,7 +14,7 @@ export default function BookingCard (props) {
           To <span className='bold-ride-info'>{destination} </span>
           and arriving at <span className='bold-ride-info'>{arrivalTime}</span></span>
 
-          <img className="pin-image" src='images/component2.svg'/>
+          <img className="pin-image" src='images/pin.jpg'/>
           <span className='bold-ride-info'>
             Date: <br></br>
             {date} <br></br><br></br>
