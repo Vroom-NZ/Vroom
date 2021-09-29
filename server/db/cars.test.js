@@ -43,7 +43,6 @@ test('ADD car by user id', () => {
     })
 })
 
-// Ask facilitator
 test('DELETE car by id', () => {
   return db.deleteCar(1, 123, testDb)
     .then(() => {

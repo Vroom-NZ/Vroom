@@ -2,7 +2,6 @@ const request = require('supertest')
 const server = require('../server')
 const db = require('../db/cars')
 const dbUsers = require('../db/users')
-// const { test } = require('../db/knexfile')
 jest.mock('../db/cars')
 
 test('GET getCars returns a car', () => {

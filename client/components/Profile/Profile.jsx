@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-// import { Link, Route } from 'react-router-dom'
-// import History from './Rides/History'
 
 import ProfileInfo from './ProfileInfo/ProfileInfo'
 import BookingCard from './Rides/BookingCard'
@@ -61,8 +59,8 @@ function Profile (props) {
       <div className='profile-ride-display'>
 
         <div className="profile-nav">
-          <button className="profile-buttons" onClick={() => handleClick('driving')}>IM DRIVING </button>
-          <button className="profile-buttons"onClick={() => handleClick('passenger') }>IM A PASSENGER</button>
+          <button className="profile-buttons" onClick={() => handleClick('driving')}> My booked rides</button>
+          <button className="profile-buttons"onClick={() => handleClick('passenger') }>My posted rides</button>
         </div>
         { view === 'driving'
         // Posted rides below

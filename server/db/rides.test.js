@@ -59,7 +59,6 @@ test('UPDATE existing ride', () => {
     })
 })
 
-// ask facilitator for how to test
 test('DELETE ride by id', () => {
   return db.deleteRide(1, 1, testDb)
     .then(() => {
