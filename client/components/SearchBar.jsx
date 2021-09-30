@@ -5,7 +5,6 @@ import { TextField } from '@mui/material'
 import MenuItem from '@mui/material/MenuItem'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-// import { getRides } from '../apis/rides'
 import store from './../store'
 
 const searchSchema = Yup.object().shape({
@@ -31,8 +30,6 @@ function SearchBar () {
     },
     onSubmit: async values => {
       try {
-        console.log('search bar.jsx values:', values)
-        // await searchRides(values)
         store.dispatch({ type: 'SEARCH', search: values })
         history.push('/rides')
       } catch (error) {
@@ -109,7 +106,6 @@ function SearchBar () {
                   />
                 </div>
                 <div className="column">
-                  {/* className="dateinputfield" */}
                   <TextField
                     sx={{ margin: '8px' }}
                     className = 'searchInputField'
@@ -157,7 +153,6 @@ function SearchBar () {
 function mapStateToProps (state) {
   return {
     search: state.search
-    // rides: state.ride
   }
 }
 

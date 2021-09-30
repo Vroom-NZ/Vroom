@@ -2,7 +2,6 @@
   display: flex;
   justify-content: center;
   position: relative;
-  // box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
   padding: 20px;
   border-radius: 5px;
 }
@@ -13,7 +12,7 @@
 }
 
 .column {
-  // flex: 80%;
+  //flex:80%;
 }
 
 .column-flex {
@@ -40,4 +39,16 @@
   background-color: #D7E6B2;
   width: 100%;
   margin: 8px;
+}
+
+.form-title-container{
+  display: flex;
+  justify-content: center;
+  padding-left: 40px;
+  padding-right: 40px
+}
+
+.column-flex-car-reg {
+  flex: 80%;
+  margin-right: 8px
 }

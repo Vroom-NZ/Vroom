@@ -5,8 +5,8 @@ exports.seed = function (knex) {
         {
           id: 1,
           auth0_id: 'auth0|614bae6761718e0069e37cff',
-          first_name: 'kieran',
-          last_name: 'tahir',
+          first_name: 'Kieran',
+          last_name: 'Tahir',
           email: 'kierantahir@gmail.com',
           description: 'admin', // access type
           phone_number: '021020304',
@@ -20,8 +20,8 @@ exports.seed = function (knex) {
         {
           id: 2,
           auth0_id: 'auth0|614c009c298e0400716ded6c',
-          first_name: 'alex',
-          last_name: 'arlignton',
+          first_name: 'Alex',
+          last_name: 'Arlington',
           email: 'alexsarlington@gmail.com',
           description: '', // access type
           phone_number: '021020304',

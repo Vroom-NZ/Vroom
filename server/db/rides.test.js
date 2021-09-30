@@ -12,11 +12,10 @@ beforeEach(() => {
   return testDb.seed.run()
 })
 
-test('GET rides by start location, destination and date', () => {
-  return db.getRides('auckland', 'abel tasman', '2021-10-14', testDb)
+test('GET all rides', () => {
+  return db.getAllRides(testDb)
     .then(ride => {
-      expect(ride.id).toBe(1)
-      expect(ride.start_location).toBe('auckland')
+      expect(ride).toHaveLength(3)
 
       return null
     })
@@ -33,8 +32,9 @@ test('ADD new rides', () => {
     seatsAvailable: 2,
     cost: 40
   }
-  return db.addRide(1, newRide, testDb)
+  return db.addRide(newRide, 2, testDb)
     .then(ride => {
+      console.log('ride:', ride)
       expect(ride.startLocation).toBe('auckland')
       return null
     })
@@ -43,7 +43,7 @@ test('ADD new rides', () => {
 test('UPDATE existing ride', () => {
   const updatedRide = {
     id: 1,
-    user_id: 1,
+    auth0_id: 1,
     start_location: 'wellington',
     destination: 'rotorua',
     date: '2021-10-14',
@@ -59,7 +59,6 @@ test('UPDATE existing ride', () => {
     })
 })
 
-// ask facilitator for how to test
 test('DELETE ride by id', () => {
   return db.deleteRide(1, 1, testDb)
     .then(() => {
