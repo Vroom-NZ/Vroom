@@ -11,12 +11,7 @@ function SearchRideCard ({ ride, user }) {
 
   function handleSubmit () {
     bookRide(rideDetails, passengerId)
-    rideBookedMessage()
     history.push('/')
-  }
-
-  function rideBookedMessage () {
-    alert('Your ride has been booked! Redirecting you back to home page')
   }
 
   return (
