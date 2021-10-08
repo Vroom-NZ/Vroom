@@ -1,47 +1,193 @@
-.profile-container {
+.main-profile-container {
   display: flex;
-  justify-content: center;
-  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
-  padding: 20px;
-  padding-top: 20%;
-  padding-bottom: 20%;
-  border-radius: 5px;
-  margin-top: 50px
 }
 
- .avatar{
+.profile-box{
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+  padding: 20px;
+  margin: 30px;
+  margin-right: 10px;
+  justify-content: left;
+  color: #386641;
+  width: 30vh;
+  height: 60vh;
+  border-radius: 30px;
+  justify-content: space-between;
+}
+
+.profile-buttons {
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
   display: flex;
   justify-content: center;
- }
+  width: 50%;
+  padding: 2vh;
+  margin: 2vh;
+  background-color: #F4A259;
+  color: #FFF;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: larger;
+  border: none;
+}
+
+.profile-buttons:active, .profile-buttons:hover, .profile-buttons:focus{
+  background-color: #f27d15;
+  // border:#386641;
+  // border-style: solid;
+  // border-width: 2.5px;
+}
+
+.profile-ride-display{
+  padding: 10px;
+  margin: 30px;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  margin-left: 10px;
+  justify-content: left;
+  color: #386641;
+  width: 100vh;
+  height: 60vh;
+}
+
+.profile-cards-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 1vh;
+  overflow-y: auto;
+  height: 53vh;
+  border-radius: 30px;
+}
+
+.user-info{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1vh;
+}
+
+.user-info-text{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-weight: 600;
+}
+
+.profile-name{
+  font-size: xx-large;
+  margin-bottom: 1vh;
+}
+
+.bio-header-text{
+  font-size: larger;
+}
+
+.profile-nav{
+  display: flex;
+}
+
  .bio-box{
-  margin: 5px;
+  margin: 1vh;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
   color: #386641;
-  background-color: #FFFDED;
-  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
-  border-radius: 5px;
-  padding: 20px;
- }
- .vehicle-box{
-  margin: 5px;
-  color: #386641;
-  background-color: #FFFDED;
-  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
-  border-radius: 5px;
-  padding: 20px;
- }
- .personal-info{
-   width: 40vh;
-  margin: 5px;
-  color: #386641;
-  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
-  padding: 80px;
-  margin: 25px;
-  border-radius: 5px;
- }
- h2 {
-   color: #386641;
+  line-height: 1.6;
  }
 
- h1 {
+.vehicle-box{
+  margin: 1vh;
+  margin-top: 1vh;
+  margin-bottom: 1.5vh;
   color: #386641;
- }
+  line-height: 1.6;
+}
+
+
+.bio-buttons{
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+  padding: 2vh;
+  margin: 1vh;
+  background-color: #F4A259;
+  color: #FFF;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: small;
+  text-align: center;
+}
+
+.profile-ride-card-info{
+  margin: 2vh;
+  display: grid;
+	grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+	grid-gap: 10px;
+  line-height: 2;
+}
+
+.profile-ride-card-info-passenger{
+  margin: 2vh;
+  display: grid;
+	grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+	grid-gap: 10px;
+  line-height: 2;
+}
+
+.pin-image{
+  height: 125px;
+}
+.column1{
+text-align: right}
+
+@media (max-width: 1486px) { 
+  .profile-box {
+    height: auto;
+    width: auto;
+  }
+  .main-profile-container{
+    display:block;
+  }
+  .profile-nav{
+    display: flex;
+    width: auto;
+  }
+  .profile-ride-display{
+    width: auto;
+  }
+}
+
+.each-ride-container-profile{
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+  padding: 12px;
+  margin: 25px;
+  border-radius: 5px;
+  background-color: #D7E6B2;
+  color: #386641;
+  width: 100%;
+}
+.time-loc-details{
+  text-align: right;
+}
+
+@media (max-width: 470px) { 
+  .profile-nav{
+    display: flex;
+    width: auto;
+    flex-direction: column;
+    align-items: center;
+  }
+  .profile-buttons{
+    width: 100%;
+  }
+  .profile-box{
+    margin: 0px;
+  }
+  .profile-cards-container{
+    margin: 0px;
+  }
+  .profile-ride-display{
+    margin: 0px;
+    padding: 0px;
+  }
+}

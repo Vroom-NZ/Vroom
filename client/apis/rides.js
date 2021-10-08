@@ -29,8 +29,3 @@ export function searchRides (values) {
       return res.body.rides
     })
 }
-
-// export async function addRide (ride) {
-//   return await request.post(rootUrl + '/viewrides/')
-//     .send(ride)
-// }

@@ -23,7 +23,6 @@ router.post('/', async (req, res) => {
   const rideDetails = req.body.rideDetails
   const passengerId = req.body.passengerId
   try {
-    console.log('ride details:', rideDetails, 'passengerID:', passengerId)
     await dbBookings.bookRide(rideDetails, passengerId)
     res.sendStatus(201)
   } catch (error) {

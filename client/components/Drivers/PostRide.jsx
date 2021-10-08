@@ -47,7 +47,7 @@ function Ride ({ user }) {
       try {
         await addRides(values, user)
         store.dispatch({ type: 'SUBMIT', ride: values })
-        ridePosted()
+        // ridePosted()
         history.push('/')
       } catch (error) {
         console.error(error)
@@ -56,9 +56,9 @@ function Ride ({ user }) {
     validationSchema: rideSchema
   })
 
-  function ridePosted () {
-    alert('Your ride has been posted. Happy travels!')
-  }
+  // function ridePosted () {
+  //   alert('Your ride has been posted. Happy travels!')
+  // }
 
   function showAnyErrors (inputName) {
     return formik.errors[inputName] && formik.touched[inputName]
@@ -96,8 +96,10 @@ function Ride ({ user }) {
     <>
       <div className="forms">
         <section className='flex-container'>
-          <h1> {user.firstName}, tell us about your upcoming drive! </h1>
           <form onSubmit={formik.handleSubmit}>
+            <div className='form-title-container'>
+              <h1> {user.firstName}, tell us about your upcoming drive... </h1>
+            </div>
             <div>
               <div className="row">
                 <div className="column column-flex">
@@ -165,7 +167,7 @@ function Ride ({ user }) {
                     id="cost"
                     name="cost"
                     placeholder="Cost"
-                    label={showAnyErrors('cost') ? showAnyErrors('cost') : 'Cost'}
+                    label={showAnyErrors('cost') ? showAnyErrors('cost') : 'Cost ($)'}
                     value={formik.values.cost}
                     onChange={formik.handleChange}
                     error={formik.touched.cost && Boolean(formik.errors.cost)}
@@ -185,7 +187,7 @@ function Ride ({ user }) {
                     error={formik.touched.date && Boolean(formik.errors.date)}
                   />
                 </div>
-                <div className="column ">
+                <div className="column">
                   <TextField
                     sx={{ margin: '8px', width: '240px' }}
                     id="seatsAvailable"
@@ -223,7 +225,7 @@ function Ride ({ user }) {
               </FormControl>
             </div>
             <div className="postRideButton">
-              <button className='orange-register-button animate__infinite' type='submit' data-testid='submitButton'>Post a ride!</button>
+              <button className='orange-register-button animate__infinite' type='submit' data-testid='submitButton'>Post</button>
             </div>
           </form>
         </section>

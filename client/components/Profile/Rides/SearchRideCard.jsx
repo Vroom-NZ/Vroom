@@ -4,13 +4,12 @@ import { bookRide } from '../../../apis/bookings'
 import { useHistory } from 'react-router-dom'
 
 function SearchRideCard ({ ride, user }) {
-  const { date, arrivalTime, leavingTime, startLocation, destination, seatsAvailable, cost, id, auth0Id } = ride
+  const { date, firstName, lastName, arrivalTime, leavingTime, startLocation, destination, seatsAvailable, cost, id, auth0Id } = ride
   const history = useHistory()
   const rideDetails = { auth0Id, id }
   const passengerId = user.auth0Id
 
   function handleSubmit () {
-    console.log('book ride sends this info. RIDE DETAILS', rideDetails, 'hello hello', passengerId)
     bookRide(rideDetails, passengerId)
     rideBookedMessage()
     history.push('/')
@@ -28,10 +27,9 @@ function SearchRideCard ({ ride, user }) {
           <img src='images/Avatarprofpic.png'></img>
         </div>
         <div className='ride-card-info'>
-          <p> <span className='bold-ride-info'>Sean</span> is leaving at <span className='bold-ride-info'>{leavingTime}</span> and arriving at <span className='bold-ride-info'>{arrivalTime}</span>. </p>
+          <p> <span className='bold-ride-info'>{firstName} {lastName}</span> is leaving at <span className='bold-ride-info'>{leavingTime}</span> and arriving at <span className='bold-ride-info'>{arrivalTime}</span>. </p>
           <p> Cost: <span className='bold-ride-info'>${cost}</span> per person.</p>
           <p> There are <span className='bold-ride-info'>{seatsAvailable}</span> seats available. </p>
-          <p>You will be joining: <span className='bold-ride-info'>Bob</span></p>
         </div>
         <div className="bookRideButton">
           <button className='orange-register-button animate__infinite' onClick={handleSubmit}>Book this ride</button>

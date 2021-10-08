@@ -3,31 +3,36 @@ import { connect } from 'react-redux'
 
 function profileInfo (props) {
   const { firstName, lastName, hasVehicle, profilePic, bio, rating } = props.user
-  const { make, model, year, colour } = props.car
   const mockUser = {
-    bio: 'This is my bio wow so sick, lets vroomvroombaby!',
+    bio: 'Lonely man, shorter Bio. Happily driving around Aotearoa and taking people along with me.',
     profilePic: 'images/Avatarprofpic.png',
     rating: '★ 5/5'
   }
 
   return (
     <>
-      <div className="profile-box">
-        <div className="personal-info">
-          <img className='avatar'src={mockUser.profilePic}></img>
-          <h1 className='text-margin'> {firstName} {lastName}  </h1>
-          <h2>{mockUser.rating}</h2>
-          <p className='bio-box'> {mockUser.bio}</p>
-          {hasVehicle &&
-            <div className="vehicle-box">
-              <h3> Vehicle Details</h3>
-              <p> {make} {model} </p>
-              <p> {year} </p>
-              <p>{colour}</p>
-            </div>
-          }
+      <div className="user-info">
+        <img src={mockUser.profilePic}></img>
+        <div className='user-info-text'>
+          <span className="profile-name"> {firstName}{lastName}</span>
+          <span className="bio-header-text">{mockUser.rating}</span>
         </div>
       </div>
+      <div className='bio-box'>
+        <span className="bio-header-text"><b>Bio:</b><br></br></span>
+        {mockUser.bio}
+      </div>
+      {hasVehicle &&
+            <div className="vehicle-box">
+              <span className="bio-header-text"><b>Vehicle Info:</b><br></br></span>
+              <span><b>Make: </b>{props.car.make} {props.car.model}<br></br></span>
+              <span><b>year: </b>{props.car.year} <br></br></span>
+              <span><b>Colour: </b>{props.car.colour}</span>
+              <div className="bio-buttons">
+                <span>EDIT PROFILE</span>
+              </div>
+            </div>
+      }
     </>
   )
 }

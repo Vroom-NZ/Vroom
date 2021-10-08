@@ -20,11 +20,11 @@ function bookRide (rideDetails, passengerId, db = connection) {
     })
 }
 
-function getBookedRides (passengerId, db = connection) {
+function getBookedRides (db = connection) {
   return db('ridepassengers')
-    .where('passenger_id', passengerId)
-    .select()
-    .then(([results]) => {
-      return results
-    })
+    .select(
+      'driver_id as driverId',
+      'ride_id as rideId',
+      'passenger_id as passengerId'
+    )
 }
