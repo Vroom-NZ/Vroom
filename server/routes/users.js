@@ -42,9 +42,15 @@ router.get('/:auth0id', async (req, res) => {
   }
 })
 
-router.patch('/', async (req, res) => {
-  console.log('req.body in user.js routes: ', req.body.user)
-  // const { bio } = req.body
+router.post('/:auth0id', async (req, res) => {
+  try {
+    console.log('req.body in user.js routes: ', req.body.user)
+    const auth0id = req.params.auth0id
+    const user = req.body.user
+    db.updateUser(user, auth0id)
+  } catch (error) {
+    res.status(500).json({ message: 'unable to update user' })
+  }
 })
 
 module.exports = router

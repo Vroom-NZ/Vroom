@@ -4,7 +4,7 @@ import { updateUser } from '../../../apis/users'
 
 function profileInfo (props) {
   const [edit, setEdit] = useState(false)
-  const { firstName, lastName, hasVehicle, profilePic, bio, rating } = props.user
+  const { auth0Id, firstName, lastName, hasVehicle, profilePic, bio, rating } = props.user
   const newUser = {
     profilePic: 'images/kieran.jpg',
     rating: '★ 5/5'
@@ -18,7 +18,7 @@ function profileInfo (props) {
 
   async function handleSubmit () {
     try {
-      await updateUser(myBio)
+      await updateUser(myBio, auth0Id)
       setEdit(false)
     } catch (error) {
       console.error(error)
