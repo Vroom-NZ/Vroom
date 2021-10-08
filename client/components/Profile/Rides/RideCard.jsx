@@ -1,14 +1,19 @@
 import React from 'react'
-import { deleteRide } from '../../../apis/rides'
+import { deletePostedRide } from '../../../apis/rides'
 
 export default function Ride (props) {
   const { date, arrivalTime, leavingTime, startLocation, destination, cost } = props.ride
   const rideInfo = props.ride
 
   function handleSubmit () {
-    deleteRide(rideInfo)
+    deletePostedRide(rideInfo)
+    rideDeleteMessage()
+    location.reload()
   }
 
+  function rideDeleteMessage () {
+    alert('Your posted ride has been deleted')
+  }
   return (
     <>
       <div className="each-ride-container-profile">
