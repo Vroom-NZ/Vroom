@@ -5,6 +5,8 @@ exports.seed = function (knex) {
         {
           id: 1, // ride id
           auth0_id: 200200200,
+          first_name: 'Bob',
+          last_name: 'Robertson',
           start_location: 'Auckland',
           destination: 'Hamilton',
           date: '2021-10-14',
@@ -16,6 +18,8 @@ exports.seed = function (knex) {
         {
           id: 2, // ride id
           auth0_id: 100100100,
+          first_name: 'Eric',
+          last_name: 'Ericson',
           start_location: 'Auckland',
           destination: 'Tairua',
           date: '2021-10-08',
@@ -27,6 +31,8 @@ exports.seed = function (knex) {
         {
           id: 3, // ride id
           auth0_id: 200200200,
+          first_name: 'Bob',
+          last_name: 'Robertson',
           start_location: 'Auckland',
           destination: 'Tairua',
           date: '2021-10-08',
