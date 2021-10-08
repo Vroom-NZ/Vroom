@@ -9,8 +9,6 @@ function SearchRideCard ({ ride, user }) {
   const rideDetails = { auth0Id, id }
   const passengerId = user.auth0Id
 
-  console.log('ride info: ', ride)
-
   function handleSubmit () {
     bookRide(rideDetails, passengerId)
     rideBookedMessage()
