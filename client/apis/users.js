@@ -20,3 +20,10 @@ export async function addUser (user) {
   return await request.post(rootUrl + '/users/')
     .send(user)
 }
+
+export async function updateUser (user) {
+  console.log('api works: ', user)
+  const { bio } = user
+  return await request.patch(rootUrl + '/users/')
+    .send(bio)
+}

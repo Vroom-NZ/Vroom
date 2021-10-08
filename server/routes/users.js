@@ -42,4 +42,9 @@ router.get('/:auth0id', async (req, res) => {
   }
 })
 
+router.patch('/', async (req, res) => {
+  console.log('req.body in user.js routes: ', req.body.user)
+  // const { bio } = req.body
+})
+
 module.exports = router

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
+import { updateUser } from '../../../apis/users'
 
 function profileInfo (props) {
   const [edit, setEdit] = useState(false)
@@ -15,13 +16,17 @@ function profileInfo (props) {
     setEdit(true)
   }
 
-  function handleSubmit () {
-
+  async function handleSubmit () {
+    try {
+      await updateUser(myBio)
+      setEdit(false)
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   function handleChange (event) {
     setMyBio(event.target.value)
-    console.log('in handlechange: ', myBio)
   }
 
   return (
@@ -37,7 +42,7 @@ function profileInfo (props) {
           </div>
           <div className='bio-box'>
             <span className="bio-header-text"><b>Bio:</b><br></br></span>
-            <form>
+            <form onSubmit={(() => handleSubmit())}>
               <div>
                 <input
                   type="text"
@@ -46,7 +51,7 @@ function profileInfo (props) {
                   placeholder={bio}
                 />
               </div>
-              <button className="bio-buttons" onSubmit={handleSubmit()}>SAVE</button>
+              <button className="bio-buttons" type='submit'>SAVE</button>
             </form>
           </div>
         </>
