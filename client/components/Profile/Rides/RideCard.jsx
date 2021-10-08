@@ -1,7 +1,13 @@
 import React from 'react'
+import { deleteRide } from '../../../apis/rides'
 
 export default function Ride (props) {
   const { date, arrivalTime, leavingTime, startLocation, destination, cost } = props.ride
+  const rideInfo = props.ride
+
+  function handleSubmit () {
+    deleteRide(rideInfo)
+  }
 
   return (
     <>
@@ -26,6 +32,9 @@ export default function Ride (props) {
           <div>
             <img src='images/Avatarprofpic.png'/>
           </div>
+        </div>
+        <div>
+          <button className='orange-register-button animate__infinite' onClick={handleSubmit}>Delete this ride</button>
         </div>
       </div>
     </>

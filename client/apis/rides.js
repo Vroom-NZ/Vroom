@@ -29,3 +29,10 @@ export function searchRides (values) {
       return res.body.rides
     })
 }
+
+export async function deleteRide (ride) {
+  console.log(ride)
+  const { id, auth0Id } = ride
+  return await request.delete(rootUrl + '/rides/')
+    .send(id, auth0Id)
+}
