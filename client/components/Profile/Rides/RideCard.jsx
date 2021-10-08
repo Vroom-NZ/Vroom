@@ -24,7 +24,7 @@ export default function Ride (props) {
             <span className='bold-ride-info'>{date}</span><br></br>
           </div>
           <div>
-            <img src='images/Avatarprofpic.png'/>
+            <img src='images/kierangreen.jpg'/>
           </div>
         </div>
       </div>

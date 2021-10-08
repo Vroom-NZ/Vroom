@@ -1,34 +1,75 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 
 function profileInfo (props) {
+  const [edit, setEdit] = useState(false)
   const { firstName, lastName, hasVehicle, profilePic, bio, rating } = props.user
-  const mockUser = {
-    bio: 'Lonely man, shorter Bio. Happily driving around Aotearoa and taking people along with me.',
-    profilePic: 'images/Avatarprofpic.png',
+  const newUser = {
+    profilePic: 'images/kieran.jpg',
     rating: '★ 5/5'
+  }
+
+  const [myBio, setMyBio] = useState('')
+
+  function handleClick () {
+    setEdit(true)
+  }
+
+  function handleSubmit () {
+
+  }
+
+  function handleChange (event) {
+    setMyBio(event.target.value)
+    console.log('in handlechange: ', myBio)
   }
 
   return (
     <>
-      <div className="user-info">
-        <img src={mockUser.profilePic}></img>
-        <div className='user-info-text'>
-          <span className="profile-name"> {firstName}{lastName}</span>
-          <span className="bio-header-text">{mockUser.rating}</span>
-        </div>
-      </div>
-      <div className='bio-box'>
-        <span className="bio-header-text"><b>Bio:</b><br></br></span>
-        {mockUser.bio}
-      </div>
+      { edit
+        ? <>
+          <div className="user-info">
+            <img src={newUser.profilePic}></img>
+            <div className='user-info-text'>
+              <span className="profile-name"> {firstName}{lastName}</span>
+              <span className="bio-header-text">{newUser.rating}</span>
+            </div>
+          </div>
+          <div className='bio-box'>
+            <span className="bio-header-text"><b>Bio:</b><br></br></span>
+            <form>
+              <div>
+                <input
+                  type="text"
+                  value={myBio}
+                  onChange={handleChange}
+                  placeholder={bio}
+                />
+              </div>
+              <button className="bio-buttons" onSubmit={handleSubmit()}>SAVE</button>
+            </form>
+          </div>
+        </>
+        : <>
+          <div className="user-info">
+            <img src={newUser.profilePic}></img>
+            <div className='user-info-text'>
+              <span className="profile-name"> {firstName}{lastName}</span>
+              <span className="bio-header-text">{newUser.rating}</span>
+            </div>
+          </div>
+          <div className='bio-box'>
+            <span className="bio-header-text"><b>Bio:</b><br></br></span>
+            {bio}
+          </div>
+        </>}
       {hasVehicle &&
             <div className="vehicle-box">
               <span className="bio-header-text"><b>Vehicle Info:</b><br></br></span>
               <span><b>Make: </b>{props.car.make} {props.car.model}<br></br></span>
               <span><b>year: </b>{props.car.year} <br></br></span>
               <span><b>Colour: </b>{props.car.colour}</span>
-              <div className="bio-buttons">
+              <div className="bio-buttons" onClick={(() => handleClick())}>
                 <span>EDIT PROFILE</span>
               </div>
             </div>
