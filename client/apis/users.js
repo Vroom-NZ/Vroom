@@ -21,8 +21,9 @@ export async function addUser (user) {
     .send(user)
 }
 
-export async function updateUser ({ user, id }) {
-  console.log('api works: ', user, id)
+export async function updateUser (bio, id) {
+  console.log('api: ', bio, id)
+  const userBio = { bio, id }
   return await request.post(rootUrl + '/users/' + `${id}`)
-    .send(user)
+    .send(userBio)
 }

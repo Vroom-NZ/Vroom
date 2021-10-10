@@ -18,6 +18,7 @@ function profileInfo (props) {
 
   async function handleSubmit () {
     try {
+      console.log('profileinfo: ', myBio, auth0Id)
       await updateUser(myBio, auth0Id)
       setEdit(false)
     } catch (error) {

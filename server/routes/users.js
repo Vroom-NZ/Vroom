@@ -21,7 +21,6 @@ router.post('/', async (req, res) => {
   const { auth0Id, email } = req.body.user
   const { firstName, lastName, phoneNumber } = req.body.values
   const user = { auth0Id, email, firstName, lastName, phoneNumber }
-
   try {
     await db.addUser(user)
     res.sendStatus(201)
@@ -43,12 +42,15 @@ router.get('/:auth0id', async (req, res) => {
 })
 
 router.post('/:auth0id', async (req, res) => {
+  console.log('BIO in routes: ', req.body.bio)
+  const bio = req.body.bio
+
+  // console.log('req.params.auth0id in user.js routes: ', req.params.auth0id)
+  const auth0id = req.params.auth0id
   try {
-    console.log('req.body in user.js routes: ', req.body.user)
-    const auth0id = req.params.auth0id
-    const user = req.body.user
-    db.updateUser(user, auth0id)
+    await db.updateUser(bio, auth0id)
   } catch (error) {
+    console.error(error)
     res.status(500).json({ message: 'unable to update user' })
   }
 })
