@@ -22,8 +22,12 @@ export async function addUser (user) {
 }
 
 export async function updateUser (bio, id) {
-  console.log('api: ', bio, id)
   const userBio = { bio, id }
   return await request.post(rootUrl + '/users/' + `${id}`)
     .send(userBio)
+}
+
+export async function deleteUser (id) {
+  console.log('api delete: ', id)
+  return request.delete(rootUrl + '/users/' + `${id}`)
 }

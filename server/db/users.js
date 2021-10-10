@@ -48,11 +48,16 @@ function addUser (user, db = connection) {
 }
 
 function updateUser (user, auth0Id, db = connection) {
-  // console.log('db function bio, user id: ', user, auth0Id)
   const bio = user
   return db('users')
     .where('auth0_id', auth0Id)
     .update('bio', bio)
+}
+
+function deleteUser (auth0id, db = connection) {
+  return db('users')
+    .where('auth0_id', auth0id)
+    .delete()
 }
 
 module.exports = {
@@ -60,5 +65,6 @@ module.exports = {
   getUser,
   setHasCar,
   addUser,
-  updateUser
+  updateUser,
+  deleteUser
 }

@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { updateUser } from '../../../apis/users'
+import { updateUser, deleteUser } from '../../../apis/users'
+import { getLogoutFn } from '../../../auth0-utils'
+import { useAuth0 } from '@auth0/auth0-react'
 
 function profileInfo (props) {
+  const logout = getLogoutFn(useAuth0)
+
   const [edit, setEdit] = useState(false)
   const { auth0Id, firstName, lastName, hasVehicle, profilePic, bio, rating } = props.user
   const newUser = {
@@ -18,9 +22,8 @@ function profileInfo (props) {
 
   async function handleSubmit () {
     try {
-      console.log('profileinfo: ', myBio, auth0Id)
-      await updateUser(myBio, auth0Id)
       setEdit(false)
+      await updateUser(myBio, auth0Id)
     } catch (error) {
       console.error(error)
     }
@@ -30,9 +33,14 @@ function profileInfo (props) {
     setMyBio(event.target.value)
   }
 
+  function handleDelete () {
+    console.log('delete user button works')
+    deleteUser(auth0Id) && logout()
+  }
+
   return (
     <>
-      { edit
+      { edit === true
         ? <>
           <div className="user-info">
             <img src={newUser.profilePic}></img>
@@ -66,7 +74,7 @@ function profileInfo (props) {
           </div>
           <div className='bio-box'>
             <span className="bio-header-text"><b>Bio:</b><br></br></span>
-            {bio}
+            {myBio || bio}
           </div>
         </>}
       {hasVehicle &&
@@ -75,11 +83,14 @@ function profileInfo (props) {
               <span><b>Make: </b>{props.car.make} {props.car.model}<br></br></span>
               <span><b>year: </b>{props.car.year} <br></br></span>
               <span><b>Colour: </b>{props.car.colour}</span>
-              <div className="bio-buttons" onClick={(() => handleClick())}>
-                <span>EDIT PROFILE</span>
-              </div>
             </div>
       }
+      <div className="bio-buttons" onClick={(() => handleClick())}>
+        <span>EDIT PROFILE</span>
+      </div>
+      <div className="bio-buttons-delete" onClick={(() => handleDelete())}>
+        <span>DELETE PROFILE</span>
+      </div>
     </>
   )
 }
