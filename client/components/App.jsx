@@ -8,8 +8,9 @@ import 'animate.css'
 import SearchBar from './SearchBar'
 import LandingPage from './LandingPage'
 import Footer from './Footer'
-import Registration from './Registration/Registration'
 import Nav from './Nav'
+import Map from './Map'
+import Registration from './Registration/Registration'
 import PostRide from './Drivers/PostRide'
 import ViewRides from './ViewRides'
 import Contact from './Contact'
@@ -18,6 +19,7 @@ import Terms from './Terms'
 import SiteInfo from './SiteInfo'
 import CarReg from './Drivers/CarReg'
 
+
 function App () {
   cacheUser(useAuth0)
 
@@ -25,6 +27,7 @@ function App () {
     <div className='app'>
       <Route path='/' component={Nav} />
       <Route exact path='/' component={LandingPage}/>
+      <Route exact path='/' component={Map}/>
       <Route exact path='/' component={SearchBar} />
       <Route exact path='/' component={SiteInfo} />
       <Route exact path='/profile' component={Profile} />
