@@ -31,8 +31,6 @@ export function searchRides (values) {
 }
 
 export async function deletePostedRide (ride) {
-  // const id = ride.id
-  // const auth0Id = ride.auth0Id
   const rideInfo = { id: ride.id, auth0Id: ride.auth0Id }
   return await request.delete(rootUrl + '/rides/')
     .send(rideInfo)

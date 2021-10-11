@@ -1,7 +1,17 @@
 import React from 'react'
+import { cancelBookedRide } from '../../../apis/bookings'
+import { connect } from 'react-redux'
 
-export default function BookingCard (props) {
+function BookingCard (props) {
   const { date, arrivalTime, leavingTime, startLocation, destination, cost } = props.ride
+  const rideInfo = props.ride
+  const userInfo = props.user
+
+  function handleCancel () {
+    cancelBookedRide(rideInfo, userInfo)
+    location.reload()
+  }
+
   return (
     <>
       <div className="each-ride-container-profile">
@@ -21,8 +31,17 @@ export default function BookingCard (props) {
             Cost: <span className='bold-ride-info'><br></br>
               ${cost} pp</span>
           </span>
+          <button className='orange-register-button animate__infinite' onClick={handleCancel}>Cancel this ride</button>
         </div>
       </div>
     </>
   )
 }
+
+function mapStateToProps (state) {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(BookingCard)
