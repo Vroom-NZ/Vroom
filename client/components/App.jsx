@@ -17,6 +17,8 @@ import Profile from './Profile/Profile'
 import Terms from './Terms'
 import SiteInfo from './SiteInfo'
 import CarReg from './Drivers/CarReg'
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+const position = [51.505, -0.09]
 
 function App () {
   cacheUser(useAuth0)
@@ -35,6 +37,19 @@ function App () {
       <Route exact path='/contact' component={Contact} />
       <Route exact path='/terms' component={Terms} />
       <Route path='/' component={Footer} />
+      <div>
+        <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
+          <TileLayer
+            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          <Marker position={position}>
+            <Popup>
+              A pretty CSS3 popup. <br /> Easily customizable.
+            </Popup>
+          </Marker>
+        </MapContainer>
+      </div>
     </div>
   )
 }

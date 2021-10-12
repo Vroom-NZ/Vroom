@@ -7,6 +7,10 @@ body {
   width: 80%
 }
 
+.leaflet-container {
+  height: 100vh;
+}
+
 .app {
   flex: 1;
   padding: 12px;
