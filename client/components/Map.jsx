@@ -19,7 +19,7 @@ function Map () {
           />
           <Marker position={position}>
             <Popup>
-              A pretty CSS3 popup. <br /> Easily customizable.
+              this will be the ride card. <br /> Easily customizable.
             </Popup>
           </Marker>
         </MapContainer>
