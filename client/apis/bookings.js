@@ -14,3 +14,9 @@ export async function bookRide (rideDetails, passengerId) {
   return await request.post(rootUrl + '/bookings/')
     .send(ridePassenger)
 }
+
+export async function cancelBookedRide (ride, user) {
+  const rideInfo = { id: ride.id, passengerId: user.auth0Id }
+  return await request.delete(rootUrl + '/bookings/')
+    .send(rideInfo)
+}

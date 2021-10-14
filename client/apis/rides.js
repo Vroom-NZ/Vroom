@@ -29,3 +29,9 @@ export function searchRides (values) {
       return res.body.rides
     })
 }
+
+export async function deletePostedRide (ride) {
+  const rideInfo = { id: ride.id, auth0Id: ride.auth0Id }
+  return await request.delete(rootUrl + '/rides/')
+    .send(rideInfo)
+}

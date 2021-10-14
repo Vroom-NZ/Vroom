@@ -2,7 +2,8 @@ const connection = require('./connection')
 
 module.exports = {
   bookRide,
-  getBookedRides
+  getBookedRides,
+  deleteBookedRide
 }
 
 function bookRide (rideDetails, passengerId, db = connection) {
@@ -27,4 +28,11 @@ function getBookedRides (db = connection) {
       'ride_id as rideId',
       'passenger_id as passengerId'
     )
+}
+
+function deleteBookedRide (id, passengerId, db = connection) {
+  return db('ridepassengers')
+    .where('ride_id', id)
+    .where('passenger_id', passengerId)
+    .del(id)
 }
