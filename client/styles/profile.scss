@@ -114,6 +114,28 @@
   font-weight: 600;
   font-size: small;
   text-align: center;
+  &:hover {
+    cursor: pointer;
+    animation: pulse; 
+    animation-duration: 1s;
+      }
+}
+
+.bio-buttons-delete{
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+  padding: 2vh;
+  margin: 1vh;
+  background-color: #f46b59;
+  color: #FFF;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: small;
+  text-align: center;
+  &:hover {
+    cursor: pointer;
+    animation: pulse; 
+    animation-duration: 1s;
+      }
 }
 
 .profile-ride-card-info{

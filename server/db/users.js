@@ -47,9 +47,24 @@ function addUser (user, db = connection) {
     .insert(newUser)
 }
 
+function updateUser (user, auth0Id, db = connection) {
+  const bio = user
+  return db('users')
+    .where('auth0_id', auth0Id)
+    .update('bio', bio)
+}
+
+function deleteUser (auth0id, db = connection) {
+  return db('users')
+    .where('auth0_id', auth0id)
+    .delete()
+}
+
 module.exports = {
   getUsers,
   getUser,
   setHasCar,
-  addUser
+  addUser,
+  updateUser,
+  deleteUser
 }

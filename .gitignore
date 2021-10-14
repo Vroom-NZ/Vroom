@@ -9,3 +9,5 @@ package-lock.json
 .env
 tags
 .env
+/coverage.data
+/coverage/
