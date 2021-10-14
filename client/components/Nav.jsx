@@ -32,9 +32,9 @@ function Nav (props) {
       <div className='main-title'>
         <IfAuthenticated>
           <div className='nav-hello'>
-          <Link to="/">
+            <Link to="/">
               <img className="nav-logo" src="images/logo.jpg" />
-          </Link>
+            </Link>
           </div>
           <div className='nav-button-container'>
             {firstName &&

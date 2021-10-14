@@ -1,6 +1,7 @@
-import React from 'react';
+import React from 'react'
+import { connect } from 'react-redux'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
-import user from '../reducers/user';
+import user from '../reducers/user'
 
 function Map () {
   const position = [-36.8666700, 174.7666700]
@@ -24,14 +25,14 @@ function Map () {
           </Marker>
         </MapContainer>
       </div>
-      </>
-  )}
+    </>
+  )
+}
 
-  function mapStateToProps (state) {
-    return {
-      user: state.user
-    }
+function mapStateToProps (state) {
+  return {
+    user: state.user
   }
-  
-  export default connect(mapStateToProps)(Map)
-  
+}
+
+export default connect(mapStateToProps)(Map)
