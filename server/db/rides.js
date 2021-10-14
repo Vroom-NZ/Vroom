@@ -16,6 +16,8 @@ function getAllRides (db = connection) {
   return db('rides').select(
     'id',
     'auth0_id as auth0Id',
+    'first_name as firstName',
+    'last_name as lastName',
     'start_location as startLocation',
     'destination',
     'date',
@@ -76,9 +78,9 @@ function updateRide (updatedRide, db = connection) {
     })
 }
 
-function deleteRide (id, auth0Id, db = connection) {
+function deleteRide (id, user, db = connection) {
   return db('rides')
-    .where('auth0_id', auth0Id)
+    .where('auth0_id', user)
     .where('rides.id', id)
     .del(id)
 }
