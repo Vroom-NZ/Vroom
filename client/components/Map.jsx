@@ -16,16 +16,17 @@ function Map () {
 
   // promise.all will give us an array of lng and lat //
   function convertRides (destinations) {
-
+    console.log('convertRides: ', destinations)
   }
 
   function handleChange (event) {
-    event.preventDefault()
-    setLocation(event.value.target)
+    console.log('change is being handled')
+    setLocation(event.target.value)
   }
 
   async function handleSubmit () {
     try {
+      console.log('button is being clicked')
       const filteredRides = rides.filter((ride) =>
         (ride.startLocation === location))
       convertRides(filteredRides)
@@ -41,9 +42,12 @@ function Map () {
       <h2> Kia ora {user.firstName}, explore Aotearoa! </h2>
       <p> Click on the rides to see their details!</p>
       <>
-        <form onSubmit={() => handleSubmit}>
-          <input onChange={handleChange}> Tell us where you are leaving from</input>
-          <button type="submit" >Submit</button>
+        <form onSubmit={(() => handleSubmit())}>
+          <input
+            type="text"
+            onChange={handleChange}
+          />
+          <button type="submit">Explore</button>
         </form>
       </>
       <div>
