@@ -1,17 +1,51 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
+import { getRides } from '../apis/rides'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import user from '../reducers/user'
 
 function Map () {
   const position = [-36.8666700, 174.7666700]
+  const [location, setLocation] = useState('Auckland')
+  const [rides, setRides] = useState([])
+
+  useEffect(async () => {
+    const allRides = await getRides()
+    setRides(allRides)
+  }, [])
+
+  // promise.all will give us an array of lng and lat //
+  function convertRides (destinations) {
+
+  }
+
+  function handleChange (event) {
+    event.preventDefault()
+    setLocation(event.value.target)
+  }
+
+  async function handleSubmit () {
+    try {
+      const filteredRides = rides.filter((ride) =>
+        (ride.startLocation === location))
+      convertRides(filteredRides)
+    } catch (error) {
+      console.error(error)
+      alert('This is not a valid location')
+    }
+  }
 
   return (
     <>
 
       <h2> Kia ora {user.firstName}, explore Aotearoa! </h2>
       <p> Click on the rides to see their details!</p>
-
+      <>
+        <form onSubmit={() => handleSubmit}>
+          <input onChange={handleChange}> Tell us where you are leaving from</input>
+          <button type="submit" >Submit</button>
+        </form>
+      </>
       <div>
         <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
           <TileLayer
