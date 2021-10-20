@@ -78,7 +78,7 @@ function Map () {
           <Marker position={position}>
             <Popup className="popup-container">
               <div >
-                {rides.length ? (
+                {rides.length && (
                   <>
                     {rides.map(ride => {
                       return (
@@ -86,10 +86,6 @@ function Map () {
                       )
                     })}
                   </>
-                ) : (
-                  <div>
-                    <p>Sorry, lol</p>
-                  </div>
                 )}
 
               </div>
