@@ -2,12 +2,17 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { getRides } from '../apis/rides'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import * as L from 'leaflet'
 import user from '../reducers/user'
+import PopupRideCard from './Profile/Rides/PopupRideCard'
 
 function Map () {
   const position = [-36.8666700, 174.7666700]
+  const Tairua = [-37.0016, 175.8487]
+  const Hamilton = [-37.7826, 175.2528]
   const [location, setLocation] = useState('Auckland')
   const [rides, setRides] = useState([])
+  const [destinations, setDestinations] = useState([])
 
   useEffect(async () => {
     const allRides = await getRides()
@@ -15,8 +20,13 @@ function Map () {
   }, [])
 
   // promise.all will give us an array of lng and lat //
-  function convertRides (destinations) {
-    console.log('convertRides: ', destinations)
+  function convertRides (destination) {
+    console.log('rides are being converted: ', destination)
+    if (destination === 'Tairua') {
+      return Tairua
+    } if (destination === 'Hamilton') {
+      return Hamilton
+    } else { return null }
   }
 
   function handleChange (event) {
@@ -29,12 +39,21 @@ function Map () {
       console.log('button is being clicked')
       const filteredRides = rides.filter((ride) =>
         (ride.startLocation === location))
-      convertRides(filteredRides)
+      setDestinations(filteredRides)
     } catch (error) {
       console.error(error)
       alert('This is not a valid location')
     }
   }
+
+  const LeafIcon = L.Icon.extend({
+    optios: {}
+  })
+
+  const greenIcon = new LeafIcon({
+    iconUrl:
+  'https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2%7C2ecc71&chf=a,s,ee00FFFF'
+  })
 
   return (
     <>
@@ -57,10 +76,40 @@ function Map () {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           <Marker position={position}>
-            <Popup>
-              this will be the ride card. <br /> Easily customizable.
+            <Popup className="popup-container">
+              <div >
+                {rides.length ? (
+                  <>
+                    {rides.map(ride => {
+                      return (
+                        <PopupRideCard key={ride.id} ride={ride} />
+                      )
+                    })}
+                  </>
+                ) : (
+                  <div>
+                    <p>Sorry, lol</p>
+                  </div>
+                )}
+
+              </div>
             </Popup>
           </Marker>
+          <div>
+            {destinations.length ? (
+              <>
+                {destinations.map(destination => {
+                  <Marker icon={greenIcon} position={convertRides(destination.destination)}>
+                    <Popup className="popup-container">
+                      <PopupRideCard key={destination.id} ride={destination} />
+                    </Popup>
+                  </Marker>
+                }) }
+              </>
+            ) : null
+            }
+          </div>
+
         </MapContainer>
       </div>
     </>
