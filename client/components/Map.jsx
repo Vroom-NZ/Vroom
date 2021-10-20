@@ -87,7 +87,6 @@ function Map () {
                     })}
                   </>
                 )}
-
               </div>
             </Popup>
           </Marker>
