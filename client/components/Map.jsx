@@ -24,9 +24,9 @@ function Map () {
     console.log('rides are being converted: ', destination)
     if (destination === 'Tairua') {
       return Tairua
-    } if (destination === 'Hamilton') {
+    } else if (destination === 'Hamilton') {
       return Hamilton
-    } else { return null }
+    } else { return position }
   }
 
   function handleChange (event) {
@@ -96,17 +96,20 @@ function Map () {
             </Popup>
           </Marker>
           <div>
-            {destinations.length ? (
+            {destinations.length && (
               <>
                 {destinations.map(destination => {
-                  <Marker icon={greenIcon} position={convertRides(destination.destination)}>
-                    <Popup className="popup-container">
-                      <PopupRideCard key={destination.id} ride={destination} />
-                    </Popup>
-                  </Marker>
-                }) }
+                  return (
+                    <Marker key={destination.id} icon={greenIcon} position={convertRides(destination.destination)}>
+                      <Popup className="popup-container">
+                        <PopupRideCard ride={destination} />
+                      </Popup>
+                    </Marker>
+
+                  )
+                })}
               </>
-            ) : null
+            )
             }
           </div>
 
