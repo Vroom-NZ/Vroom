@@ -3,13 +3,15 @@ import { connect } from 'react-redux'
 import { getRides } from '../apis/rides'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import * as L from 'leaflet'
+
 import user from '../reducers/user'
 import PopupRideCard from './Profile/Rides/PopupRideCard'
 
+
 function Map () {
   const position = [-36.8666700, 174.7666700]
-  const Tairua = [-37.0016, 175.8487]
-  const Hamilton = [-37.7826, 175.2528]
+  // const Tairua = [-37.0016, 175.8487]
+  // const Hamilton = [-37.7826, 175.2528]
   const [location, setLocation] = useState('Auckland')
   const [rides, setRides] = useState([])
   const [destinations, setDestinations] = useState([])
@@ -20,13 +22,13 @@ function Map () {
   }, [])
 
   // promise.all will give us an array of lng and lat //
-  function convertRides (destination) {
-    console.log('rides are being converted: ', destination)
-    if (destination === 'Tairua') {
-      return Tairua
-    } else if (destination === 'Hamilton') {
-      return Hamilton
-    } else { return position }
+ function convertRides (destination) {
+    // console.log('rides are being converted: ', destination)
+    // if (destination === 'Tairua') {
+    //   return Tairua
+    // } else if (destination === 'Hamilton') {
+    //   return Hamilton
+    // } else { return position }
   }
 
   function handleChange (event) {
