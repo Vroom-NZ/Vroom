@@ -15,6 +15,7 @@ function profileInfo (props) {
   }
 
   const [myBio, setMyBio] = useState('')
+  const [myPic, setMyPic] = useState(null)
 
   function handleClick () {
     setEdit(true)
@@ -23,14 +24,10 @@ function profileInfo (props) {
   async function handleSubmit () {
     try {
       setEdit(false)
-      await updateUser(myBio, auth0Id)
+      await updateUser(myBio, myPic, auth0Id)
     } catch (error) {
       console.error(error)
     }
-  }
-
-  function handleChange (event) {
-    setMyBio(event.target.value)
   }
 
   function handleDelete () {
@@ -43,7 +40,10 @@ function profileInfo (props) {
       { edit === true
         ? <>
           <div className="user-info">
-            <img src={newUser.profilePic}></img>
+          {myPic 
+           ? <img width={"100%"} src={URL.createObjectURL(myPic)} />
+           : <img src={profilePic}></img>
+          }
             <div className='user-info-text'>
               <span className="profile-name"> {firstName}{lastName}</span>
               <span className="bio-header-text">{newUser.rating}</span>
@@ -55,11 +55,20 @@ function profileInfo (props) {
               <div>
                 <input
                   type="text"
-                  value={myBio}
-                  onChange={handleChange}
-                  placeholder={bio}
+                  name="myBio"
+                  onChange={(event) => {setMyBio(event.target.value)}}
+                  placeholder="My Bio"
                 />
-              </div>
+                 </div>
+                <input
+                  alt='Not Found'
+                  type="file"
+                  name="myImage"
+                  onChange={(event) => {
+                    setMyPic(event.target.files[0]);
+                  }}
+                  placeholder="My Pic"
+                  />
               <button className="bio-buttons" type='submit'>SAVE</button>
             </form>
           </div>
