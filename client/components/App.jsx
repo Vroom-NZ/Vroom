@@ -17,6 +17,7 @@ import Profile from './Profile/Profile'
 import Terms from './Terms'
 import SiteInfo from './SiteInfo'
 import CarReg from './Drivers/CarReg'
+import Map from './Map'
 
 function App () {
   cacheUser(useAuth0)
@@ -32,6 +33,7 @@ function App () {
       <Route exact path='/cars' component={CarReg} />
       <Route exact path='/register' component={Registration} />
       <Route exact path='/drivers' component={PostRide} />
+      <Route exact path='/explore' component={Map} />
       <Route exact path='/contact' component={Contact} />
       <Route exact path='/terms' component={Terms} />
       <Route path='/' component={Footer} />

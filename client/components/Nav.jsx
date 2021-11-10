@@ -32,13 +32,16 @@ function Nav (props) {
       <div className='main-title'>
         <IfAuthenticated>
           <div className='nav-hello'>
-            <img className="nav-logo" src="images/logo.jpg"/>
+            <Link to="/">
+              <img className="nav-logo" src="images/logo.jpg" />
+            </Link>
           </div>
           <div className='nav-button-container'>
             {firstName &&
             <>
               <Link to='/' replace className='signin-register-buttons animate__infinite'>Home</Link>
               <Link to='/profile' replace className='signin-register-buttons animate__infinite'>Profile</Link>
+              <Link to='/explore' replace className='signin-register-buttons animate__infinite'>Explore</Link>
               {hasVehicle
                 ? <Link to='/drivers' replace className='signin-register-buttons animate__infinite'>Post a ride </Link>
                 : <Link to='/cars' replace className='signin-register-buttons animate__infinite'>Post a ride</Link>

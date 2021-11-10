@@ -29,3 +29,17 @@ router.post('/', async (req, res) => {
 })
 
 module.exports = router
+
+// Delete ride
+
+router.delete('/', async (req, res) => {
+  const id = req.body.id
+  const user = req.body.auth0Id
+  try {
+    await dbRides.deleteRide(id, user)
+    res.sendStatus(201)
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ message: 'unable to insert rides into the database' })
+  }
+})

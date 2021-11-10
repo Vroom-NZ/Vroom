@@ -1,8 +1,19 @@
 import React from 'react'
+import { deletePostedRide } from '../../../apis/rides'
 
 export default function Ride (props) {
   const { date, arrivalTime, leavingTime, startLocation, destination, cost } = props.ride
+  const rideInfo = props.ride
 
+  function handleSubmit () {
+    deletePostedRide(rideInfo)
+    rideDeleteMessage()
+    location.reload()
+  }
+
+  function rideDeleteMessage () {
+    alert('Your posted ride has been deleted')
+  }
   return (
     <>
       <div className="each-ride-container-profile">
@@ -24,8 +35,11 @@ export default function Ride (props) {
             <span className='bold-ride-info'>{date}</span><br></br>
           </div>
           <div>
-            <img src='images/Avatarprofpic.png'/>
+            <img src='images/kierangreen.jpg'/>
           </div>
+        </div>
+        <div>
+          <button className='orange-register-button animate__infinite' onClick={handleSubmit}>Delete this ride</button>
         </div>
       </div>
     </>
